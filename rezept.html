@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rezept Ansicht</title>
+    
+    <script>
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script> tailwind.config = { darkMode: 'class' } </script>
+    <link rel="stylesheet" href="style.css">
+    
+    <script src="main.js" defer></script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300 min-h-screen flex flex-col">
+
+    <nav class="bg-white shadow-md sticky top-0 z-50 dark:bg-gray-800 dark:border-b dark:border-gray-700 transition-colors duration-300 no-print">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center py-4 h-20">
+                <a href="index.html" class="text-2xl font-bold text-orange-600">Larsi's <span class="text-gray-700 dark:text-gray-300">Simple Rezepte</span></a>
+                <div class="flex items-center space-x-6">
+                    <a href="index.html" class="text-gray-600 hover:text-orange-600 font-medium dark:text-gray-300 dark:hover:text-orange-400">Startseite</a>
+                    <a href="alle-rezepte.html" class="text-gray-600 hover:text-orange-600 font-medium dark:text-gray-300 dark:hover:text-orange-400">Alle Rezepte</a>
+                    <a href="neues-rezept.html" class="bg-orange-600 text-white px-4 py-2 rounded-lg hover:bg-orange-700 transition shadow-sm">Einsenden</a>
+                    <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition"><span id="dark-icon">🌙</span></button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-4xl mx-auto px-4 py-10 flex-grow" id="content-container">
+        
+        <div class="rounded-2xl overflow-hidden shadow-2xl mb-8 h-[400px]">
+            <img id="rec-img" src="" alt="Gericht" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x400?text=Ladefehler'">
+        </div>
+
+        <div class="bg-white p-8 md:p-12 rounded-2xl shadow-sm dark:bg-gray-800 dark:shadow-gray-900/50 transition-colors duration-300">
+            
+            <header class="mb-8 border-b dark:border-gray-700 pb-8">
+                <div class="flex flex-col md:flex-row justify-between md:items-start gap-4">
+                    <div>
+                        <span id="rec-cat" class="text-orange-600 font-bold uppercase tracking-wider text-sm dark:text-orange-400"></span>
+                        <h1 id="rec-title" class="text-4xl md:text-5xl font-bold mt-2 mb-4 text-gray-900 dark:text-white"></h1>
+                    </div>
+                    
+                    <div class="flex gap-2 no-print self-start">
+                        
+                        <button onclick="shareRecipe()" class="flex items-center gap-2 bg-blue-100 hover:bg-blue-200 text-blue-700 px-4 py-2 rounded-lg transition dark:bg-blue-900 dark:text-blue-200 dark:hover:bg-blue-800">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path></svg>
+                            <span>Teilen</span>
+                        </button>
+
+                        <button onclick="window.print()" class="flex items-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-700 px-4 py-2 rounded-lg transition dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                            <span>PDF</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="flex items-center space-x-6 text-gray-500 dark:text-gray-400 mt-2">
+                    <span class="flex items-center">⏱️ <span id="rec-time" class="ml-2"></span></span>
+                    <span class="flex items-center">🍽️ <span id="rec-portions" class="ml-2"></span></span>
+                </div>
+            </header>
+
+            <div class="grid md:grid-cols-3 gap-12">
+                <div class="md:col-span-1">
+                    <h2 class="text-2xl font-bold mb-4 dark:text-gray-200">Zutaten</h2>
+                    <ul id="rec-ingredients" class="space-y-3 text-gray-700 dark:text-gray-300">
+                        </ul>
+                </div>
+
+                <div class="md:col-span-2">
+                    <h2 class="text-2xl font-bold mb-4 dark:text-gray-200">Zubereitung</h2>
+                    <div id="rec-steps" class="space-y-6 text-lg text-gray-700 leading-relaxed dark:text-gray-300">
+                        </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-gray-300 py-8 mt-12 dark:bg-black dark:text-gray-500 no-print">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <p>&copy; 2026 Larsi's Simple Rezepte. Alle Rechte vorbehalten.</p>
+        </div>
+    </footer>
+
+    <script src="rezepte.js"></script>
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const rezeptId = params.get('id');
+        const rezept = rezeptDaten[rezeptId];
+
+        if (rezept) {
+            document.title = rezept.titel + " - Larsi's Rezepte";
+            document.getElementById('rec-img').src = rezept.bild;
+            document.getElementById('rec-cat').innerText = rezept.kategorie;
+            document.getElementById('rec-title').innerText = rezept.titel;
+            document.getElementById('rec-time').innerText = rezept.zeit;
+            document.getElementById('rec-portions').innerText = rezept.portionen;
+
+            const ingList = document.getElementById('rec-ingredients');
+            rezept.zutaten.forEach(zutat => {
+                ingList.innerHTML += `<li class="flex items-start"><span class="w-2 h-2 bg-orange-400 rounded-full mt-2 mr-3 flex-shrink-0"></span> ${zutat}</li>`;
+            });
+
+            const stepList = document.getElementById('rec-steps');
+            rezept.zubereitung.forEach((step, index) => {
+                stepList.innerHTML += `
+                    <div>
+                        <span class="text-orange-600 font-bold text-xl block mb-1 dark:text-orange-400">Schritt ${index + 1}: ${step.titel}</span>
+                        <p>${step.text}</p>
+                    </div>`;
+            });
+        } else {
+            document.getElementById('content-container').innerHTML = '<div class="text-center py-20"><h1 class="text-3xl font-bold text-gray-400">Rezept nicht gefunden :(</h1><a href="index.html" class="text-orange-600 underline mt-4 block">Zurück zur Übersicht</a></div>';
+        }
+
+        // --- TEILEN FUNKTION ---
+        async function shareRecipe() {
+            const shareData = {
+                title: 'Larsi\'s Simple Rezepte',
+                text: 'Schau dir dieses leckere Rezept an: ' + (rezept ? rezept.titel : 'Tolles Essen'),
+                url: window.location.href
+            };
+
+            // Versuchen, das native "Teilen" Menü des Handys zu öffnen
+            if (navigator.share) {
+                try {
+                    await navigator.share(shareData);
+                } catch (err) {
+                    console.log('Teilen abgebrochen');
+                }
+            } else {
+                // Fallback für PC: In die Zwischenablage kopieren
+                try {
+                    await navigator.clipboard.writeText(window.location.href);
+                    alert("Link wurde in die Zwischenablage kopiert! (Hinweis: Der Link funktioniert für andere nur, wenn die Seite online gestellt ist)");
+                } catch (err) {
+                    alert("Link konnte nicht kopiert werden.");
+                }
+            }
+        }
+    </script>
+</body>
+</html>

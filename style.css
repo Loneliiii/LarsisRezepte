@@ -1,0 +1,136 @@
+/* style.css */
+
+/* 1. Sofortige Hintergrundfarbe für Dark Mode (Verhindert weißen Blitz) */
+html.dark body {
+    background-color: #111827; /* Tailwind gray-900 */
+    color: #f3f4f6; /* Tailwind gray-100 */
+}
+
+/* 2. Transition nur erlauben, wenn wir NICHT gerade laden */
+body.preload * {
+    transition: none !important;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Animation für Karten beim Hover */
+.card-zoom img {
+    transition: transform 0.3s ease;
+}
+
+.card-zoom:hover img {
+    transform: scale(1.05);
+}
+
+/* Einfache Fade-In Animation beim Laden */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* --- DRUCK & PDF STYLES (Optimiert für 1 Seite) --- */
+@media print {
+    /* 1. Störende Elemente ausblenden */
+    .no-print, nav, footer, button {
+        display: none !important;
+    }
+
+    /* 2. Farben resetten (Tinte sparen) */
+    body, main, div, h1, h2, p, li, span, header {
+        background-color: white !important;
+        color: black !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    /* 3. Layout Reset: Ränder wegnehmen */
+    body {
+        margin: 0;
+        padding: 0;
+        font-size: 11pt; /* Etwas kleinere Schrift für mehr Platz */
+    }
+
+    main {
+        max-width: 100% !important;
+        padding: 0 1cm !important; /* Kleiner Seitenrand links/rechts */
+        margin: 0 !important;
+        display: block !important;
+    }
+
+    /* 4. DAS BILD: Klein, rechts oben in die Ecke */
+    /* Wir zielen auf den Container des Bildes */
+    .rounded-2xl.overflow-hidden.h-\[400px\] {
+        height: auto !important;
+        width: 35% !important;     /* Bild nimmt nur ca. 1/3 der Breite */
+        float: right !important;   /* Schiebt es nach rechts */
+        margin-left: 20px !important;
+        margin-bottom: 20px !important;
+        border: 1px solid #ccc;    /* Dünner Rahmen */
+        border-radius: 5px !important;
+    }
+
+    #rec-img {
+        height: auto !important;
+        max-height: 200px !important; /* Bildhöhe begrenzen */
+        object-fit: cover;
+    }
+
+    /* 5. Der Text-Container: Muss hochrutschen */
+    .bg-white.p-8.md\:p-12 {
+        padding: 0 !important; /* Padding weg, damit es neben das Bild passt */
+        margin-top: 0 !important;
+    }
+
+    /* 6. Überschriften kompakter */
+    header {
+        border-bottom: 2px solid black !important;
+        margin-bottom: 20px !important;
+        padding-bottom: 10px !important;
+        /* Damit der Titel nicht ins Bild rutscht, falls er zu lang ist: */
+        width: 60%; 
+        float: left;
+    }
+
+    h1 {
+        font-size: 22pt !important;
+        margin-top: 0 !important;
+        margin-bottom: 5px !important;
+        line-height: 1.1 !important;
+    }
+
+    /* 7. Grid auflösen -> Alles untereinander oder kompakt nebeneinander */
+    /* Zutaten links, Zubereitung fließt darum herum oder darunter */
+    .grid {
+        display: block !important;
+        clear: both; /* Sorgt dafür, dass es unter dem Header startet */
+        padding-top: 20px;
+    }
+
+    /* Zutaten-Spalte */
+    .md\:col-span-1 {
+        width: 40% !important;
+        float: left !important;
+        font-size: 10pt !important;
+        margin-right: 5%;
+    }
+
+    /* Zubereitungs-Spalte */
+    .md\:col-span-2 {
+        width: 55% !important;
+        float: left !important;
+    }
+
+    /* Abstände zwischen Schritten verringern */
+    .space-y-6 > :not([hidden]) ~ :not([hidden]) {
+        margin-top: 1em !important; /* Kleinerer Abstand zwischen Steps */
+    }
+
+    /* Links cleanen */
+    a { text-decoration: none !important; color: black !important; }
+}
