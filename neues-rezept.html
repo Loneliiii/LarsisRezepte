@@ -6,13 +6,13 @@
     <title>Simple Gourmet - Rezepte Welt</title>
     
     <script>
-        // Sofort prüfen und Klasse setzen, bevor die Seite angezeigt wird
         if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.classList.add('dark');
         } else {
             document.documentElement.classList.remove('dark');
         }
     </script>
+
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7936159083612560" crossorigin="anonymous"></script>
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -47,10 +47,14 @@
             <h1 class="text-3xl font-bold mb-2 dark:text-white">Rezept einreichen</h1>
             <p class="text-gray-500 mb-8 dark:text-gray-400">Teile dein Lieblingsgericht! Es wird direkt an Lars gesendet, geprüft und hochgeladen.</p>
 
-            <form action="https://formsubmit.co/lars.krahnen@gmail.com" method="POST" ...>
-                <input type="hidden" name="_subject" value="Neues Rezept von der Webseite!">
-                <input type="hidden" name="_next" value="https://formsubmit.co/el/success">
-                <input type="hidden" name="_captcha" value="false">
+            <form action="https://api.web3forms.com/submit" method="POST" class="space-y-6">
+                
+                <input type="hidden" name="access_key" value="903efc0f-8974-488f-93d4-a3e97fc0265e">
+                
+                <input type="hidden" name="subject" value="Neues Rezept von der Webseite!">
+                <input type="hidden" name="redirect" value="https://www.larskrahnen.de/index.html">
+                
+                <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
 
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-1 dark:text-gray-300">Deine E-Mail Adresse</label>
