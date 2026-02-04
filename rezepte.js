@@ -35,6 +35,7 @@ const rezeptDaten = {
             "Burgersauce"
         ],
         zubereitung: [
+            { titel: "Vorbereitung", text: "Hackfleisch nur mit Salz und Pfeffer würzen und zu Patties formen." },
             { titel: "Braten", text: "Fleisch braten. Nach dem Wenden sofort den Käse auf das Fleisch legen." },
             { titel: "Schmelzen", text: "Einen Spritzer Wasser in die Pfanne geben und Deckel drauf, damit der Käse schmilzt." },
             { titel: "Zusammenbau", text: "Bun, Sauce, Gurken, Fleisch mit Käse, Deckel. Fertig!" },
