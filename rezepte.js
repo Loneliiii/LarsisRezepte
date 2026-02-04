@@ -87,7 +87,27 @@ const rezeptDaten = {
             { titel: "Anbraten", text: "Hackfleisch anbraten und etwas später die Zwiebeln und Paprika hinzugeben." },
             { titel: "Kochen", text: "Etwas später Tomaten, Bohnen und Mais dazu. Würzen und mind. 45 Min köcheln lassen." },
             { titel: "Servieren", text: "Dazu passt Reis oder Baguette." },
-            { titel: "Geheimtipp", text: "Gegen Ende ein Stück Zartbitterschokolade im Chili schmelzen lassen – das gibt eine tolle Tiefe und Farbe!" }
+            { titel: "Geheimtipp", text: "Gegen Ende ein Stück Zartbitterschokolade im Chili schmelzen lassen, das gibt eine tolle Tiefe und Farbe!" }
+        ]
+    },
+    "huhn_suess_sauer": {
+        titel: "Nudeln mit Hähnchen Süß-Sauer-Sahne Sauce",
+        bild: "https://media.hellofresh.com/w_3840,q_auto,f_auto,c_limit,fl_lossy/recipes/image/643ecb3db8ffbb976d0c4923-3f6fef73-f211d98c.jpg",
+        zeit: "25 Min.",
+        portionen: "2 Portionen",
+        kategorie: "Schnell",
+        zutaten: [
+            "400g Hähnchengeschnetzeltes",
+            "250g Nudeln (oder mehr)",
+            "1 Glas Süß-Sauer Sauce",
+            "100-150ml Becher Schlagsahne",
+            "Salz, Pfeffer & Gewürze"
+        ],
+        zubereitung: [
+            { titel: "Nudeln", text: "Wasser für die Nudeln zum Kochen bringen. Sobald die Nudeln im Wasser sind, mit dem Hähnchen weitermachen." },
+            { titel: "Hähnchen", text: "Hähnchengeschnetzeltes in einer Pfanne anbraten und schon mal mit Pfeffer und Co. nach Belieben würzen." },
+            { titel: "Sauce", text: "Wenn das Fleisch gebraten ist, die Süß-Sauer-Sauce komplett hinzufügen und kurz einziehen lassen. Danach mit Schlagsahne ablöschen und umrühren, bis die Sauce eine cremig-orangene Farbe hat." },
+            { titel: "Servieren", text: "Nun die Nudeln in die Sauce kippen (oder andersherum) und servieren. Guten Appetit!" }
         ]
     },
 
