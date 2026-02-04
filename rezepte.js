@@ -91,13 +91,18 @@ const rezeptDaten = {
             "1 Dose Kidneybohnen",
             "1 Dose Mais",
             "400g gehackte Tomaten",
+            "Etwas Tomatenmark",
             "1 Zwiebel",
-            "Chili & Kreuzkümmel"
+            "Gewürze - Chili, Kreuzkümmel, Pfeffer, Paprika, Knoblauch (nach belieben)",
+            "2 Paprika",
+            "(Stück Zartbitter Schokolade)"
         ],
         zubereitung: [
-            { titel: "Anbraten", text: "Hackfleisch und Zwiebeln krümelig anbraten." },
-            { titel: "Kochen", text: "Tomaten, Bohnen und Mais dazu. Würzen und mind. 45 Min köcheln lassen." },
-            { titel: "Servieren", text: "Dazu passt Reis oder Baguette." }
+            { titel: "Vorbereitung", text: "Zwiebeln und Paprika klein schneiden." },
+            { titel: "Anbraten", text: "Hackfleisch anbraten und etwas später die Zwiebeln und Paprika hinzugeben." },
+            { titel: "Kochen", text: "Etwas später Tomaten, Bohnen und Mais dazu. Würzen und mind. 45 Min köcheln lassen." },
+            { titel: "Servieren", text: "Dazu passt Reis oder Baguette." },
+            { titel: "Tipps", text: "Es kann auch gegen Ende etwas Zartbitterschokolade hinzugefügt werden für den Geschmack (Google nach, es stimmt)" }
         ]
     }
 };
