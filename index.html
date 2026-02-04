@@ -1,4 +1,55 @@
-<main class="max-w-6xl mx-auto px-4 py-12 flex-grow">
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Larsi's Simple Rezepte</title>
+    
+    <script>
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script> tailwind.config = { darkMode: 'class' } </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7936159083612560" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="style.css">
+    
+    </head>
+<body class="bg-gray-50 text-gray-800 font-sans dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300 flex flex-col min-h-screen">
+
+    <nav class="bg-white shadow-md sticky top-0 z-50 dark:bg-gray-800 dark:border-b dark:border-gray-700 transition-colors duration-300 no-print">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center py-3 md:py-4 min-h-[80px]">
+                
+                <a href="index.html" class="text-2xl font-bold text-orange-600 mb-3 md:mb-0">
+                    Larsi's <span class="text-gray-700 dark:text-gray-300">Simple Rezepte</span>
+                </a>
+                
+                <div class="flex items-center gap-3 flex-wrap justify-center">
+                    <a href="index.html" class="text-gray-600 hover:text-orange-600 font-medium text-sm md:text-base dark:text-gray-300 dark:hover:text-orange-400">Start</a>
+                    <a href="alle-rezepte.html" class="text-gray-600 hover:text-orange-600 font-medium text-sm md:text-base dark:text-gray-300 dark:hover:text-orange-400">Rezepte</a>
+                    <a href="neues-rezept.html" class="bg-orange-600 text-white px-3 py-2 rounded-lg hover:bg-orange-700 transition shadow-sm text-sm">Einsenden</a>
+                    <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition"><span id="dark-icon">🌙</span></button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="relative bg-gray-900 text-white h-[400px] flex items-center justify-center overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1495521827621-0730d8409197?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80" alt="" class="absolute w-full h-full object-cover opacity-40">
+        <div class="relative z-10 text-center px-4">
+            <h1 class="text-5xl font-bold mb-4 drop-shadow-lg">Rezepte so Simpel wie möglich</h1>
+            <p class="text-xl text-gray-200 drop-shadow-md">Einfach zum Nachkochen.</p>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 py-12 flex-grow">
         
         <div class="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
             <h2 class="text-3xl font-bold border-l-4 border-orange-600 pl-4 dark:text-white">Unsere Highlights</h2>
@@ -38,3 +89,73 @@
     </footer>
 
     <script src="rezepte.js"></script>
+    <script>
+        const container = document.getElementById('startseite-grid');
+        
+        // Filter-Logik
+        function filterRezepte(filter) {
+            // Buttons Design umschalten (Simpel gelöst)
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                // Reset Styles
+                if(btn.innerText.toLowerCase().includes(filter)) {
+                    btn.className = "filter-btn px-4 py-2 rounded-full font-medium shadow-sm transition bg-orange-600 text-white";
+                } else {
+                    btn.className = "filter-btn px-4 py-2 rounded-full font-medium shadow-sm transition bg-white text-gray-700 hover:bg-orange-100 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700";
+                }
+            });
+
+            const cards = document.querySelectorAll('.rezept-karte');
+            cards.forEach(card => {
+                const tags = card.getAttribute('data-tags');
+                if (filter === 'alle' || tags.includes(filter)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Rezepte laden und anzeigen
+        // Wir nehmen automatisch die ersten 6 Rezepte aus der Datenbank
+        // Falls du weniger als 6 hast, nimmt er einfach alle.
+        const highlights = Object.entries(rezeptDaten).slice(0, 6);
+
+        highlights.forEach(([id, rezept]) => {
+            
+            // 1. Automatische Tags berechnen (für die Filter)
+            let tags = "";
+            
+            const cat = rezept.kategorie.toLowerCase();
+            if (cat.includes('veggie') || cat.includes('vegetarisch') || cat.includes('vegan') || cat.includes('beilage')) {
+                tags += "veggie ";
+            }
+
+            const minuten = parseInt(rezept.zeit); 
+            if (minuten <= 30) {
+                tags += "schnell ";
+            }
+
+            // 2. HTML Karte Generieren
+            const cardHTML = `
+            <a href="rezept.html?id=${id}" class="rezept-karte block group animate-fade-in" data-tags="${tags.trim()}">
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-zoom dark:bg-gray-800 dark:shadow-gray-900/50 h-full flex flex-col">
+                    <div class="h-56 overflow-hidden relative">
+                        <img src="${rezept.bild}" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x400?text=Kein+Bild'">
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <div class="mb-2">
+                            <span class="bg-orange-100 text-orange-600 text-xs font-bold px-2 py-1 rounded-full uppercase dark:bg-orange-900 dark:text-orange-200">${rezept.kategorie}</span>
+                        </div>
+                        <h3 class="text-xl font-bold group-hover:text-orange-600 transition dark:text-gray-100 mb-2">${rezept.titel}</h3>
+                        <div class="mt-auto flex items-center text-gray-400 text-sm dark:text-gray-500">
+                            <span>⏱️ ${rezept.zeit}</span>
+                        </div>
+                    </div>
+                </div>
+            </a>`;
+
+            container.innerHTML += cardHTML;
+        });
+    </script>
+</body>
+</html>
