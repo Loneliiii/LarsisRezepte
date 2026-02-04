@@ -67,7 +67,7 @@ const rezeptDaten = {
 
     "chili": {
         titel: "Chili con Carne",
-        bild: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+        bild: "https://images.unsplash.com/photo-1591266798549-32fa7cd32f45?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         zeit: "60 Min.",
         portionen: "4 Portionen",
         kategorie: "Hauptgericht",
