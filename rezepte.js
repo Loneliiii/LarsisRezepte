@@ -50,7 +50,7 @@ const rezeptDaten = {
         bild: "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
         zeit: "40 Min.",
         portionen: "2 Pizzen",
-        kategorie: "Vegetarisch",
+        kategorie: "Hauptgericht, Vegetarisch",
         zutaten: [
             "500g Pizzateig",
             "200ml Tomatensauce",
@@ -95,7 +95,7 @@ const rezeptDaten = {
         bild: "https://media.hellofresh.com/w_3840,q_auto,f_auto,c_limit,fl_lossy/recipes/image/643ecb3db8ffbb976d0c4923-3f6fef73-f211d98c.jpg",
         zeit: "25 Min.",
         portionen: "2 Portionen",
-        kategorie: "Schnell",
+        kategorie: "Hauptgericht, Schnell",
         zutaten: [
             "400g Hähnchengeschnetzeltes",
             "250g Nudeln (oder mehr)",
