@@ -16,7 +16,8 @@ const rezeptDaten = {
         zubereitung: [
             { titel: "Vorbereitung", text: "Hackfleisch nur mit Salz und Pfeffer würzen und zu Patties formen." },
             { titel: "Braten", text: "Fleisch in der heißen Pfanne von beiden Seiten scharf anbraten (ca. 3 Min pro Seite)." },
-            { titel: "Belegen", text: "Brötchen aufschneiden, kurz anrösten und mit Fleisch, Salat und Soßen belegen." }
+            { titel: "Belegen", text: "Brötchen aufschneiden und mit Fleisch, Salat und Soßen belegen." },
+            { titel: "Tipps", text: "Du kannst die Bun hälften auch kurz in der Pfanne mit anbraten, so ziehen diese etwas vom Fett mit auf, bekommt Geschmack und wird knusprig." }
         ]
     },
 
@@ -36,7 +37,8 @@ const rezeptDaten = {
         zubereitung: [
             { titel: "Braten", text: "Fleisch braten. Nach dem Wenden sofort den Käse auf das Fleisch legen." },
             { titel: "Schmelzen", text: "Einen Spritzer Wasser in die Pfanne geben und Deckel drauf, damit der Käse schmilzt." },
-            { titel: "Zusammenbau", text: "Bun, Sauce, Gurken, Fleisch mit Käse, Deckel. Fertig!" }
+            { titel: "Zusammenbau", text: "Bun, Sauce, Gurken, Fleisch mit Käse, Deckel. Fertig!" },
+            { titel: "Tipps", text: "Du kannst die Bun hälften auch kurz in der Pfanne mit anbraten, so ziehen diese etwas vom Fett mit auf, bekommt Geschmack und wird knusprig." }
         ]
     },
 
@@ -48,15 +50,16 @@ const rezeptDaten = {
         kategorie: "Hauptgericht",
         zutaten: [
             "250g Spaghetti",
-            "100g Speck (Guanciale oder Pancetta)",
+            "100g Speck oder Schinken",
             "3 Eigelb",
             "50g Pecorino oder Parmesan",
             "Viel schwarzer Pfeffer"
         ],
         zubereitung: [
-            { titel: "Speck", text: "Speck würfeln und in der Pfanne knusprig auslassen. Herd ausschalten." },
+            { titel: "Nudeln", text: "Nudeln im Topf zum kochen bringen." },
+            { titel: "Speck", text: "Speck würfeln und in der Pfanne knusprig braten. Herd ausschalten." },
             { titel: "Ei-Mischung", text: "Eigelb mit dem geriebenen Käse und Pfeffer in einer Schüssel verquirlen." },
-            { titel: "Finale", text: "Heiße Nudeln direkt aus dem Wasser zum Speck geben. Pfanne vom Herd nehmen (!), Ei-Mischung unterrühren bis es cremig ist." }
+            { titel: "Finale", text: "Heiße Nudeln direkt aus dem Wasser zum Speck geben. Pfanne vom Herd nehmen, Ei-Mischung unterrühren bis es cremig ist." }
         ]
     },
 
@@ -69,13 +72,13 @@ const rezeptDaten = {
         zutaten: [
             "500g Pizzateig",
             "200ml Tomatensauce",
-            "2 Kugeln Mozzarella",
+            "2 Kugeln Mozzarella oder Geriebener Mozarella",
             "Frisches Basilikum",
             "Olivenöl"
         ],
         zubereitung: [
             { titel: "Formen", text: "Teig dünn ausrollen oder mit den Händen ziehen." },
-            { titel: "Belegen", text: "Mit Tomatensauce bestreichen und Mozzarella in Stücken darauf verteilen." },
+            { titel: "Belegen", text: "Mit Tomatensauce bestreichen und Mozzarella darauf verteilen. Weiteren Belag nach belieben hinzufügen." },
             { titel: "Backen", text: "Bei maximaler Hitze (250°C) ca. 10-12 Minuten backen. Danach frisches Basilikum drauf." }
         ]
     },
@@ -104,5 +107,6 @@ const rezeptDaten = {
             { titel: "Servieren", text: "Dazu passt Reis oder Baguette." },
             { titel: "Tipps", text: "Es kann auch gegen Ende etwas Zartbitterschokolade hinzugefügt werden für den Geschmack (Google nach, es stimmt)" }
         ]
-    }
+    },
+
 };
