@@ -47,43 +47,64 @@
             <h1 class="text-3xl font-bold mb-2 dark:text-white">Rezept einreichen</h1>
             <p class="text-gray-500 mb-8 dark:text-gray-400">Teile dein Lieblingsgericht! Es wird direkt an Lars gesendet, geprüft und hochgeladen.</p>
 
-            <form action="https://api.web3forms.com/submit" method="POST" class="space-y-6">
+            <form action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data" class="space-y-6">
                 
                 <input type="hidden" name="access_key" value="903efc0f-8974-488f-93d4-a3e97fc0265e">
-                
                 <input type="hidden" name="subject" value="Neues Rezept von der Webseite!">
                 <input type="hidden" name="redirect" value="https://www.larskrahnen.de/index.html">
-                
                 <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
 
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1 dark:text-gray-300">Deine E-Mail Adresse</label>
-                    <input type="email" name="email" placeholder="max@muster.de" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-                </div>
-
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1 dark:text-gray-300">Dein Name</label>
-                    <input type="text" name="name" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1 dark:text-gray-300">Dein Name</label>
+                        <input type="text" name="name" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1 dark:text-gray-300">Deine E-Mail</label>
+                        <input type="email" name="email" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                    </div>
                 </div>
 
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-1 dark:text-gray-300">Name des Gerichts</label>
-                    <input type="text" name="rezept_titel" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                    <input type="text" name="rezept_titel" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-white">
                 </div>
 
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1 dark:text-gray-300">Zubereitungszeit</label>
-                    <input type="text" name="rezept_zeit" placeholder="z.B. 30 Minuten" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                    <label class="block text-sm font-medium text-gray-700 mb-1 dark:text-gray-300">Bild hochladen (Optional)</label>
+                    <input type="file" name="bild" accept="image/*" class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-orange-50 file:text-orange-700 hover:file:bg-orange-100 dark:file:bg-gray-700 dark:file:text-gray-300">
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1 dark:text-gray-300">Kategorie</label>
+                        <select name="kategorie" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                            <option value="Hauptgericht">Hauptgericht</option>
+                            <option value="Dessert">Dessert</option>
+                            <option value="Vorspeise">Vorspeise</option>
+                            <option value="Snack">Snack</option>
+                            <option value="Frühstück">Frühstück</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1 dark:text-gray-300">Zeitaufwand</label>
+                        <input type="text" name="rezept_zeit" placeholder="z.B. 30 Min" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                    </div>
+                </div>
+
+                <div class="flex items-center">
+                    <input id="vegan-check" name="ist_vegan" type="checkbox" class="w-5 h-5 text-orange-600 bg-gray-100 border-gray-300 rounded focus:ring-orange-500 dark:focus:ring-orange-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                    <label for="vegan-check" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Dieses Gericht ist Vegan 🌱</label>
                 </div>
 
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-1 dark:text-gray-300">Zutaten</label>
-                    <textarea name="zutaten" rows="4" placeholder="z.B. 2 Eier, 500g Mehl..." required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition dark:bg-gray-700 dark:border-gray-600 dark:text-white"></textarea>
+                    <textarea name="zutaten" rows="4" placeholder="z.B. 2 Eier, 500g Mehl..." required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-white"></textarea>
                 </div>
 
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-1 dark:text-gray-300">Zubereitung</label>
-                    <textarea name="zubereitung" rows="6" placeholder="Schritt für Schritt Erklärung..." required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition dark:bg-gray-700 dark:border-gray-600 dark:text-white"></textarea>
+                    <textarea name="zubereitung" rows="6" placeholder="Schritt für Schritt Erklärung..." required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-white"></textarea>
                 </div>
 
                 <button type="submit" class="w-full bg-orange-600 text-white font-bold py-3 rounded-lg hover:bg-orange-700 transition transform hover:-translate-y-1 dark:bg-orange-500 dark:hover:bg-orange-600">Rezept absenden</button>
@@ -93,7 +114,7 @@
 
     <footer class="bg-gray-800 text-gray-300 py-8 mt-12 dark:bg-black dark:text-gray-500 no-print">
         <div class="max-w-6xl mx-auto px-4 text-center">
-            <p class="mb-2">&copy; 2026 Larsi's Simple Rezepte. Alle Rechte vorbehalten.</p>
+            <p>&copy; 2026 Larsi's Simple Rezepte. Alle Rechte vorbehalten.</p>
             <div class="text-sm space-x-4">
                 <a href="impressum.html" class="hover:text-white underline">Impressum</a>
                 <a href="datenschutz.html" class="hover:text-white underline">Datenschutz</a>
