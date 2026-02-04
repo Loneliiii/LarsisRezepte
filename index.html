@@ -50,13 +50,17 @@
 
     <main class="max-w-6xl mx-auto px-4 py-12 flex-grow relative">
         
-        <div class="flex flex-col md:flex-row justify-between items-center mb-8 gap-4 relative z-10">
-            <h2 class="text-3xl font-bold border-l-4 border-orange-600 pl-4 dark:text-white">Unsere Highlights</h2>
+        <div class="flex flex-col xl:flex-row justify-between items-start xl:items-center mb-8 gap-4 relative z-10">
+            <h2 class="text-3xl font-bold border-l-4 border-orange-600 pl-4 dark:text-white mb-4 xl:mb-0">Unsere Highlights</h2>
             
-            <div class="flex flex-wrap gap-2">
-                <button onclick="filterRezepte('alle')" class="filter-btn px-4 py-2 rounded-full font-medium shadow-sm transition bg-orange-600 text-white">Alle</button>
-                <button onclick="filterRezepte('schnell')" class="filter-btn px-4 py-2 rounded-full font-medium shadow-sm transition bg-white text-gray-700 hover:bg-orange-100 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700">⚡ Schnell</button>
-                <button onclick="filterRezepte('veggie')" class="filter-btn px-4 py-2 rounded-full font-medium shadow-sm transition bg-white text-gray-700 hover:bg-orange-100 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700">🥗 Veggie</button>
+            <div class="flex flex-wrap gap-2" id="filter-container">
+                <button onclick="toggleFilter(this, 'alle')" class="filter-btn active px-4 py-2 rounded-full font-medium shadow-sm transition bg-orange-600 text-white border border-transparent">Alle</button>
+                
+                <button onclick="toggleFilter(this, 'hauptgericht')" class="filter-btn px-4 py-2 rounded-full font-medium shadow-sm transition bg-white text-gray-700 border border-gray-200 hover:bg-orange-50 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-700 dark:hover:bg-gray-700">🥘 Hauptgericht</button>
+                <button onclick="toggleFilter(this, 'dessert')" class="filter-btn px-4 py-2 rounded-full font-medium shadow-sm transition bg-white text-gray-700 border border-gray-200 hover:bg-orange-50 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-700 dark:hover:bg-gray-700">🍰 Dessert</button>
+                <button onclick="toggleFilter(this, 'schnell')" class="filter-btn px-4 py-2 rounded-full font-medium shadow-sm transition bg-white text-gray-700 border border-gray-200 hover:bg-orange-50 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-700 dark:hover:bg-gray-700">⚡ Schnell</button>
+                <button onclick="toggleFilter(this, 'vegetarisch')" class="filter-btn px-4 py-2 rounded-full font-medium shadow-sm transition bg-white text-gray-700 border border-gray-200 hover:bg-orange-50 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-700 dark:hover:bg-gray-700">🧀 Vegetarisch</button>
+                <button onclick="toggleFilter(this, 'vegan')" class="filter-btn px-4 py-2 rounded-full font-medium shadow-sm transition bg-white text-gray-700 border border-gray-200 hover:bg-orange-50 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-700 dark:hover:bg-gray-700">🌱 Vegan</button>
             </div>
         </div>
         
@@ -64,19 +68,18 @@
             </div>
 
         <img src="knuffi_koch.png" 
-             alt="" 
+             alt="Knuffi der Koch" 
              class="block relative mx-auto my-8 w-32 
-                    2xl:absolute 2xl:-left-56 2xl:top-36 2xl:w-48 2xl:my-0 2xl:mx-0
+                    2xl:absolute 2xl:-left-56 2xl:top-16 2xl:w-48 2xl:my-0 2xl:mx-0
                     pointer-events-none transform -rotate-6 drop-shadow-lg opacity-90 z-0">
-
 
         <div class="mt-8 max-w-2xl mx-auto text-center px-4 no-print relative z-10">
             <div class="bg-orange-50 dark:bg-gray-800 border border-orange-100 dark:border-gray-700 rounded-xl p-6 transform rotate-1 hover:rotate-0 transition duration-300">
                 <p class="text-gray-600 dark:text-gray-400 italic">
                     <span class="text-2xl not-italic">📸</span><br>
                     <strong>Kleiner Realitäts-Check:</strong><br>
-                    Die Bilder hier sind schicke Platzhalter. 
-                    Wenn dein Ergebnis auf dem Teller also eher nach "kreativem Unfall" aussieht: 
+                    Die Bilder hier sind (noch) schicke Platzhalter, weil wir lieber kochen als fotografieren. 
+                    Wenn dein Ergebnis auf dem Teller also eher nach "kreativem Unfall" aussieht als nach Hochglanz-Magazin: 
                     Keine Panik, das muss so! Hauptsache es schmeckt. 😉
                 </p>
             </div>
@@ -98,39 +101,99 @@
     <script>
         const container = document.getElementById('startseite-grid');
         
-        // Filter-Logik
-        function filterRezepte(filter) {
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                if(btn.innerText.toLowerCase().includes(filter)) {
-                    btn.className = "filter-btn px-4 py-2 rounded-full font-medium shadow-sm transition bg-orange-600 text-white";
+        // --- NEUE FILTER LOGIK ---
+        let activeFilters = new Set(['alle']); // 'alle' ist der Startzustand
+
+        function toggleFilter(btn, filter) {
+            const isAlle = filter === 'alle';
+
+            // Logik:
+            // 1. Wenn 'Alle' geklickt wird -> Alles andere aus, nur 'Alle' an.
+            if (isAlle) {
+                activeFilters.clear();
+                activeFilters.add('alle');
+            } else {
+                // 2. Wenn ein anderer Filter geklickt wird:
+                // 'Alle' entfernen, falls es noch aktiv ist
+                if (activeFilters.has('alle')) {
+                    activeFilters.delete('alle');
+                }
+
+                // Filter umschalten (An/Aus)
+                if (activeFilters.has(filter)) {
+                    activeFilters.delete(filter);
                 } else {
-                    btn.className = "filter-btn px-4 py-2 rounded-full font-medium shadow-sm transition bg-white text-gray-700 hover:bg-orange-100 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700";
+                    activeFilters.add(filter);
+                }
+
+                // Wenn jetzt gar nichts mehr aktiv ist -> Automatisch 'Alle' wieder an
+                if (activeFilters.size === 0) {
+                    activeFilters.add('alle');
+                }
+            }
+
+            // --- Buttons stylen ---
+            updateButtonStyles();
+
+            // --- Karten filtern ---
+            applyFilters();
+        }
+
+        function updateButtonStyles() {
+            document.querySelectorAll('.filter-btn').forEach(button => {
+                // Den Filter-Namen aus dem onclick-Attribut extrahieren (etwas hacky aber simpel)
+                // Sucht nach toggleFilter(this, 'xyz')
+                const match = button.getAttribute('onclick').match(/'([^']+)'/);
+                const filterName = match ? match[1] : '';
+
+                if (activeFilters.has(filterName)) {
+                    // Aktiv Style (Orange)
+                    button.className = "filter-btn px-4 py-2 rounded-full font-medium shadow-sm transition bg-orange-600 text-white border border-transparent transform scale-105";
+                } else {
+                    // Inaktiv Style (Weiß/Grau)
+                    button.className = "filter-btn px-4 py-2 rounded-full font-medium shadow-sm transition bg-white text-gray-700 border border-gray-200 hover:bg-orange-50 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-700 dark:hover:bg-gray-700";
                 }
             });
+        }
 
+        function applyFilters() {
             const cards = document.querySelectorAll('.rezept-karte');
+            
             cards.forEach(card => {
-                const tags = card.getAttribute('data-tags');
-                if (filter === 'alle' || tags.includes(filter)) {
+                const tags = card.getAttribute('data-tags'); // z.B. "hauptgericht vegan schnell"
+                
+                // Wenn 'alle' aktiv ist, zeige alles
+                if (activeFilters.has('alle')) {
+                    card.style.display = 'block';
+                    return;
+                }
+
+                // Prüfen: Enthält die Karte ALLE aktiven Filter? (UND-Verknüpfung)
+                // Wir wandeln das Set in ein Array um und nutzen .every()
+                const matchesAll = Array.from(activeFilters).every(filter => tags.includes(filter));
+
+                if (matchesAll) {
                     card.style.display = 'block';
                 } else {
                     card.style.display = 'none';
                 }
             });
         }
+        // -------------------------
 
-        // Rezepte laden
+        // Rezepte laden und anzeigen
         const highlights = Object.entries(rezeptDaten).slice(0, 6);
 
         highlights.forEach(([id, rezept]) => {
-            let tags = "";
-            const cat = rezept.kategorie.toLowerCase();
-            if (cat.includes('veggie') || cat.includes('vegetarisch') || cat.includes('vegan') || cat.includes('beilage')) {
-                tags += "veggie ";
-            }
+            
+            // TAG GENERIERUNG (Automatisch)
+            // Wir nehmen die Kategorie (z.B. "Hauptgericht, Vegan") + Zeit
+            let tags = rezept.kategorie.toLowerCase(); 
+            
+            // Zusatz-Tags berechnen
             const minuten = parseInt(rezept.zeit); 
             if (minuten <= 30) {
-                tags += "schnell ";
+                tags += " schnell";
             }
 
             const cardHTML = `
