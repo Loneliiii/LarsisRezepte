@@ -40,10 +40,12 @@
         </div>
     </nav>
 
-    <header class="relative bg-gray-900 text-white h-[200px] flex items-center justify-center overflow-hidden">
+    <header class="relative bg-gray-900 text-white py-10 flex items-center justify-center overflow-hidden">
         <div class="relative z-10 text-center px-4">
-            <h1 class="text-5xl font-bold mb-4 drop-shadow-lg">Rezepte so Simpel wie möglich</h1>
-            <p class="text-xl text-gray-200 drop-shadow-md">Einfach zum Nachkochen.</p>
+            <h1 class="text-4xl md:text-5xl font-bold mb-2 drop-shadow-lg">Rezepte so Simpel wie möglich</h1>
+            <p class="text-lg md:text-xl text-gray-300 drop-shadow-md mb-6">Einfach zum Nachkochen.</p>
+            
+            <div class="w-24 h-1 bg-orange-600 mx-auto rounded opacity-80"></div>
         </div>
     </header>
 
@@ -54,7 +56,6 @@
             
             <div class="flex flex-wrap gap-2" id="filter-container">
                 <button onclick="toggleFilter(this, 'alle')" class="filter-btn active px-4 py-2 rounded-full font-medium shadow-sm transition bg-orange-600 text-white border border-transparent">Alle</button>
-                
                 <button onclick="toggleFilter(this, 'hauptgericht')" class="filter-btn px-4 py-2 rounded-full font-medium shadow-sm transition bg-white text-gray-700 border border-gray-200 hover:bg-orange-50 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-700 dark:hover:bg-gray-700">🥘 Hauptgericht</button>
                 <button onclick="toggleFilter(this, 'dessert')" class="filter-btn px-4 py-2 rounded-full font-medium shadow-sm transition bg-white text-gray-700 border border-gray-200 hover:bg-orange-50 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-700 dark:hover:bg-gray-700">🍰 Dessert</button>
                 <button onclick="toggleFilter(this, 'schnell')" class="filter-btn px-4 py-2 rounded-full font-medium shadow-sm transition bg-white text-gray-700 border border-gray-200 hover:bg-orange-50 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-700 dark:hover:bg-gray-700">⚡ Schnell</button>
@@ -99,57 +100,52 @@
     <script src="rezepte.js"></script>
     <script>
         const container = document.getElementById('startseite-grid');
+
+        // --- DARK MODE LOGIK (Repariert) ---
+        function toggleDarkMode() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        }
         
-        // --- NEUE FILTER LOGIK ---
-        let activeFilters = new Set(['alle']); // 'alle' ist der Startzustand
+        // --- FILTER LOGIK ---
+        let activeFilters = new Set(['alle']);
 
         function toggleFilter(btn, filter) {
             const isAlle = filter === 'alle';
 
-            // Logik:
-            // 1. Wenn 'Alle' geklickt wird -> Alles andere aus, nur 'Alle' an.
             if (isAlle) {
                 activeFilters.clear();
                 activeFilters.add('alle');
             } else {
-                // 2. Wenn ein anderer Filter geklickt wird:
-                // 'Alle' entfernen, falls es noch aktiv ist
                 if (activeFilters.has('alle')) {
                     activeFilters.delete('alle');
                 }
-
-                // Filter umschalten (An/Aus)
                 if (activeFilters.has(filter)) {
                     activeFilters.delete(filter);
                 } else {
                     activeFilters.add(filter);
                 }
-
-                // Wenn jetzt gar nichts mehr aktiv ist -> Automatisch 'Alle' wieder an
                 if (activeFilters.size === 0) {
                     activeFilters.add('alle');
                 }
             }
-
-            // --- Buttons stylen ---
             updateButtonStyles();
-
-            // --- Karten filtern ---
             applyFilters();
         }
 
         function updateButtonStyles() {
             document.querySelectorAll('.filter-btn').forEach(button => {
-                // Den Filter-Namen aus dem onclick-Attribut extrahieren (etwas hacky aber simpel)
-                // Sucht nach toggleFilter(this, 'xyz')
                 const match = button.getAttribute('onclick').match(/'([^']+)'/);
                 const filterName = match ? match[1] : '';
 
                 if (activeFilters.has(filterName)) {
-                    // Aktiv Style (Orange)
                     button.className = "filter-btn px-4 py-2 rounded-full font-medium shadow-sm transition bg-orange-600 text-white border border-transparent transform scale-105";
                 } else {
-                    // Inaktiv Style (Weiß/Grau)
                     button.className = "filter-btn px-4 py-2 rounded-full font-medium shadow-sm transition bg-white text-gray-700 border border-gray-200 hover:bg-orange-50 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-700 dark:hover:bg-gray-700";
                 }
             });
@@ -157,20 +153,13 @@
 
         function applyFilters() {
             const cards = document.querySelectorAll('.rezept-karte');
-            
             cards.forEach(card => {
-                const tags = card.getAttribute('data-tags'); // z.B. "hauptgericht vegan schnell"
-                
-                // Wenn 'alle' aktiv ist, zeige alles
+                const tags = card.getAttribute('data-tags');
                 if (activeFilters.has('alle')) {
                     card.style.display = 'block';
                     return;
                 }
-
-                // Prüfen: Enthält die Karte ALLE aktiven Filter? (UND-Verknüpfung)
-                // Wir wandeln das Set in ein Array um und nutzen .every()
                 const matchesAll = Array.from(activeFilters).every(filter => tags.includes(filter));
-
                 if (matchesAll) {
                     card.style.display = 'block';
                 } else {
@@ -178,18 +167,12 @@
                 }
             });
         }
-        // -------------------------
 
-        // Rezepte laden und anzeigen
+        // Rezepte laden
         const highlights = Object.entries(rezeptDaten).slice(0, 6);
 
         highlights.forEach(([id, rezept]) => {
-            
-            // TAG GENERIERUNG (Automatisch)
-            // Wir nehmen die Kategorie (z.B. "Hauptgericht, Vegan") + Zeit
             let tags = rezept.kategorie.toLowerCase(); 
-            
-            // Zusatz-Tags berechnen
             const minuten = parseInt(rezept.zeit); 
             if (minuten <= 30) {
                 tags += " schnell";
@@ -212,7 +195,6 @@
                     </div>
                 </div>
             </a>`;
-
             container.innerHTML += cardHTML;
         });
     </script>
