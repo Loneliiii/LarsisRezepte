@@ -46,7 +46,7 @@ const rezeptDaten = {
     },
 
     "pizza": {
-        titel: "Pizza Margherita (Fertiger Teig)",
+        titel: "Pizza Margherita (Mit fertigem Teig)",
         bild: "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
         zeit: "40 Min.",
         portionen: "2 Pizzen",
@@ -90,6 +90,7 @@ const rezeptDaten = {
             { titel: "Geheimtipp", text: "Gegen Ende ein Stück Zartbitterschokolade im Chili schmelzen lassen, das gibt eine tolle Tiefe und Farbe!" }
         ]
     },
+    
     "huhn_suess_sauer": {
         titel: "Nudeln mit Hähnchen Süß-Sauer-Sahne Sauce",
         bild: "https://media.hellofresh.com/w_3840,q_auto,f_auto,c_limit,fl_lossy/recipes/image/643ecb3db8ffbb976d0c4923-3f6fef73-f211d98c.jpg",
@@ -132,6 +133,31 @@ const rezeptDaten = {
             { titel: "Kneten", text: "Alles gut durchkneten. Dabei kann noch etwas Olivenöl hinzugefügt werden, damit der Teig eine schöne, geschmeidige Form annimmt und nicht klebt." },
             { titel: "Gehen lassen", text: "Die Schüssel mit einem Küchentuch abdecken und an einem warmen Ort 30 Minuten gehen lassen." },
             { titel: "Backen", text: "Der Teig ist nun fertig! Er kann nach Belieben verkleinert (runde Pizzen) oder im Ganzen ausgerollt werden. Backzeit bei ca. 220°C liegt meist zwischen 10-15 Minuten, je nach Ofen und Belag." }
+        ]
+    },
+
+    "bbq_burritos": {
+        titel: "BBQ Burritos mit Hackfleisch",
+        bild: "https://images.unsplash.com/photo-1671572579845-52270341950f?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        zeit: "15 Min.",
+        portionen: "2 Personen",
+        kategorie: "Hauptgericht, Schnell",
+        zutaten: [
+            "250g Hackfleisch (gemischt)",
+            "4 Weizentortillas",
+            "380g schwarze Bohnen (Dose)",
+            "120g Salatherz (Romana)",
+            "1 Zwiebel",
+            "50ml Buttermilch-Zitronen-Dressing",
+            "40ml BBQ-Soße",
+            "35g Tomatenmark",
+            "Gewürze: Salz, Pfeffer, Chili/Piri-Piri"
+        ],
+        zubereitung: [
+            { titel: "Schnippeln", text: "Zwiebel und Salat in feine Streifen schneiden. Die Bohnen einmal kurz im Sieb abspülen, bis es nicht mehr schäumt. Dressing in einer Schüssel schon mal mit dem Salat vermischen." },
+            { titel: "Anbraten", text: "Pfanne heiß machen (brauchst kein Fett). Hackfleisch mit den Zwiebeln rein und schön braun braten (ca. 4-5 Min)." },
+            { titel: "Würzen & Soße", text: "Jetzt kommt Geschmack dran: Tomatenmark, Bohnen, die Hälfte der BBQ-Soße und etwas Chili-Gewürz dazu. Kurz mitbraten und mit Salz & Pfeffer abschmecken." },
+            { titel: "Rollen", text: "Tortillas kurz warm machen (Mikrowelle oder Pfanne). Hack-Mischung drauf, Salat drüber, Seiten einklappen und fest aufrollen. Die restliche BBQ-Soße gibt's als Dip dazu." }
         ]
     }
 
