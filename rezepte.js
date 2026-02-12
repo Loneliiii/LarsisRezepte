@@ -93,7 +93,8 @@ const rezeptDaten = {
     
     "huhn_suess_sauer": {
         titel: "Nudeln mit Hähnchen Süß-Sauer-Sahne Sauce",
-        bild: "https://media.hellofresh.com/w_3840,q_auto,f_auto,c_limit,fl_lossy/recipes/image/643ecb3db8ffbb976d0c4923-3f6fef73-f211d98c.jpg",
+        // HIER IST DEIN NEUES BILD:
+        bild: "knuffi_question.jpg",
         zeit: "25 Min.",
         portionen: "2 Portionen",
         kategorie: "Hauptgericht, Schnell",
