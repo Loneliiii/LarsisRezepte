@@ -111,4 +111,28 @@ const rezeptDaten = {
         ]
     },
 
+    "pizzateig": {
+        titel: "Pizzateig (Selbstgemacht)",
+        bild: "https://images.unsplash.com/photo-1568567663699-3eb161fb40be?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        zeit: "50 Min.",
+        portionen: "2-3 Pizzen / 1 Blech",
+        kategorie: "Vegetarisch, Vegan",
+        zutaten: [
+            "500g Mehl",
+            "1/2 Würfel frische Hefe (ca. 20g)",
+            "280ml lauwarmes Wasser",
+            "3 EL Olivenöl (plus etwas mehr zum Kneten)",
+            "1/2 TL Zucker",
+            "1 TL Salz",
+            "Prise Pfeffer"
+        ],
+        zubereitung: [
+            { titel: "Hefe aktivieren", text: "Hefe in eine große Schüssel zerbröseln. Zucker und lauwarmes Wasser hinzufügen. Mit einem Schneebesen verrühren, bis keine Krümel mehr zu sehen sind. 10 Minuten stehen lassen." },
+            { titel: "Teig ansetzen", text: "Nach den 10 Minuten das Olivenöl untermischen. Nun einen Großteil des Mehls, Salz und Pfeffer hinzufügen und anfangen zu kneten." },
+            { titel: "Kneten", text: "Alles gut durchkneten. Dabei kann noch etwas Olivenöl hinzugefügt werden, damit der Teig eine schöne, geschmeidige Form annimmt und nicht klebt." },
+            { titel: "Gehen lassen", text: "Die Schüssel mit einem Küchentuch abdecken und an einem warmen Ort 30 Minuten gehen lassen." },
+            { titel: "Backen", text: "Der Teig ist nun fertig! Er kann nach Belieben verkleinert (runde Pizzen) oder im Ganzen ausgerollt werden. Backzeit bei ca. 220°C liegt meist zwischen 10-15 Minuten, je nach Ofen und Belag." }
+        ]
+    }
+
 };
