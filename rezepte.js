@@ -112,7 +112,6 @@ const rezeptDaten = {
             { titel: "Servieren", text: "Nun die Nudeln in die Sauce kippen (oder andersherum) und servieren. Guten Appetit!" },
             { titel: "Info zum Bild", text: "Das angegebene Bild nutzt Hackfleisch statt Hähnchengeschnetzeltes und viel zu viele Nudeln. Ist aber dennoch eine gute Alternative." }
         ]
-        ]
     },
 
     "pizzateig": {
