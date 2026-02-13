@@ -94,7 +94,7 @@ const rezeptDaten = {
     "huhn_suess_sauer": {
         titel: "Nudeln mit Hähnchen Süß-Sauer-Sahne Sauce",
         // HIER IST DEIN NEUES BILD:
-        bild: "knuffi_question.jpg",
+        bild: "Bilder/nudels_süß_sauer.jpg",
         zeit: "25 Min.",
         portionen: "2 Portionen",
         kategorie: "Hauptgericht, Schnell",
@@ -109,7 +109,9 @@ const rezeptDaten = {
             { titel: "Nudeln", text: "Wasser für die Nudeln zum Kochen bringen. Sobald die Nudeln im Wasser sind, mit dem Hähnchen weitermachen." },
             { titel: "Hähnchen", text: "Hähnchengeschnetzeltes in einer Pfanne anbraten und schon mal mit Pfeffer und Co. nach Belieben würzen." },
             { titel: "Sauce", text: "Wenn das Fleisch gebraten ist, die Süß-Sauer-Sauce komplett hinzufügen und kurz einziehen lassen. Danach mit Schlagsahne ablöschen und umrühren, bis die Sauce eine cremig-orangene Farbe hat." },
-            { titel: "Servieren", text: "Nun die Nudeln in die Sauce kippen (oder andersherum) und servieren. Guten Appetit!" }
+            { titel: "Servieren", text: "Nun die Nudeln in die Sauce kippen (oder andersherum) und servieren. Guten Appetit!" },
+            { titel: "Info zum Bild", text: "Das angegebene Bild nutzt Hackfleisch statt Hähnchengeschnetzeltes und viel zu viele Nudeln. Ist aber dennoch eine gute Alternative." }
+        ]
         ]
     },
 
