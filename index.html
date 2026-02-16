@@ -53,21 +53,57 @@
 
     <main class="max-w-6xl mx-auto px-4 py-12 flex-grow relative">
         
-        <div class="flex flex-col xl:flex-row justify-between items-start xl:items-center mb-8 gap-4 relative z-10">
-            <h2 class="text-3xl font-bold border-l-4 border-orange-600 pl-4 dark:text-white mb-4 xl:mb-0">Unsere Highlights</h2>
+        <section class="mb-16">
+            <h2 class="text-2xl font-bold mb-4 flex items-center gap-2 dark:text-white">
+                <span class="text-orange-600">📢</span> Was gibt's Neues?
+            </h2>
+            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md border-l-4 border-orange-500 p-6">
+                <ul class="space-y-4">
+                    
+                    <li class="flex flex-col md:flex-row md:items-start gap-1 md:gap-4 border-b dark:border-gray-700 last:border-0 pb-3 last:pb-0">
+                        <span class="text-xs font-bold uppercase tracking-wider text-gray-400 whitespace-nowrap mt-1">16.02.2026</span>
+                        <div>
+                            <strong class="text-gray-900 dark:text-gray-100 block mb-1">Webseitenüberarbeitung 🛠️</strong>
+                            <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+                                Die Webseite hat ein kleines Makeover bekommen mit folgenden Änderungen!
+                                <br>• <strong>Startseite:</strong> Jetzt mit Update-Notizen, Highlights und zufälligen Rezept-Vorschlägen.
+                                <br>• <strong>Alle Rezepte:</strong> Neue Filter, Sortierung nach Datum und Anzeige des Einsenders.
+                            </p>
+                        </div>
+                    </li>
+
+                    <li class="flex flex-col md:flex-row md:items-center gap-1 md:gap-4 border-b dark:border-gray-700 last:border-0 pb-3 last:pb-0">
+                        <span class="text-xs font-bold uppercase tracking-wider text-gray-400 whitespace-nowrap">16.02.2026</span>
+                        <p class="text-gray-700 dark:text-gray-200">
+                            <strong>Neu dabei:</strong> Der <a href="rezept.html?id=sloppy_joe" class="text-orange-600 hover:underline">Sloppy Joe</a>! 🍔
+                        </p>
+                    </li>
+
+                    <li class="flex flex-col md:flex-row md:items-center gap-1 md:gap-4">
+                        <span class="text-xs font-bold uppercase tracking-wider text-gray-400 whitespace-nowrap">13.02.2026</span>
+                        <p class="text-gray-700 dark:text-gray-200">
+                            <strong>Neu dabei:</strong> Basis-Rezept für <a href="rezept.html?id=pizzateig" class="text-orange-600 hover:underline">Pizzateig</a>. 🍕
+                        </p>
+                    </li>
+
+                </ul>
+            </div>
+        </section>
+
+        <section class="mb-16 relative z-10">
+            <h2 class="text-3xl font-bold border-l-4 border-orange-600 pl-4 dark:text-white mb-8">Unsere Highlights</h2>
             
-            <div class="flex flex-wrap gap-2" id="filter-container">
-                <button onclick="toggleFilter(this, 'alle')" class="filter-btn active px-4 py-2 rounded-full font-medium shadow-sm transition bg-orange-600 text-white border border-transparent">Alle</button>
-                <button onclick="toggleFilter(this, 'hauptgericht')" class="filter-btn px-4 py-2 rounded-full font-medium shadow-sm transition bg-white text-gray-700 border border-gray-200 hover:bg-orange-50 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-700 dark:hover:bg-gray-700">🥘 Hauptgericht</button>
-                <button onclick="toggleFilter(this, 'dessert')" class="filter-btn px-4 py-2 rounded-full font-medium shadow-sm transition bg-white text-gray-700 border border-gray-200 hover:bg-orange-50 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-700 dark:hover:bg-gray-700">🍰 Dessert</button>
-                <button onclick="toggleFilter(this, 'schnell')" class="filter-btn px-4 py-2 rounded-full font-medium shadow-sm transition bg-white text-gray-700 border border-gray-200 hover:bg-orange-50 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-700 dark:hover:bg-gray-700">⚡ Schnell</button>
-                <button onclick="toggleFilter(this, 'vegetarisch')" class="filter-btn px-4 py-2 rounded-full font-medium shadow-sm transition bg-white text-gray-700 border border-gray-200 hover:bg-orange-50 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-700 dark:hover:bg-gray-700">🧀 Vegetarisch</button>
-                <button onclick="toggleFilter(this, 'vegan')" class="filter-btn px-4 py-2 rounded-full font-medium shadow-sm transition bg-white text-gray-700 border border-gray-200 hover:bg-orange-50 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-700 dark:hover:bg-gray-700">🌱 Vegan</button>
-            </div>
-        </div>
-        
-        <div id="startseite-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10 mb-12">
-            </div>
+            <div id="highlights-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                </div>
+        </section>
+
+        <section class="mb-12 relative z-10">
+            <h3 class="text-xl font-bold mb-6 text-gray-600 dark:text-gray-400">🤔 Lust auf etwas anderes?</h3>
+            
+            <div id="random-grid" class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                </div>
+        </section>
+
 
         <img src="knuffi_koch.png" 
              alt="Knuffi der Koch" 
@@ -80,8 +116,8 @@
                 <p class="text-gray-600 dark:text-gray-400 italic">
                     <span class="text-2xl not-italic">📸</span><br>
                     <strong>Kleiner Realitäts-Check:</strong><br>
-                    Die Bilder hier sind (noch) schicke Platzhalter, weil wir lieber kochen als fotografieren. 
-                    Wenn dein Ergebnis auf dem Teller also eher nach "kreativem Unfall" aussieht als nach Hochglanz-Magazin: 
+                    Die Bilder hier sind (noch) schicke Platzhalter.
+                    Wenn dein Ergebnis auf dem Teller eher nach "kreativem Unfall" aussieht: 
                     Keine Panik, das muss so! Hauptsache es schmeckt. 😉
                 </p>
             </div>
@@ -101,9 +137,7 @@
 
     <script src="rezepte.js"></script>
     <script>
-        const container = document.getElementById('startseite-grid');
-
-        // --- 2. Dark Mode Toggle Funktion (Aus deiner Vorlage übernommen) ---
+        // --- 1. DARK MODE TOGGLE ---
         function toggleDarkMode() {
             if (document.documentElement.classList.contains('dark')) {
                 document.documentElement.classList.remove('dark');
@@ -113,92 +147,86 @@
                 localStorage.setItem('theme', 'dark');
             }
         }
+
+        // --- 2. HIGHLIGHTS RENDERN (FESTE AUSWAHL) ---
+        const highlightsContainer = document.getElementById('highlights-grid');
         
-        // --- FILTER LOGIK ---
-        let activeFilters = new Set(['alle']);
+        // Genau diese 3 Rezepte wollen wir hier sehen
+        const highlightIDs = ['pizzateig', 'chili', 'sloppy_joe'];
 
-        function toggleFilter(btn, filter) {
-            const isAlle = filter === 'alle';
-
-            if (isAlle) {
-                activeFilters.clear();
-                activeFilters.add('alle');
-            } else {
-                if (activeFilters.has('alle')) {
-                    activeFilters.delete('alle');
-                }
-                if (activeFilters.has(filter)) {
-                    activeFilters.delete(filter);
-                } else {
-                    activeFilters.add(filter);
-                }
-                if (activeFilters.size === 0) {
-                    activeFilters.add('alle');
-                }
-            }
-            updateButtonStyles();
-            applyFilters();
-        }
-
-        function updateButtonStyles() {
-            document.querySelectorAll('.filter-btn').forEach(button => {
-                const match = button.getAttribute('onclick').match(/'([^']+)'/);
-                const filterName = match ? match[1] : '';
-
-                if (activeFilters.has(filterName)) {
-                    button.className = "filter-btn px-4 py-2 rounded-full font-medium shadow-sm transition bg-orange-600 text-white border border-transparent transform scale-105";
-                } else {
-                    button.className = "filter-btn px-4 py-2 rounded-full font-medium shadow-sm transition bg-white text-gray-700 border border-gray-200 hover:bg-orange-50 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-700 dark:hover:bg-gray-700";
-                }
-            });
-        }
-
-        function applyFilters() {
-            const cards = document.querySelectorAll('.rezept-karte');
-            cards.forEach(card => {
-                const tags = card.getAttribute('data-tags');
-                if (activeFilters.has('alle')) {
-                    card.style.display = 'block';
-                    return;
-                }
-                const matchesAll = Array.from(activeFilters).every(filter => tags.includes(filter));
-                if (matchesAll) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        }
-
-        // Rezepte laden
-        const highlights = Object.entries(rezeptDaten).slice(0, 6);
-
-        highlights.forEach(([id, rezept]) => {
-            let tags = rezept.kategorie.toLowerCase(); 
-            const minuten = parseInt(rezept.zeit); 
-            if (minuten <= 30) {
-                tags += " schnell";
-            }
+        highlightIDs.forEach(id => {
+            const rezept = rezeptDaten[id];
+            if(!rezept) return; // Falls ID nicht existiert, überspringen
 
             const cardHTML = `
-            <a href="rezept.html?id=${id}" class="rezept-karte block group animate-fade-in" data-tags="${tags.trim()}">
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-zoom dark:bg-gray-800 dark:shadow-gray-900/50 h-full flex flex-col">
-                    <div class="h-56 overflow-hidden relative">
+            <a href="rezept.html?id=${id}" class="block group animate-fade-in h-full">
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-zoom dark:bg-gray-800 dark:shadow-gray-900/50 h-full flex flex-col border-t-4 border-orange-500">
+                    <div class="h-64 overflow-hidden relative">
                         <img src="${rezept.bild}" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x400?text=Kein+Bild'">
+                        <div class="absolute top-2 right-2 bg-orange-600 text-white text-xs font-bold px-2 py-1 rounded shadow">TIPP</div>
                     </div>
                     <div class="p-6 flex-grow flex flex-col">
-                        <div class="mb-2">
-                            <span class="bg-orange-100 text-orange-600 text-xs font-bold px-2 py-1 rounded-full uppercase dark:bg-orange-900 dark:text-orange-200">${rezept.kategorie}</span>
-                        </div>
-                        <h3 class="text-xl font-bold group-hover:text-orange-600 transition dark:text-gray-100 mb-2">${rezept.titel}</h3>
-                        <div class="mt-auto flex items-center text-gray-400 text-sm dark:text-gray-500">
+                        <h3 class="text-2xl font-bold group-hover:text-orange-600 transition dark:text-gray-100 mb-2">${rezept.titel}</h3>
+                        <div class="mt-auto flex items-center text-gray-400 text-sm dark:text-gray-500 pt-4">
                             <span>⏱️ ${rezept.zeit}</span>
+                            <span class="mx-2">•</span>
+                            <span>${rezept.kategorie.split(',')[0]}</span>
                         </div>
                     </div>
                 </div>
             </a>`;
-            container.innerHTML += cardHTML;
+            highlightsContainer.innerHTML += cardHTML;
         });
+
+        // --- 3. ZUFÄLLIGE VORSCHAU LEISTE ---
+        const randomContainer = document.getElementById('random-grid');
+        
+        // Alle verfügbaren IDs holen
+        const allIDs = Object.keys(rezeptDaten);
+        
+        // Die Highlights aus dem Topf nehmen, damit wir sie nicht doppelt zeigen
+        const pool = allIDs.filter(id => !highlightIDs.includes(id));
+        
+        // Mischen (Fisher-Yates Shuffle)
+        for (let i = pool.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [pool[i], pool[j]] = [pool[j], pool[i]];
+        }
+
+        // Die ersten 3 nehmen
+        const randomSelection = pool.slice(0, 3);
+
+        // 3 Zufällige Karten rendern (Kleineres Design)
+        randomSelection.forEach(id => {
+            const rezept = rezeptDaten[id];
+            const cardHTML = `
+            <a href="rezept.html?id=${id}" class="block group hover:-translate-y-1 transition duration-300">
+                <div class="bg-white rounded-lg shadow overflow-hidden dark:bg-gray-800 h-full flex flex-col">
+                    <div class="h-32 overflow-hidden">
+                        <img src="${rezept.bild}" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition" onerror="this.src='https://placehold.co/600x400?text=...'">
+                    </div>
+                    <div class="p-3">
+                        <h4 class="font-bold text-sm leading-tight dark:text-gray-200 group-hover:text-orange-600 transition line-clamp-2">${rezept.titel}</h4>
+                        <span class="text-xs text-gray-400 mt-1 block">⏱️ ${rezept.zeit}</span>
+                    </div>
+                </div>
+            </a>`;
+            randomContainer.innerHTML += cardHTML;
+        });
+
+        // Die 4. Karte: "Alle anzeigen" Button
+        const moreCardHTML = `
+        <a href="alle-rezepte.html" class="block group hover:-translate-y-1 transition duration-300 h-full">
+            <div class="bg-orange-100 rounded-lg border-2 border-dashed border-orange-300 flex flex-col items-center justify-center h-full min-h-[160px] dark:bg-gray-800 dark:border-gray-600">
+                <div class="bg-white p-3 rounded-full shadow-sm mb-2 dark:bg-gray-700">
+                    <span class="text-2xl">📚</span>
+                </div>
+                <span class="font-bold text-orange-700 dark:text-orange-400">Alle Rezepte</span>
+                <span class="text-xs text-orange-600/70 dark:text-gray-400">Stöbern &rarr;</span>
+            </div>
+        </a>`;
+        randomContainer.innerHTML += moreCardHTML;
+
     </script>
 </body>
 </html>
