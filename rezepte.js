@@ -5,6 +5,8 @@ const rezeptDaten = {
         zeit: "25 Min.",
         portionen: "2 Burger",
         kategorie: "Hauptgericht",
+        autor: "Lars",
+        datum: "02.02.2026",
         zutaten: [
             "2 Burger Buns (Brioche)",
             "300g Rinderhack",
@@ -30,6 +32,8 @@ const rezeptDaten = {
         zeit: "20 Min.",
         portionen: "2 Personen",
         kategorie: "Hauptgericht",
+        autor: "Lars",
+        datum: "02.02.2026",
         zutaten: [
             "250g Spaghetti",
             "100g Speck oder Schinken",
@@ -51,6 +55,8 @@ const rezeptDaten = {
         zeit: "40 Min.",
         portionen: "2 Pizzen",
         kategorie: "Hauptgericht, Vegetarisch",
+        autor: "Lars",
+        datum: "02.02.2026",
         zutaten: [
             "500g Pizzateig",
             "200ml Tomatensauce",
@@ -71,6 +77,8 @@ const rezeptDaten = {
         zeit: "60 Min.",
         portionen: "4 Portionen",
         kategorie: "Hauptgericht",
+        autor: "Lars",
+        datum: "02.02.2026",
         zutaten: [
             "500g Rinderhack",
             "1 Dose Kidneybohnen",
@@ -93,11 +101,12 @@ const rezeptDaten = {
     
     "huhn_suess_sauer": {
         titel: "Nudeln mit Hähnchen Süß-Sauer-Sahne Sauce",
-        // HIER IST DEIN NEUES BILD:
-        bild: "Bilder/nudels_süß_sauer.jpg",
+        bild: "Bilder/nudels_suess_sauer.jpg",
         zeit: "25 Min.",
         portionen: "2 Portionen",
         kategorie: "Hauptgericht, Schnell",
+        autor: "Lars",
+        datum: "02.02.2026",
         zutaten: [
             "400g Hähnchengeschnetzeltes",
             "250g Nudeln (oder mehr)",
@@ -114,12 +123,39 @@ const rezeptDaten = {
         ]
     },
 
+    "sloppy_joe": {
+        titel: "Sloppy Joe",
+        bild: "Bilder/sloppy_joe.png",
+        zeit: "10 Min.",
+        portionen: "4 Portionen",
+        kategorie: "Hauptgericht, Schnell",
+        autor: "Lars",
+        datum: "16.02.2026",
+        zutaten: [
+            "4 Burger Brötchen",
+            "500g Rinderhack",
+            "1 EL Tomatenmark",
+            "250ml Ketchup",
+            "1 EL Senf (mittelscharf)",
+            "1-2 EL Worcestersauce",
+            "Salz & Pfeffer"
+        ],
+        zubereitung: [
+            { titel: "Anbraten", text: "Pfanne heiß machen, Hackfleisch rein und schön krümelig braten. Fett ggf. abgießen. Tomatenmark kurz mit anrösten." },
+            { titel: "Die Soße", text: "Ketchup, Senf und Worcestersauce direkt zum Fleisch kippen." },
+            { titel: "Blubbern", text: "Alles gut verrühren und bei mittlerer Hitze ca. 5 Minuten köcheln lassen, bis die Soße schön sämig (dickflüssig) ist." },
+            { titel: "Finale", text: "Mit Salz und Pfeffer abschmecken. Ab auf die Brötchen damit und genießen!" }
+        ]
+    },
+
     "pizzateig": {
         titel: "Pizzateig (Selbstgemacht)",
         bild: "https://images.unsplash.com/photo-1568567663699-3eb161fb40be?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         zeit: "50 Min.",
         portionen: "2-3 Pizzen / 1 Blech",
         kategorie: "Vegetarisch, Vegan",
+        autor: "Lars",
+        datum: "13.02.2026",
         zutaten: [
             "500g Mehl",
             "1/2 Würfel frische Hefe (ca. 20g)",
@@ -144,6 +180,8 @@ const rezeptDaten = {
         zeit: "15 Min.",
         portionen: "2 Personen",
         kategorie: "Hauptgericht, Schnell",
+        autor: "Lars",
+        datum: "02.02.2026",
         zutaten: [
             "250g Hackfleisch (gemischt)",
             "4 Weizentortillas",
