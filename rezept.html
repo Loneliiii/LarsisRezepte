@@ -73,9 +73,13 @@
                     </div>
                 </div>
 
-                <div class="flex items-center space-x-6 text-gray-500 dark:text-gray-400 mt-2">
+                <div class="flex flex-wrap items-center gap-6 text-gray-500 dark:text-gray-400 mt-2">
                     <span class="flex items-center">⏱️ <span id="rec-time" class="ml-2"></span></span>
                     <span class="flex items-center">🍽️ <span id="rec-portions" class="ml-2"></span></span>
+                    
+                    <span id="rec-author-wrapper" class="hidden flex items-center">
+                        👤 <span id="rec-author" class="ml-2"></span>
+                    </span>
                 </div>
             </header>
 
@@ -109,8 +113,10 @@
     <footer class="bg-gray-800 text-gray-300 py-8 mt-12 dark:bg-black dark:text-gray-500 no-print">
         <div class="max-w-6xl mx-auto px-4 text-center">
             <p>&copy; 2026 Larsi's Simple Rezepte. Alle Rechte vorbehalten.</p>
-            <a href="impressum.html" class="hover:text-white underline">Impressum</a>
-            <a href="datenschutz.html" class="hover:text-white underline">Datenschutz</a>
+            <div class="mt-2 space-x-4">
+                <a href="impressum.html" class="hover:text-white underline">Impressum</a>
+                <a href="datenschutz.html" class="hover:text-white underline">Datenschutz</a>
+            </div>
         </div>
     </footer>
 
@@ -127,6 +133,14 @@
             document.getElementById('rec-title').innerText = rezept.titel;
             document.getElementById('rec-time').innerText = rezept.zeit;
             document.getElementById('rec-portions').innerText = rezept.portionen;
+
+            // --- NEU: Autor anzeigen ---
+            if (rezept.autor) {
+                const datumText = rezept.datum ? ` am ${rezept.datum}` : '';
+                document.getElementById('rec-author').innerText = `Von ${rezept.autor}${datumText}`;
+                document.getElementById('rec-author-wrapper').classList.remove('hidden');
+            }
+            // ---------------------------
 
             const ingList = document.getElementById('rec-ingredients');
             rezept.zutaten.forEach(zutat => {
@@ -153,7 +167,6 @@
                 url: window.location.href
             };
 
-            // Versuchen, das native "Teilen" Menü des Handys zu öffnen
             if (navigator.share) {
                 try {
                     await navigator.share(shareData);
@@ -161,7 +174,6 @@
                     console.log('Teilen abgebrochen');
                 }
             } else {
-                // Fallback für PC: In die Zwischenablage kopieren
                 try {
                     await navigator.clipboard.writeText(window.location.href);
                     alert("Link wurde in die Zwischenablage kopiert! (Hinweis: Der Link funktioniert für andere nur, wenn die Seite online gestellt ist)");
