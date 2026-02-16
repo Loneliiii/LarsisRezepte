@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alle Rezepte - Simple Gourmet</title>
+    <title>Alle Rezepte - Larsi's Simple Rezepte</title>
     
     <script>
         if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -17,7 +17,6 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7936159083612560" crossorigin="anonymous"></script>
     <script> tailwind.config = { darkMode: 'class' } </script>
     <link rel="stylesheet" href="style.css">
-    <script src="main.js" defer></script>
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300 flex flex-col min-h-screen">
 
@@ -31,7 +30,7 @@
                 
                 <div class="flex items-center gap-3 flex-wrap justify-center">
                     <a href="index.html" class="text-gray-600 hover:text-orange-600 font-medium text-sm md:text-base dark:text-gray-300 dark:hover:text-orange-400">Start</a>
-                    <a href="alle-rezepte.html" class="text-gray-600 hover:text-orange-600 font-medium text-sm md:text-base dark:text-gray-300 dark:hover:text-orange-400">Rezepte</a>
+                    <a href="alle-rezepte.html" class="text-orange-600 font-bold text-sm md:text-base dark:text-orange-400">Rezepte</a>
                     <a href="neues-rezept.html" class="bg-orange-600 text-white px-3 py-2 rounded-lg hover:bg-orange-700 transition shadow-sm text-sm">Einsenden</a>
                     <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition"><span id="dark-icon">🌙</span></button>
                 </div>
@@ -40,14 +39,34 @@
     </nav>
 
     <main class="max-w-6xl mx-auto px-4 py-12 flex-grow">
-        <div class="flex flex-col md:flex-row justify-between items-end mb-8 border-b dark:border-gray-700 pb-4">
+        
+        <div class="flex flex-col md:flex-row justify-between items-end mb-6 border-b dark:border-gray-700 pb-4 gap-4">
             <div>
                 <h1 class="text-4xl font-bold dark:text-white">Alle Rezepte</h1>
                 <p class="text-gray-500 mt-2 dark:text-gray-400">Stöbere durch die komplette Sammlung.</p>
             </div>
-            <div class="text-gray-400 text-sm mt-4 md:mt-0">
-                Zeige <span id="showing-info">...</span> Rezepte
+            
+            <div class="flex flex-col items-end gap-2">
+                <select id="sort-select" onchange="handleSort()" class="bg-white border border-gray-300 text-gray-700 py-2 px-4 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 dark:bg-gray-800 dark:text-gray-200 dark:border-gray-600">
+                    <option value="newest">📅 Neueste zuerst</option>
+                    <option value="oldest">📅 Älteste zuerst</option>
+                    <option value="az">🔤 A-Z</option>
+                    <option value="za">🔤 Z-A</option>
+                </select>
+                
+                <div class="text-gray-400 text-sm">
+                    Zeige <span id="showing-info">...</span> Rezepte
+                </div>
             </div>
+        </div>
+
+        <div class="flex flex-wrap gap-2 mb-8" id="filter-container">
+            <button onclick="toggleFilter(this, 'alle')" class="filter-btn active px-4 py-2 rounded-full font-medium shadow-sm transition bg-orange-600 text-white border border-transparent">Alle</button>
+            <button onclick="toggleFilter(this, 'hauptgericht')" class="filter-btn px-4 py-2 rounded-full font-medium shadow-sm transition bg-white text-gray-700 border border-gray-200 hover:bg-orange-50 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-700 dark:hover:bg-gray-700">🥘 Hauptgericht</button>
+            <button onclick="toggleFilter(this, 'dessert')" class="filter-btn px-4 py-2 rounded-full font-medium shadow-sm transition bg-white text-gray-700 border border-gray-200 hover:bg-orange-50 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-700 dark:hover:bg-gray-700">🍰 Dessert</button>
+            <button onclick="toggleFilter(this, 'schnell')" class="filter-btn px-4 py-2 rounded-full font-medium shadow-sm transition bg-white text-gray-700 border border-gray-200 hover:bg-orange-50 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-700 dark:hover:bg-gray-700">⚡ Schnell</button>
+            <button onclick="toggleFilter(this, 'vegetarisch')" class="filter-btn px-4 py-2 rounded-full font-medium shadow-sm transition bg-white text-gray-700 border border-gray-200 hover:bg-orange-50 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-700 dark:hover:bg-gray-700">🧀 Vegetarisch</button>
+            <button onclick="toggleFilter(this, 'vegan')" class="filter-btn px-4 py-2 rounded-full font-medium shadow-sm transition bg-white text-gray-700 border border-gray-200 hover:bg-orange-50 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-700 dark:hover:bg-gray-700">🌱 Vegan</button>
         </div>
 
         <div id="rezept-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -57,49 +76,158 @@
             </div>
     </main>
 
-    <footer class="bg-gray-800 text-gray-300 py-8 mt-12 dark:bg-black dark:text-gray-500">
-        <div class="max-w-6xl mx-auto px-4 text-center"><p>&copy; 2026 Lars' Rezepte. Alle Rechte vorbehalten.</p></div>
-        <a href="impressum.html" class="hover:text-white underline">Impressum</a>
-        <a href="datenschutz.html" class="hover:text-white underline">Datenschutz</a>
+    <footer class="bg-gray-800 text-gray-300 py-8 mt-12 dark:bg-black dark:text-gray-500 no-print">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <p>&copy; 2026 Larsi's Simple Rezepte. Alle Rechte vorbehalten.</p>
+            <div class="mt-2 space-x-4">
+                <a href="impressum.html" class="hover:text-white underline">Impressum</a>
+                <a href="datenschutz.html" class="hover:text-white underline">Datenschutz</a>
+            </div>
+        </div>
     </footer>
 
     <script src="rezepte.js"></script>
     <script>
-        // EINSTELLUNGEN
-        const ITEMS_PER_PAGE = 25; // Wie viele pro Seite?
-        let currentPage = 1;
+        // --- FUNKTIONEN ---
 
-        // Wir wandeln das Objekt aus rezepte.js in ein Array um, damit wir zählen können
-        // Format: [ ['id', {daten}], ['id', {daten}] ]
+        function toggleDarkMode() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Datum parser (13.02.2026 -> Timestamp)
+        function parseGermanDate(dateStr) {
+            if (!dateStr) return 0;
+            const parts = dateStr.split('.'); 
+            return new Date(parts[2], parts[1] - 1, parts[0]).getTime();
+        }
+
+        // --- SETUP ---
+        const ITEMS_PER_PAGE = 25; 
+        let currentPage = 1;
+        
+        // Filter & Sortier Status
+        let activeFilters = new Set(['alle']);
+        let currentSort = 'newest';
+
         const allRecipesArray = Object.entries(rezeptDaten);
 
-        function renderPage(page) {
+        // --- FILTER LOGIK (Wie auf Startseite) ---
+        function toggleFilter(btn, filter) {
+            const isAlle = filter === 'alle';
+
+            if (isAlle) {
+                activeFilters.clear();
+                activeFilters.add('alle');
+            } else {
+                if (activeFilters.has('alle')) activeFilters.delete('alle');
+
+                if (activeFilters.has(filter)) {
+                    activeFilters.delete(filter);
+                } else {
+                    activeFilters.add(filter);
+                }
+
+                if (activeFilters.size === 0) activeFilters.add('alle');
+            }
+
+            updateButtonStyles();
+            currentPage = 1; // Zurück auf Seite 1 wenn gefiltert wird
+            renderPage();    // Neu anzeigen
+        }
+
+        function updateButtonStyles() {
+            document.querySelectorAll('.filter-btn').forEach(button => {
+                const match = button.getAttribute('onclick').match(/'([^']+)'/);
+                const filterName = match ? match[1] : '';
+
+                if (activeFilters.has(filterName)) {
+                    button.className = "filter-btn px-4 py-2 rounded-full font-medium shadow-sm transition bg-orange-600 text-white border border-transparent transform scale-105";
+                } else {
+                    button.className = "filter-btn px-4 py-2 rounded-full font-medium shadow-sm transition bg-white text-gray-700 border border-gray-200 hover:bg-orange-50 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-700 dark:hover:bg-gray-700";
+                }
+            });
+        }
+
+        // --- SORTIER LOGIK ---
+        function handleSort() {
+            currentSort = document.getElementById('sort-select').value;
+            currentPage = 1;
+            renderPage();
+        }
+
+        // --- HAUPT LOGIK: Filtern -> Sortieren -> Anzeigen ---
+        function getProcessedRecipes() {
+            // 1. Filtern
+            let filtered = allRecipesArray.filter(([id, data]) => {
+                if (activeFilters.has('alle')) return true;
+
+                // Tags generieren (wie auf Startseite)
+                let tags = (data.kategorie || "").toLowerCase();
+                const minuten = parseInt(data.zeit);
+                if (minuten <= 30) tags += " schnell";
+
+                // Prüfen ob ALLE aktiven Filter in den Tags vorkommen
+                return Array.from(activeFilters).every(filter => tags.includes(filter));
+            });
+
+            // 2. Sortieren
+            filtered.sort((a, b) => {
+                const rezeptA = a[1];
+                const rezeptB = b[1];
+                const dateA = parseGermanDate(rezeptA.datum || "01.01.2020");
+                const dateB = parseGermanDate(rezeptB.datum || "01.01.2020");
+
+                if (currentSort === 'newest') return dateB - dateA;
+                if (currentSort === 'oldest') return dateA - dateB;
+                if (currentSort === 'az') return rezeptA.titel.localeCompare(rezeptB.titel);
+                if (currentSort === 'za') return rezeptB.titel.localeCompare(rezeptA.titel);
+                return 0;
+            });
+
+            return filtered;
+        }
+
+        function renderPage() {
             const grid = document.getElementById('rezept-grid');
-            grid.innerHTML = ''; // Grid leeren
+            grid.innerHTML = ''; 
 
-            // Start und Ende berechnen
-            const start = (page - 1) * ITEMS_PER_PAGE;
+            // Die gefilterte & sortierte Liste holen
+            const processedItems = getProcessedRecipes();
+            const total = processedItems.length;
+
+            // Seite berechnen
+            const start = (currentPage - 1) * ITEMS_PER_PAGE;
             const end = start + ITEMS_PER_PAGE;
-            
-            // Nur die Rezepte für diese Seite holen
-            const pageItems = allRecipesArray.slice(start, end);
+            const pageItems = processedItems.slice(start, end);
 
-            // Karten generieren
+            // Karten bauen
             pageItems.forEach(([id, data]) => {
-                // HTML Template string (gleiches Design wie Index)
+                const datumAnzeige = data.datum ? `<span class="text-xs bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded text-gray-500 dark:text-gray-400">📅 ${data.datum}</span>` : '';
+                const autorAnzeige = data.autor ? `<span class="text-xs text-gray-400 dark:text-gray-500 ml-auto">Von ${data.autor}</span>` : '';
+
                 const cardHTML = `
                 <a href="rezept.html?id=${id}" class="block group animate-fade-in">
                     <div class="bg-white rounded-xl shadow-lg overflow-hidden card-zoom dark:bg-gray-800 dark:shadow-gray-900/50 h-full flex flex-col">
                         <div class="h-56 overflow-hidden relative">
-                            <img src="${data.bild}" class="w-full h-full object-cover">
+                            <img src="${data.bild}" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x400?text=Kein+Bild'">
                         </div>
                         <div class="p-6 flex-grow flex flex-col">
-                            <div class="mb-2">
-                                <span class="bg-gray-100 text-gray-600 text-xs font-bold px-2 py-1 rounded-full uppercase dark:bg-gray-700 dark:text-gray-300">${data.kategorie}</span>
+                            <div class="mb-3 flex justify-between items-start">
+                                <span class="bg-orange-100 text-orange-600 text-xs font-bold px-2 py-1 rounded-full uppercase dark:bg-orange-900 dark:text-orange-200">${data.kategorie.split(',')[0]}</span>
+                                ${datumAnzeige}
                             </div>
+                            
                             <h3 class="text-xl font-bold group-hover:text-orange-600 transition dark:text-gray-100 mb-2">${data.titel}</h3>
-                            <div class="mt-auto flex items-center text-gray-400 text-sm dark:text-gray-500">
-                                <span>⏱️ ${data.zeit}</span>
+                            
+                            <div class="mt-auto flex items-center pt-4 border-t dark:border-gray-700">
+                                <span class="text-gray-500 text-sm dark:text-gray-400">⏱️ ${data.zeit}</span>
+                                ${autorAnzeige}
                             </div>
                         </div>
                     </div>
@@ -108,54 +236,56 @@
                 grid.innerHTML += cardHTML;
             });
 
-            // Info Text updaten (z.B. "Zeige 1-25 von 50")
-            const total = allRecipesArray.length;
-            const currentShow = Math.min(end, total);
-            document.getElementById('showing-info').innerText = `${start + 1}-${currentShow} von ${total}`;
+            // Info Text
+            if(total > 0) {
+                const currentShow = Math.min(end, total);
+                document.getElementById('showing-info').innerText = `${start + 1}-${currentShow} von ${total}`;
+            } else {
+                document.getElementById('showing-info').innerText = "0";
+                grid.innerHTML = `<div class="col-span-full text-center py-12 text-gray-500">Keine Rezepte gefunden, die zu diesen Filtern passen.</div>`;
+            }
 
-            renderPagination(page, total);
-            
-            // Nach oben scrollen bei Seitenwechsel
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            renderPagination(total);
         }
 
-        function renderPagination(current, totalItems) {
+        function renderPagination(totalItems) {
             const container = document.getElementById('pagination');
             container.innerHTML = '';
             const totalPages = Math.ceil(totalItems / ITEMS_PER_PAGE);
 
-            if (totalPages <= 1) return; // Keine Buttons nötig bei nur 1 Seite
+            if (totalPages <= 1) return;
 
-            // Zurück Button
+            // Zurück
             const prevBtn = document.createElement('button');
             prevBtn.innerHTML = '&larr;';
-            prevBtn.className = `px-4 py-2 rounded-lg border ${current === 1 ? 'text-gray-300 border-gray-200 cursor-not-allowed dark:border-gray-700 dark:text-gray-600' : 'text-gray-600 border-gray-300 hover:bg-gray-100 dark:text-gray-300 dark:border-gray-600 dark:hover:bg-gray-700'}`;
-            prevBtn.onclick = () => { if(current > 1) { currentPage--; renderPage(currentPage); }};
+            prevBtn.className = `px-4 py-2 rounded-lg border ${currentPage === 1 ? 'text-gray-300 border-gray-200 cursor-not-allowed dark:border-gray-700 dark:text-gray-600' : 'text-gray-600 border-gray-300 hover:bg-gray-100 dark:text-gray-300 dark:border-gray-600 dark:hover:bg-gray-700'}`;
+            prevBtn.onclick = () => { if(currentPage > 1) { currentPage--; renderPage(); }};
             container.appendChild(prevBtn);
 
-            // Zahlen Buttons
+            // Zahlen
             for (let i = 1; i <= totalPages; i++) {
                 const btn = document.createElement('button');
                 btn.innerText = i;
-                if (i === current) {
+                if (i === currentPage) {
                     btn.className = 'px-4 py-2 rounded-lg bg-orange-600 text-white font-bold shadow-md';
                 } else {
                     btn.className = 'px-4 py-2 rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-100 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-700';
                 }
-                btn.onclick = () => { currentPage = i; renderPage(currentPage); };
+                btn.onclick = () => { currentPage = i; renderPage(); };
                 container.appendChild(btn);
             }
 
-            // Vorwärts Button
+            // Vorwärts
             const nextBtn = document.createElement('button');
             nextBtn.innerHTML = '&rarr;';
-            nextBtn.className = `px-4 py-2 rounded-lg border ${current === totalPages ? 'text-gray-300 border-gray-200 cursor-not-allowed dark:border-gray-700 dark:text-gray-600' : 'text-gray-600 border-gray-300 hover:bg-gray-100 dark:text-gray-300 dark:border-gray-600 dark:hover:bg-gray-700'}`;
-            nextBtn.onclick = () => { if(current < totalPages) { currentPage++; renderPage(currentPage); }};
+            nextBtn.className = `px-4 py-2 rounded-lg border ${currentPage === totalPages ? 'text-gray-300 border-gray-200 cursor-not-allowed dark:border-gray-700 dark:text-gray-600' : 'text-gray-600 border-gray-300 hover:bg-gray-100 dark:text-gray-300 dark:border-gray-600 dark:hover:bg-gray-700'}`;
+            nextBtn.onclick = () => { if(currentPage < totalPages) { currentPage++; renderPage(); }};
             container.appendChild(nextBtn);
         }
 
-        // Init beim Laden
-        renderPage(currentPage);
+        // Init
+        updateButtonStyles();
+        renderPage(); 
 
     </script>
 </body>
