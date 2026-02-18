@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Larsi's Simple Rezepte</title>
-    
+
     <script>
         if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.classList.add('dark');
@@ -25,16 +25,16 @@
     <nav class="bg-white shadow-md sticky top-0 z-50 dark:bg-gray-800 dark:border-b dark:border-gray-700 transition-colors duration-300 no-print">
         <div class="max-w-6xl mx-auto px-4">
             <div class="flex flex-col md:flex-row justify-between items-center py-3 md:py-4 min-h-[80px]">
-                
+
                 <a href="index.html" class="text-2xl font-bold text-orange-600 mb-3 md:mb-0">
                     Larsi's <span class="text-gray-700 dark:text-gray-300">Simple Rezepte</span>
                 </a>
-                
+
                 <div class="flex items-center gap-3 flex-wrap justify-center">
                     <a href="index.html" class="text-gray-600 hover:text-orange-600 font-medium text-sm md:text-base dark:text-gray-300 dark:hover:text-orange-400">Start</a>
                     <a href="alle-rezepte.html" class="text-gray-600 hover:text-orange-600 font-medium text-sm md:text-base dark:text-gray-300 dark:hover:text-orange-400">Rezepte</a>
                     <a href="neues-rezept.html" class="bg-orange-600 text-white px-3 py-2 rounded-lg hover:bg-orange-700 transition shadow-sm text-sm">Einsenden</a>
-                    
+
                     <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition" aria-label="Dark Mode umschalten">
                         <span id="dark-icon">🌙</span>
                     </button>
@@ -52,37 +52,37 @@
     </header>
 
     <main class="max-w-6xl mx-auto px-4 py-12 flex-grow relative">
-        
+
         <section class="mb-16">
             <h2 class="text-2xl font-bold mb-4 flex items-center gap-2 dark:text-white">
                 <span class="text-orange-600">📢</span> Was gibt's Neues?
             </h2>
             <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md border-l-4 border-orange-500 p-6">
                 <ul class="space-y-4">
-                    
+
+                    <li class="flex flex-col md:flex-row md:items-center gap-1 md:gap-4 border-b dark:border-gray-700 last:border-0 pb-3 last:pb-0">
+                        <span class="text-xs font-bold uppercase tracking-wider text-gray-400 whitespace-nowrap">18.02.2026</span>
+                        <p class="text-gray-700 dark:text-gray-200">
+                            <strong>New Dabei: Ein Traum von einem </strong> <a href="rezept.html?id=mamas_schokokuchen" class="text-orange-600 hover:underline">Schokokuchen</a> ist online!
+                        </p>
+                    </li>
+
                     <li class="flex flex-col md:flex-row md:items-start gap-1 md:gap-4 border-b dark:border-gray-700 last:border-0 pb-3 last:pb-0">
                         <span class="text-xs font-bold uppercase tracking-wider text-gray-400 whitespace-nowrap mt-1">16.02.2026</span>
                         <div>
                             <strong class="text-gray-900 dark:text-gray-100 block mb-1">Webseitenüberarbeitung 🛠️</strong>
                             <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
-                                Die Webseite hat ein kleines Makeover bekommen mit folgenden Änderungen!
+                                Wir haben ordentlich umgebaut!
                                 <br>• <strong>Startseite:</strong> Jetzt mit Update-Notizen, Highlights und zufälligen Rezept-Vorschlägen.
                                 <br>• <strong>Alle Rezepte:</strong> Neue Filter, Sortierung nach Datum und Anzeige des Einsenders.
                             </p>
                         </div>
                     </li>
 
-                    <li class="flex flex-col md:flex-row md:items-center gap-1 md:gap-4 border-b dark:border-gray-700 last:border-0 pb-3 last:pb-0">
+                    <li class="flex flex-col md:flex-row md:items-center gap-1 md:gap-4">
                         <span class="text-xs font-bold uppercase tracking-wider text-gray-400 whitespace-nowrap">16.02.2026</span>
                         <p class="text-gray-700 dark:text-gray-200">
                             <strong>Neu dabei:</strong> Der <a href="rezept.html?id=sloppy_joe" class="text-orange-600 hover:underline">Sloppy Joe</a>! 🍔
-                        </p>
-                    </li>
-
-                    <li class="flex flex-col md:flex-row md:items-center gap-1 md:gap-4">
-                        <span class="text-xs font-bold uppercase tracking-wider text-gray-400 whitespace-nowrap">13.02.2026</span>
-                        <p class="text-gray-700 dark:text-gray-200">
-                            <strong>Neu dabei:</strong> Basis-Rezept für <a href="rezept.html?id=pizzateig" class="text-orange-600 hover:underline">Pizzateig</a>. 🍕
                         </p>
                     </li>
 
@@ -92,22 +92,22 @@
 
         <section class="mb-16 relative z-10">
             <h2 class="text-3xl font-bold border-l-4 border-orange-600 pl-4 dark:text-white mb-8">Unsere Highlights</h2>
-            
+
             <div id="highlights-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 </div>
         </section>
 
         <section class="mb-12 relative z-10">
             <h3 class="text-xl font-bold mb-6 text-gray-600 dark:text-gray-400">🤔 Lust auf etwas anderes?</h3>
-            
+
             <div id="random-grid" class="grid grid-cols-2 md:grid-cols-4 gap-4">
                 </div>
         </section>
 
 
-        <img src="knuffi_koch.png" 
-             alt="Knuffi der Koch" 
-             class="block relative mx-auto my-8 w-32 
+        <img src="knuffi_koch.png"
+             alt="Knuffi der Koch"
+             class="block relative mx-auto my-8 w-32
                     2xl:absolute 2xl:-left-56 2xl:top-16 2xl:w-48 2xl:my-0 2xl:mx-0
                     pointer-events-none transform -rotate-6 drop-shadow-lg opacity-90 z-0">
 
@@ -117,7 +117,7 @@
                     <span class="text-2xl not-italic">📸</span><br>
                     <strong>Kleiner Realitäts-Check:</strong><br>
                     Die Bilder hier sind (noch) schicke Platzhalter.
-                    Wenn dein Ergebnis auf dem Teller eher nach "kreativem Unfall" aussieht: 
+                    Wenn dein Ergebnis auf dem Teller eher nach "kreativem Unfall" aussieht:
                     Keine Panik, das muss so! Hauptsache es schmeckt. 😉
                 </p>
             </div>
@@ -150,7 +150,7 @@
 
         // --- 2. HIGHLIGHTS RENDERN (FESTE AUSWAHL) ---
         const highlightsContainer = document.getElementById('highlights-grid');
-        
+
         // Genau diese 3 Rezepte wollen wir hier sehen
         const highlightIDs = ['pizzateig', 'chili', 'sloppy_joe'];
 
@@ -180,13 +180,13 @@
 
         // --- 3. ZUFÄLLIGE VORSCHAU LEISTE ---
         const randomContainer = document.getElementById('random-grid');
-        
+
         // Alle verfügbaren IDs holen
         const allIDs = Object.keys(rezeptDaten);
-        
+
         // Die Highlights aus dem Topf nehmen, damit wir sie nicht doppelt zeigen
         const pool = allIDs.filter(id => !highlightIDs.includes(id));
-        
+
         // Mischen (Fisher-Yates Shuffle)
         for (let i = pool.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));

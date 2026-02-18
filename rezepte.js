@@ -7,6 +7,7 @@ const rezeptDaten = {
         kategorie: "Hauptgericht",
         autor: "Lars",
         datum: "02.02.2026",
+        inspiration: "Klassiker",
         zutaten: [
             "2 Burger Buns (Brioche)",
             "300g Rinderhack",
@@ -34,6 +35,7 @@ const rezeptDaten = {
         kategorie: "Hauptgericht",
         autor: "Lars",
         datum: "02.02.2026",
+        inspiration: "Italienisches Original",
         zutaten: [
             "250g Spaghetti",
             "100g Speck oder Schinken",
@@ -57,6 +59,7 @@ const rezeptDaten = {
         kategorie: "Hauptgericht, Vegetarisch",
         autor: "Lars",
         datum: "02.02.2026",
+        inspiration: "Standard Rezept",
         zutaten: [
             "500g Pizzateig",
             "200ml Tomatensauce",
@@ -79,6 +82,7 @@ const rezeptDaten = {
         kategorie: "Hauptgericht",
         autor: "Lars",
         datum: "02.02.2026",
+        inspiration: "Klassiker",
         zutaten: [
             "500g Rinderhack",
             "1 Dose Kidneybohnen",
@@ -98,15 +102,16 @@ const rezeptDaten = {
             { titel: "Geheimtipp", text: "Gegen Ende ein Stück Zartbitterschokolade im Chili schmelzen lassen, das gibt eine tolle Tiefe und Farbe!" }
         ]
     },
-    
+
     "huhn_suess_sauer": {
         titel: "Nudeln mit Hähnchen Süß-Sauer-Sahne Sauce",
-        bild: "Bilder/nudels_süß_sauer.jpg",
+        bild: "Bilder/nudels_suess_sauer.jpg",
         zeit: "25 Min.",
         portionen: "2 Portionen",
         kategorie: "Hauptgericht, Schnell",
         autor: "Lars",
         datum: "02.02.2026",
+        inspiration: "HelloFresh Inspiration",
         zutaten: [
             "400g Hähnchengeschnetzeltes",
             "250g Nudeln (oder mehr)",
@@ -131,6 +136,7 @@ const rezeptDaten = {
         kategorie: "Hauptgericht, Schnell",
         autor: "Lars",
         datum: "16.02.2026",
+        inspiration: "Amerikanischer Klassiker",
         zutaten: [
             "4 Burger Brötchen",
             "500g Rinderhack",
@@ -156,6 +162,7 @@ const rezeptDaten = {
         kategorie: "Vegetarisch, Vegan",
         autor: "Lars",
         datum: "13.02.2026",
+        inspiration: "Eigene Kreation",
         zutaten: [
             "500g Mehl",
             "1/2 Würfel frische Hefe (ca. 20g)",
@@ -182,6 +189,7 @@ const rezeptDaten = {
         kategorie: "Hauptgericht, Schnell",
         autor: "Lars",
         datum: "02.02.2026",
+        inspiration: "HelloFresh Inspiration",
         zutaten: [
             "250g Hackfleisch (gemischt)",
             "4 Weizentortillas",
@@ -198,6 +206,36 @@ const rezeptDaten = {
             { titel: "Anbraten", text: "Pfanne heiß machen (brauchst kein Fett). Hackfleisch mit den Zwiebeln rein und schön braun braten (ca. 4-5 Min)." },
             { titel: "Würzen & Soße", text: "Jetzt kommt Geschmack dran: Tomatenmark, Bohnen, die Hälfte der BBQ-Soße und etwas Chili-Gewürz dazu. Kurz mitbraten und mit Salz & Pfeffer abschmecken." },
             { titel: "Rollen", text: "Tortillas kurz warm machen (Mikrowelle oder Pfanne). Hack-Mischung drauf, Salat drüber, Seiten einklappen und fest aufrollen. Die restliche BBQ-Soße gibt's als Dip dazu." }
+        ]
+    },
+
+    "mamas_schokokuchen": {
+        titel: "Der Schokokuchen Traum",
+        bild: "knuffi_question.jpg",
+        zeit: "60 Min.",
+        portionen: "1 Kuchen (Springform)",
+        kategorie: "Dessert, Vegetarisch",
+        autor: "Kerstin G.",
+        datum: "18.02.2026",
+        inspiration: "<a href='https://www.chefkoch.de/rezepte/2742441426332010/Saftiger-Schokokuchen.html' target='_blank' class='text-orange-600 hover:underline'>Chefkoch.de</a>",
+        zutaten: [
+            "250g Butter (weich)",
+            "200g Zucker",
+            "4 Eier",
+            "2 EL Mehl", // Korrigiert von 250g auf 2 EL laut Screenshot
+            "1 Pck. Backpulver",
+            "3 EL Back-Kakao (Dunkel)",
+            "125ml Mineralwasser (sprudelnd)",
+            "Für den Guss:",
+            "100ml Schlagsahne",
+            "100g Zartbitterschokolade"
+        ],
+        zubereitung: [
+            { titel: "Cremig rühren", text: "Butter und Zucker mit dem Mixer schaumig schlagen, bis es hell wird. Dann die Eier nacheinander einzeln unterrühren." },
+            { titel: "Trockenes dazu", text: "Mehl, Backpulver und den Back-Kakao mischen und kurz unter den Teig rühren." },
+            { titel: "Flüssiges dazu", text: "Das Mineralwasser dazugeben und nur so lange rühren, bis der Teig glatt ist (nicht zu lange, sonst wird er zäh!)." },
+            { titel: "Ab in den Ofen", text: "Teig in eine gefettete Springform füllen. Bei 180°C (Ober-/Unterhitze) ca. 45-50 Minuten backen. Stäbchenprobe machen!" },
+            { titel: "Der Guss", text: "Während der Kuchen abkühlt: Sahne kurz aufkochen, vom Herd nehmen und die Schokolade darin schmelzen. Den Guss über den abgekühlten Kuchen geben." }
         ]
     }
 

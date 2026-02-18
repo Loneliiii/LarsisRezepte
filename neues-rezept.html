@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simple Gourmet - Rezepte Welt</title>
-    
+
     <script>
         if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.classList.add('dark');
@@ -19,7 +19,7 @@
     <script> tailwind.config = { darkMode: 'class' } </script>
 
     <link rel="stylesheet" href="style.css">
-    
+
     <script src="main.js" defer></script>
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
@@ -27,11 +27,11 @@
     <nav class="bg-white shadow-md sticky top-0 z-50 dark:bg-gray-800 dark:border-b dark:border-gray-700 transition-colors duration-300 no-print">
         <div class="max-w-6xl mx-auto px-4">
             <div class="flex flex-col md:flex-row justify-between items-center py-3 md:py-4 min-h-[80px]">
-                
+
                 <a href="index.html" class="text-2xl font-bold text-orange-600 mb-3 md:mb-0">
                     Larsi's <span class="text-gray-700 dark:text-gray-300">Simple Rezepte</span>
                 </a>
-                
+
                 <div class="flex items-center gap-3 flex-wrap justify-center">
                     <a href="index.html" class="text-gray-600 hover:text-orange-600 font-medium text-sm md:text-base dark:text-gray-300 dark:hover:text-orange-400">Start</a>
                     <a href="alle-rezepte.html" class="text-gray-600 hover:text-orange-600 font-medium text-sm md:text-base dark:text-gray-300 dark:hover:text-orange-400">Rezepte</a>
@@ -48,7 +48,7 @@
             <p class="text-gray-500 mb-8 dark:text-gray-400">Teile dein Lieblingsgericht! Es wird direkt an Lars gesendet, geprüft und hochgeladen.</p>
 
             <form action="https://formsubmit.co/lars.krahnen@gmail.com" method="POST" enctype="multipart/form-data" class="space-y-6">
-                
+
                 <input type="hidden" name="_subject" value="Neues Rezept Einsendung!">
                 <input type="hidden" name="_next" value="https://www.larskrahnen.de/neues-rezept.html?success=true">
                 <input type="hidden" name="_captcha" value="false">
@@ -67,6 +67,11 @@
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-1 dark:text-gray-300">Name des Gerichts</label>
                     <input type="text" name="rezept_titel" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1 dark:text-gray-300">Inspiration (Optional)</label>
+                    <input type="text" name="inspiration" placeholder="z.B. Chefkoch Link, Oma Erna, Pinterest..." class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-white">
                 </div>
 
                 <div>
@@ -111,14 +116,14 @@
 
     <div id="success-modal" class="fixed inset-0 bg-black bg-opacity-60 z-[60] flex items-center justify-center hidden p-4 animate-fade-in">
         <div class="bg-white dark:bg-gray-800 rounded-xl shadow-2xl p-8 max-w-sm w-full text-center relative">
-            
+
             <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4 dark:bg-green-900 dark:text-green-300">
                 <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
             </div>
-            
+
             <h2 class="text-2xl font-bold mb-2 dark:text-white">Gesendet! 🚀</h2>
             <p class="text-gray-600 dark:text-gray-300 mb-6">Dein Rezept ist sicher bei Lars angekommen. Danke fürs Mitmachen!</p>
-            
+
             <button onclick="closeModal()" class="w-full bg-orange-600 text-white font-bold py-3 rounded-lg hover:bg-orange-700 transition transform hover:-translate-y-1">Alles klar!</button>
         </div>
     </div>
@@ -136,11 +141,11 @@
     <script>
         // Prüfen, ob ?success=true in der URL steht
         const urlParams = new URLSearchParams(window.location.search);
-        
+
         if (urlParams.get('success') === 'true') {
             // Popup anzeigen
             document.getElementById('success-modal').classList.remove('hidden');
-            
+
             // Konfetti-Effekt (optional, falls du Spaß verstehst, sonst einfach ignorieren)
             // URL bereinigen (damit es beim Neuladen nicht wieder kommt)
             window.history.replaceState({}, document.title, window.location.pathname);
