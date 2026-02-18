@@ -222,10 +222,10 @@ zutaten: [
             "250g Butter (weich)",
             "200g Zucker",
             "4 Eier",
-            "2 EL Mehl", // WICHTIG: Korrigiert auf 2 EL!
+            "2 EL Mehl",
             "1 Pck. Backpulver",
-            "3 EL Back-Kakao (Dunkel)",
-            "125ml Mineralwasser (sprudelnd)",
+            "3 EL Back-Kakao",
+            "125ml Mineralwasser",
             "Für den Guss:",
             "100ml Schlagsahne",
             "100g Zartbitterschokolade"
