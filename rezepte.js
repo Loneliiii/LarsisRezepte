@@ -218,11 +218,11 @@ const rezeptDaten = {
         autor: "Kerstin G.",
         datum: "18.02.2026",
         inspiration: "<a href='https://www.chefkoch.de/rezepte/2742441426332010/Saftiger-Schokokuchen.html' target='_blank' class='text-orange-600 hover:underline'>Chefkoch.de</a>",
-        zutaten: [
+zutaten: [
             "250g Butter (weich)",
             "200g Zucker",
             "4 Eier",
-            "2 EL Mehl", // Korrigiert von 250g auf 2 EL laut Screenshot
+            "2 EL Mehl", // WICHTIG: Korrigiert auf 2 EL!
             "1 Pck. Backpulver",
             "3 EL Back-Kakao (Dunkel)",
             "125ml Mineralwasser (sprudelnd)",
