@@ -234,7 +234,7 @@ const rezeptDaten = {
             { titel: "Cremig rühren", text: "Butter und Zucker mit dem Mixer schaumig schlagen, bis es hell wird. Dann die Eier nacheinander einzeln unterrühren." },
             { titel: "Trockenes dazu", text: "Mehl, Backpulver und den Back-Kakao mischen und kurz unter den Teig rühren." },
             { titel: "Flüssiges dazu", text: "Das Mineralwasser dazugeben und nur so lange rühren, bis der Teig glatt ist (nicht zu lange, sonst wird er zäh!)." },
-            { titel: "Ab in den Ofen", text: "Teig in eine gefettete Springform füllen. Bei 180°C (Ober-/Unterhitze) ca. 45-50 Minuten backen. Stäbchenprobe machen!" },
+            { titel: "Ab in den Ofen", text: "Teig in eine gefettete Springform füllen. Bei 160°C (Ober-/Unterhitze) ca. 30-35 Minuten backen. Stäbchenprobe machen!" },
             { titel: "Der Guss", text: "Während der Kuchen abkühlt: Sahne kurz aufkochen, vom Herd nehmen und die Schokolade darin schmelzen. Den Guss über den abgekühlten Kuchen geben." }
         ]
     }
