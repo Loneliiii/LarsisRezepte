@@ -211,7 +211,7 @@ const rezeptDaten = {
 
     "mamas_schokokuchen": {
         titel: "Der Schokokuchen Traum",
-        bild: "knuffi_question.jpg",
+        bild: "Bilder/schoko_kuchen.jpg",
         zeit: "60 Min.",
         portionen: "1 Kuchen (Springform)",
         kategorie: "Dessert, Vegetarisch",
