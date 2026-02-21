@@ -50,6 +50,42 @@ const rezeptDaten = {
             { titel: "Finale", text: "Heiße Nudeln direkt aus dem Wasser zum Speck geben. Pfanne vom Herd nehmen (!), Ei-Mischung unterrühren bis es cremig ist." }
         ]
     },
+    "nachoauflauf": {
+        titel: "Nachoauflauf",
+        bild: "Bilder/platzhalter.jpg",
+        zeit: "Ca. 20 Min.",
+        portionen: "2-3 Portionen",
+        kategorie: "Hauptgericht",
+        autor: "Moritz",
+        datum: "21.02.2026",
+        inspiration: "Von einer ehemaligen Arbeitskollegin",
+        zutaten: [
+            "500g Hackfleisch (egal welches)",
+            "1 Tüte Nachos",
+            "1 Flasche Maggi Texicana",
+            "1 Dose Mais (oder 1-2 Paprika)",
+            "1 Becher Creme Fraîche",
+            "1 Tüte geriebener Käse"
+        ],
+        zubereitung: [
+            { 
+                titel: "Vorbereitung", 
+                text: "Den Ofen auf 200°C vorheizen. Das Hackfleisch in einem Topf anbraten. Danach die Texicana-Sauce sowie den Mais (oder die gewürfelte Paprika) hinzufügen und alles gut vermischen." 
+            },
+            { 
+                titel: "Schichten", 
+                text: "Die Nachos in einer Auflaufform verteilen und das Fleischgemisch gleichmäßig darübergeben. Die Creme Fraîche in Klecksen darauf verteilen (eine komplette Schicht funktioniert auch wunderbar) und anschließend großzügig mit Käse bestreuen – viel hilft hier viel! :D" 
+            },
+            { 
+                titel: "Backen", 
+                text: "Das Ganze für 10-15 Minuten in den Ofen schieben, bis der Käse goldbraun geschmolzen ist. Danach direkt servieren und lecker verschnabulieren! :)" 
+            },
+            { 
+                titel: "Tipp", 
+                text: "Die Mengenangaben sind nur Standardwerte – man kann hier ganz gut nach Belieben variieren." 
+            }
+        ]
+    },
 
     "pizza": {
         titel: "Pizza Margherita (Mit fertigem Teig)",
