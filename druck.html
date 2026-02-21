@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Druckansicht - Knuffis Rezepte</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="rezepte.js"></script>
+    <style>
+        body { font-family: sans-serif; background: white; color: black; }
+        
+        /* --- DER ZAUBERTRICK GEGEN URL & DATUM --- */
+        @page {
+            margin: 0; /* Löscht die vom Browser generierten Kopf- und Fußzeilen */
+        }
+
+        @media print {
+            .no-print { display: none; }
+            body { 
+                margin: 0; 
+                padding: 1.5cm; /* Gibt unserem Text den nötigen Abstand zum Papierrand zurück */
+            }
+        }
+        
+        #knuffi-print {
+            position: fixed;
+            bottom: 1.5cm; /* Knuffi bekommt auch etwas Abstand zum Rand */
+            left: 1.5cm;
+            width: 80px;
+            z-index: -10;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body class="p-8 max-w-4xl mx-auto relative min-h-screen">
+
+    <div class="flex justify-between items-end border-b-2 border-gray-800 pb-4 mb-8">
+        <div>
+            <h1 id="print-title" class="text-4xl font-bold mb-2"></h1>
+            <p class="text-gray-600 text-sm">Ein Rezept von <strong id="print-author"></strong> auf <strong>Knuffis Rezepte</strong></p>
+        </div>
+        <div class="text-right text-sm text-gray-600">
+            <p>⏱️ <span id="print-time"></span></p>
+            <p>🍽️ <span id="print-portions"></span></p>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-12 gap-8">
+        
+        <div class="col-span-4 border-r border-gray-300 pr-6">
+            <h2 class="text-xl font-bold border-b border-gray-400 pb-2 mb-4 uppercase tracking-wide">Zutaten</h2>
+            <ul id="print-ingredients" class="space-y-2 text-sm">
+                </ul>
+
+            <div class="mt-12 pt-4 border-t border-gray-200">
+                <p id="print-source-info" class="text-xs text-gray-500 leading-relaxed"></p>
+            </div>
+        </div>
+
+        <div class="col-span-8">
+            <h2 class="text-xl font-bold border-b border-gray-400 pb-2 mb-4 uppercase tracking-wide">Zubereitung</h2>
+            <div id="print-steps" class="space-y-6 text-base leading-relaxed">
+                </div>
+        </div>
+    </div>
+
+    <div class="fixed bottom-6 right-6 text-xs text-gray-400">
+        &copy; 2026 Knuffis Rezepte
+    </div>
+
+    <img id="knuffi-print" src="knuffi_koch.png" alt="Knuffi">
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const id = params.get('id');
+        const rezept = rezeptDaten[id];
+
+        if (rezept) {
+            document.title = "Druck: " + rezept.titel;
+            document.getElementById('print-title').innerText = rezept.titel;
+            document.getElementById('print-author').innerText = rezept.autor || "Knuffi";
+            document.getElementById('print-time').innerText = rezept.zeit;
+            document.getElementById('print-portions').innerText = rezept.portionen;
+
+            // Zutaten
+            const ingList = document.getElementById('print-ingredients');
+            rezept.zutaten.forEach(z => {
+                ingList.innerHTML += `<li class="flex items-start"><span class="mr-2">•</span> ${z}</li>`;
+            });
+
+            // Schritte (Ganz schlicht)
+            const stepList = document.getElementById('print-steps');
+            rezept.zubereitung.forEach((step, index) => {
+                stepList.innerHTML += `
+                <div>
+                    <h3 class="font-bold mb-1">Schritt ${index + 1}: ${step.titel}</h3>
+                    <p class="text-gray-800">${step.text}</p>
+                </div>`;
+            });
+
+            // --- NEU: Dynamische Quelle / Inspiration ---
+            const sourceInfo = document.getElementById('print-source-info');
+            if (rezept.inspiration) {
+                sourceInfo.innerHTML = "Rezept von <strong>knuffi-rezepte.de</strong><br>Inspiriert von: <em>" + rezept.inspiration + "</em>";
+            } else {
+                sourceInfo.innerHTML = "Rezept von <strong>knuffi-rezepte.de</strong>";
+            }
+
+            // Automatisch Druckdialog öffnen
+            setTimeout(() => {
+                window.print();
+            }, 500);
+        } else {
+            document.body.innerHTML = "<h1 class='text-center mt-20 text-xl'>Rezept nicht gefunden.</h1>";
+        }
+    </script>
+
+</body>
+</html>

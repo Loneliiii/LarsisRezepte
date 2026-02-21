@@ -3,7 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rezept Ansicht</title>
+    <title>Rezept Ansicht - Knuffis Rezepte</title>
+    
+    <script type="application/ld+json" id="seo-schema"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body { font-family: 'Fredoka', sans-serif; }
+    </style>
 
     <script>
         if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -17,112 +27,108 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7936159083612560" crossorigin="anonymous"></script>
     <script> tailwind.config = { darkMode: 'class' } </script>
     <link rel="stylesheet" href="style.css">
-
+    
     <script src="main.js" defer></script>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300 min-h-screen flex flex-col">
-    <nav class="bg-white shadow-md sticky top-0 z-50 dark:bg-gray-800 dark:border-b dark:border-gray-700 transition-colors duration-300 no-print">
+<body class="bg-[#faf9f6] text-gray-800 font-sans dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300 min-h-screen flex flex-col">
+    
+    <nav class="bg-white sticky top-0 z-50 dark:bg-gray-800 border-b-4 border-gray-900 transition-colors duration-300 no-print shadow-[0_4px_0_0_#1f2937] dark:shadow-[0_4px_0_0_#000]">
         <div class="max-w-6xl mx-auto px-4">
             <div class="flex flex-col md:flex-row justify-between items-center py-3 md:py-4 min-h-[80px]">
 
-                <a href="index.html" class="text-2xl font-bold text-orange-600 mb-3 md:mb-0">
-                    Larsi's <span class="text-gray-700 dark:text-gray-300">Simple Rezepte</span>
+                <a href="index.html" class="text-3xl font-bold text-orange-600 mb-3 md:mb-0 transform hover:scale-105 transition">
+                    Knuffis <span class="text-gray-800 dark:text-gray-100">Rezepte</span>
                 </a>
 
-                <div class="flex items-center gap-3 flex-wrap justify-center">
-                    <a href="index.html" class="text-gray-600 hover:text-orange-600 font-medium text-sm md:text-base dark:text-gray-300 dark:hover:text-orange-400">Start</a>
-                    <a href="alle-rezepte.html" class="text-gray-600 hover:text-orange-600 font-medium text-sm md:text-base dark:text-gray-300 dark:hover:text-orange-400">Rezepte</a>
-                    <a href="neues-rezept.html" class="bg-orange-600 text-white px-3 py-2 rounded-lg hover:bg-orange-700 transition shadow-sm text-sm">Einsenden</a>
-                    <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition"><span id="dark-icon">🌙</span></button>
+                <div class="flex items-center gap-4 flex-wrap justify-center">
+                    <a href="index.html" class="text-gray-700 hover:text-orange-600 font-bold text-sm md:text-base dark:text-gray-300 dark:hover:text-orange-400 transition">Start</a>
+                    <a href="alle-rezepte.html" class="text-gray-700 hover:text-orange-600 font-bold text-sm md:text-base dark:text-gray-300 dark:hover:text-orange-400 transition">Rezepte</a>
+                    <a href="neues-rezept.html" class="bg-orange-500 text-white px-4 py-2 rounded-xl font-bold border-2 border-gray-900 shadow-[2px_2px_0px_0px_#1f2937] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition text-sm">Einsenden</a>
+                    <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition font-bold text-xl"><span id="dark-icon">🌙</span></button>
                 </div>
             </div>
         </div>
     </nav>
 
     <main class="max-w-4xl mx-auto px-4 py-10 flex-grow" id="content-container">
-
-        <div class="rounded-2xl overflow-hidden shadow-2xl mb-8 h-[400px]">
+        
+        <div class="rounded-[2rem] border-4 border-gray-900 shadow-[8px_8px_0px_0px_#1f2937] overflow-hidden mb-12 h-[300px] md:h-[450px] dark:border-gray-900 dark:shadow-[8px_8px_0px_0px_#000]">
             <img id="rec-img" src="" alt="Gericht" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x400?text=Ladefehler'">
         </div>
 
-        <div class="bg-white p-8 md:p-12 rounded-2xl shadow-sm dark:bg-gray-800 dark:shadow-gray-900/50 transition-colors duration-300 relative">
+        <div class="bg-white p-8 md:p-12 rounded-[2rem] border-4 border-gray-900 shadow-[8px_8px_0px_0px_#1f2937] dark:bg-gray-800 dark:shadow-[8px_8px_0px_0px_#000] dark:border-gray-700 transition-colors duration-300 relative">
+            
+            <img src="knuffi_koch.png" alt="Knuffi" class="hidden 2xl:block absolute -left-64 top-12 w-64 pointer-events-none transform -rotate-3 drop-shadow-2xl opacity-90">
 
-            <img src="knuffi_koch.png"
-                 alt="Knuffi"
-                 class="hidden 2xl:block absolute -left-64 top-12 w-64 pointer-events-none transform -rotate-3 drop-shadow-xl opacity-90">
-
-
-            <header class="mb-8 border-b dark:border-gray-700 pb-8">
-                <div class="flex flex-col md:flex-row justify-between md:items-start gap-4">
+            <header class="mb-10 border-b-4 border-dashed border-gray-200 dark:border-gray-700 pb-8">
+                <div class="flex flex-col md:flex-row justify-between md:items-start gap-6">
                     <div>
-                        <span id="rec-cat" class="text-orange-600 font-bold uppercase tracking-wider text-sm dark:text-orange-400"></span>
-                        <h1 id="rec-title" class="text-4xl md:text-5xl font-bold mt-2 mb-4 text-gray-900 dark:text-white"></h1>
+                        <span id="rec-cat" class="bg-[#FF9F1C] text-gray-900 text-sm font-extrabold px-3 py-1.5 rounded-xl border-2 border-gray-900 shadow-[2px_2px_0px_0px_#111827] uppercase"></span>
+                        <h1 id="rec-title" class="text-4xl md:text-5xl font-extrabold mt-6 mb-4 text-gray-900 dark:text-white leading-tight"></h1>
                     </div>
-
-                    <div class="flex gap-2 no-print self-start">
-
-                        <button onclick="shareRecipe()" class="flex items-center gap-2 bg-blue-100 hover:bg-blue-200 text-blue-700 px-4 py-2 rounded-lg transition dark:bg-blue-900 dark:text-blue-200 dark:hover:bg-blue-800">
+                    
+                    <div class="flex gap-3 self-start flex-wrap">
+                        <button onclick="shareRecipe()" class="flex items-center gap-2 bg-[#2EC4B6] text-white font-bold px-4 py-2 rounded-xl border-2 border-gray-900 shadow-[3px_3px_0px_0px_#111827] hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px] transition dark:bg-teal-700">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path></svg>
                             <span>Teilen</span>
                         </button>
 
-                        <button onclick="window.print()" class="flex items-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-700 px-4 py-2 rounded-lg transition dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600">
+                        <button onclick="openPrintView()" class="flex items-center gap-2 bg-white text-gray-900 font-bold px-4 py-2 rounded-xl border-2 border-gray-900 shadow-[3px_3px_0px_0px_#111827] hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px] transition hover:bg-gray-50 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
-                            <span>PDF</span>
+                            <span>Drucken / PDF</span>
                         </button>
                     </div>
                 </div>
 
-                <div class="flex flex-wrap items-center gap-6 text-gray-500 dark:text-gray-400 mt-2">
-                    <span class="flex items-center">⏱️ <span id="rec-time" class="ml-2"></span></span>
-                    <span class="flex items-center">🍽️ <span id="rec-portions" class="ml-2"></span></span>
-
-                    <span id="rec-author-wrapper" class="hidden flex items-center">
+                <div class="flex flex-wrap items-center gap-4 text-gray-700 dark:text-gray-300 mt-6 font-bold">
+                    <span class="flex items-center bg-gray-100 dark:bg-gray-700 px-3 py-1.5 rounded-lg border-2 border-gray-900">⏱️ <span id="rec-time" class="ml-2"></span></span>
+                    <span class="flex items-center bg-gray-100 dark:bg-gray-700 px-3 py-1.5 rounded-lg border-2 border-gray-900">🍽️ <span id="rec-portions" class="ml-2"></span></span>
+                    <span id="rec-author-wrapper" class="hidden flex items-center bg-orange-100 text-orange-800 dark:bg-orange-900/50 dark:text-orange-200 px-3 py-1.5 rounded-lg border-2 border-orange-300 dark:border-orange-800">
                         👤 <span id="rec-author" class="ml-2"></span>
                     </span>
                 </div>
             </header>
 
             <div class="grid md:grid-cols-3 gap-12">
-                <div class="md:col-span-1">
-                    <h2 class="text-2xl font-bold mb-4 dark:text-gray-200">Zutaten</h2>
-                    <ul id="rec-ingredients" class="space-y-3 text-gray-700 dark:text-gray-300">
-                        </ul>
+                <div class="md:col-span-1 bg-[#FFE5D9] p-6 rounded-2xl border-4 border-gray-900 shadow-[4px_4px_0px_0px_#1f2937] dark:bg-gray-800 dark:shadow-[4px_4px_0px_0px_#000] h-fit">
+                    <h2 class="text-3xl font-extrabold mb-6 text-gray-900 dark:text-white border-b-4 border-gray-900 pb-2 inline-block">Zutaten</h2>
+                    <ul id="rec-ingredients" class="space-y-4 text-gray-800 font-medium dark:text-gray-200"></ul>
                 </div>
-
                 <div class="md:col-span-2">
-                    <h2 class="text-2xl font-bold mb-4 dark:text-gray-200">Zubereitung</h2>
-                    <div id="rec-steps" class="space-y-6 text-lg text-gray-700 leading-relaxed dark:text-gray-300">
-                        </div>
+                    <h2 class="text-3xl font-extrabold mb-8 text-gray-900 dark:text-white">Zubereitung</h2>
+                    <div id="rec-steps" class="space-y-8 text-lg text-gray-700 leading-relaxed dark:text-gray-300 font-medium"></div>
                 </div>
             </div>
 
-            <div id="rec-inspiration-wrapper" class="mt-12 pt-6 border-t border-gray-100 dark:border-gray-700 hidden">
-                <p class="text-gray-500 dark:text-gray-400 text-sm italic">
-                    💡 Inspiration: <span id="rec-inspiration" class="text-gray-700 dark:text-gray-300 not-italic"></span>
-                </p>
-            </div>
-
-        </div>
-
-        <div class="mt-8 max-w-4xl mx-auto px-4 text-center no-print">
-            <div class="bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 text-sm text-gray-500 dark:text-gray-400 italic">
-                <p>
-                    <strong>Hinweis zu den Bildern:</strong><br>
-                    Bei einigen Rezepten werden Beispielbilder verwendet, die dem fertigen Gericht möglichst ähnlich sehen.
-                    Einige stammen aus den Untiefen des Internets, andere von Unsplash, manche sind selbst aufgenommen oder anderweitig beschafft.
+            <div id="rec-inspiration-wrapper" class="mt-12 pt-6 border-t-4 border-dashed border-gray-200 dark:border-gray-700 hidden">
+                <p class="text-gray-600 dark:text-gray-400 font-bold bg-gray-50 dark:bg-gray-700/50 inline-block px-4 py-2 rounded-xl border-2 border-gray-200 dark:border-gray-600">
+                    💡 Inspiration: <span id="rec-inspiration" class="text-gray-800 dark:text-gray-200"></span>
                 </p>
             </div>
         </div>
 
+        <div class="mt-12 max-w-4xl mx-auto px-4 text-center">
+            <div class="bg-gray-100 dark:bg-gray-800 border-4 border-gray-900 dark:border-gray-700 rounded-2xl p-6 shadow-[4px_4px_0px_0px_#1f2937] dark:shadow-[4px_4px_0px_0px_#000] font-bold text-gray-600 dark:text-gray-300 transform rotate-1">
+                <p><strong>Hinweis zu den Bildern:</strong><br>Einige Bilder sind Platzhalter oder Beispielbilder. Dein Essen muss nicht perfekt aussehen, Hauptsache es schmeckt! 🐼</p>
+            </div>
+        </div>
+
+        <div class="mt-16 bg-white dark:bg-gray-800 border-4 border-gray-900 rounded-3xl p-8 text-center shadow-[8px_8px_0px_0px_#1f2937] dark:shadow-[8px_8px_0px_0px_#000] relative z-10 max-w-2xl mx-auto">
+            <h3 class="text-3xl font-extrabold text-gray-900 dark:text-white mb-4">Gefällt dir Knuffis Rezepte?</h3>
+            <p class="text-gray-700 dark:text-gray-300 font-medium text-lg mb-8 max-w-md mx-auto">Hilf mir, die Seite werbefrei zu halten und unterstütze mich gerne mit einem Euro! Jede kleine Spende wandert direkt in die Rezeptentwicklung.</p>
+            <a href="https://ko-fi.com/knuffirezepte" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 bg-[#FF5E5B] text-white font-bold text-xl py-3 px-8 rounded-2xl border-4 border-gray-900 shadow-[4px_4px_0px_0px_#1f2937] hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition">
+                <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M23.881 8.948c-.773-4.085-4.859-4.593-4.859-4.593H.723c-.604 0-.679.798-.679.798s-.082 7.324-.022 11.822c.164 2.424 2.586 2.672 2.586 2.672s8.267-.023 11.966-.049c2.438-.426 2.683-2.566 2.658-3.734 4.352.24 7.422-2.831 6.649-6.916zm-11.062 3.511c-1.246 1.453-4.011 3.976-4.011 3.976s-.121.119-.31.023c-.076-.057-.108-.09-.108-.09-.443-.441-3.368-3.049-4.061-4.3-.037-.046-.054-.09-.054-.118-.014-.047-.02-.093-.016-.145.034-.146.069-.279.108-.403.228-.544.502-1.05.996-1.391.802-.553 1.849-.452 2.607.126.312.238.587.545.836.885.166.226.471.226.637 0 .249-.34.524-.647.836-.885.758-.578 1.805-.679 2.607-.126.494.341.768.847.996 1.391.039.124.074.257.108.403.004.052-.002.098-.016.145-.001.028-.017.072-.054.118-.328.666-2.571 3.256-3.491 4.258zM20.804 13.064c-.114.733-.943 1.006-1.921 1.053V6.992c1.944.021 3.292.544 3.514 2.404.225 1.859-.479 2.935-1.593 3.668z"/></svg>
+                <span>Unterstütze Knuffi</span>
+            </a>
+        </div>
     </main>
 
-    <footer class="bg-gray-800 text-gray-300 py-8 mt-12 dark:bg-black dark:text-gray-500 no-print">
+    <footer class="bg-gray-900 text-gray-300 py-10 mt-16 border-t-8 border-gray-800 no-print">
         <div class="max-w-6xl mx-auto px-4 text-center">
-            <p>&copy; 2026 Larsi's Simple Rezepte. Alle Rechte vorbehalten.</p>
-            <div class="mt-2 space-x-4">
-                <a href="impressum.html" class="hover:text-white underline">Impressum</a>
-                <a href="datenschutz.html" class="hover:text-white underline">Datenschutz</a>
+            <p class="font-bold text-lg mb-2">&copy; 2026 Knuffis Rezepte. Alle Rechte vorbehalten.</p>
+            <div class="mt-4 space-x-6 text-sm font-medium">
+                <a href="impressum.html" class="hover:text-[#FF9F1C] underline decoration-2 underline-offset-4 transition">Impressum</a>
+                <a href="datenschutz.html" class="hover:text-[#FF9F1C] underline decoration-2 underline-offset-4 transition">Datenschutz</a>
             </div>
         </div>
     </footer>
@@ -134,66 +140,75 @@
         const rezept = rezeptDaten[rezeptId];
 
         if (rezept) {
-            document.title = rezept.titel + " - Larsi's Rezepte";
+            document.title = rezept.titel + " - Knuffis Rezepte";
             document.getElementById('rec-img').src = rezept.bild;
             document.getElementById('rec-cat').innerText = rezept.kategorie;
             document.getElementById('rec-title').innerText = rezept.titel;
             document.getElementById('rec-time').innerText = rezept.zeit;
             document.getElementById('rec-portions').innerText = rezept.portionen;
 
-            // --- Autor anzeigen ---
             if (rezept.autor) {
                 const datumText = rezept.datum ? ` am ${rezept.datum}` : '';
                 document.getElementById('rec-author').innerText = `Von ${rezept.autor}${datumText}`;
                 document.getElementById('rec-author-wrapper').classList.remove('hidden');
             }
 
-            // --- NEU: Inspiration anzeigen ---
             if (rezept.inspiration) {
                 document.getElementById('rec-inspiration').innerHTML = rezept.inspiration;
                 document.getElementById('rec-inspiration-wrapper').classList.remove('hidden');
             }
-            // --------------------------------
 
             const ingList = document.getElementById('rec-ingredients');
             rezept.zutaten.forEach(zutat => {
-                ingList.innerHTML += `<li class="flex items-start"><span class="w-2 h-2 bg-orange-400 rounded-full mt-2 mr-3 flex-shrink-0"></span> ${zutat}</li>`;
+                ingList.innerHTML += `<li class="flex items-center gap-3"><span class="w-3 h-3 bg-white border-2 border-gray-900 rounded-full flex-shrink-0 shadow-[1px_1px_0px_0px_#000]"></span> ${zutat}</li>`;
             });
 
             const stepList = document.getElementById('rec-steps');
+            let schemaInstructions = [];
+
             rezept.zubereitung.forEach((step, index) => {
                 stepList.innerHTML += `
-                    <div>
-                        <span class="text-orange-600 font-bold text-xl block mb-1 dark:text-orange-400">Schritt ${index + 1}: ${step.titel}</span>
-                        <p>${step.text}</p>
+                    <div class="bg-gray-50 dark:bg-gray-700/50 p-6 rounded-2xl border-2 border-gray-200 dark:border-gray-600">
+                        <span class="step-badge inline-block bg-[#FF9F1C] text-gray-900 font-extrabold px-3 py-1 rounded-xl border-2 border-gray-900 shadow-[2px_2px_0px_0px_#111827] mb-3 transform -rotate-1">Schritt ${index + 1}: ${step.titel}</span>
+                        <p class="mt-2 text-gray-800 dark:text-gray-200">${step.text}</p>
                     </div>`;
+                
+                schemaInstructions.push({
+                    "@type": "HowToStep",
+                    "name": step.titel,
+                    "text": step.text
+                });
             });
+
+            // SEO Code
+            const schemaData = {
+                "@context": "https://schema.org/",
+                "@type": "Recipe",
+                "name": rezept.titel,
+                "image": [ window.location.origin + "/" + rezept.bild ],
+                "author": { "@type": "Person", "name": rezept.autor || "Knuffi" },
+                "recipeCategory": rezept.kategorie.split(',')[0],
+                "recipeYield": rezept.portionen,
+                "recipeIngredient": rezept.zutaten,
+                "recipeInstructions": schemaInstructions
+            };
+            document.getElementById('seo-schema').textContent = JSON.stringify(schemaData);
+
         } else {
-            document.getElementById('content-container').innerHTML = '<div class="text-center py-20"><h1 class="text-3xl font-bold text-gray-400">Rezept nicht gefunden :(</h1><a href="index.html" class="text-orange-600 underline mt-4 block">Zurück zur Übersicht</a></div>';
+            document.getElementById('content-container').innerHTML = '<div class="text-center py-20 bg-white rounded-[2rem] border-4 border-gray-900 shadow-[8px_8px_0px_0px_#1f2937]"><h1 class="text-4xl font-extrabold text-gray-800 mb-4">Rezept nicht gefunden 🐼</h1><a href="index.html" class="inline-block bg-[#FF9F1C] text-gray-900 font-bold px-6 py-3 rounded-xl border-4 border-gray-900 shadow-[4px_4px_0px_0px_#111827] hover:-translate-y-1 transition">Zurück zur Übersicht</a></div>';
         }
 
-        // --- TEILEN FUNKTION ---
+        // --- TEILEN & DRUCKEN ---
         async function shareRecipe() {
-            const shareData = {
-                title: 'Larsi\'s Simple Rezepte',
-                text: 'Schau dir dieses leckere Rezept an: ' + (rezept ? rezept.titel : 'Tolles Essen'),
-                url: window.location.href
-            };
-
             if (navigator.share) {
-                try {
-                    await navigator.share(shareData);
-                } catch (err) {
-                    console.log('Teilen abgebrochen');
-                }
+                try { await navigator.share({ title: 'Knuffis Rezepte', text: 'Lecker: ' + rezept.titel, url: window.location.href }); } catch (err) {}
             } else {
-                try {
-                    await navigator.clipboard.writeText(window.location.href);
-                    alert("Link wurde in die Zwischenablage kopiert! (Hinweis: Der Link funktioniert für andere nur, wenn die Seite online gestellt ist)");
-                } catch (err) {
-                    alert("Link konnte nicht kopiert werden.");
-                }
+                try { await navigator.clipboard.writeText(window.location.href); alert("Link kopiert!"); } catch (err) {}
             }
+        }
+
+        function openPrintView() {
+            window.open('druck.html?id=' + rezeptId, '_blank');
         }
     </script>
 </body>

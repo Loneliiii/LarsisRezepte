@@ -3,8 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Impressum - Larsi's Simple Rezepte</title>
+    <title>Impressum - Knuffis Rezepte</title>
     
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Schriftart auf der ganzen Seite anwenden */
+        body { font-family: 'Fredoka', sans-serif; }
+    </style>
+
     <script>
         if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.classList.add('dark');
@@ -17,36 +26,40 @@
     <script> tailwind.config = { darkMode: 'class' } </script>
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300 flex flex-col min-h-screen">
+<body class="bg-[#faf9f6] text-gray-800 font-sans dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300 flex flex-col min-h-screen">
 
-    <nav class="bg-white shadow-md sticky top-0 z-50 dark:bg-gray-800 dark:border-b dark:border-gray-700 transition-colors duration-300 no-print">
+    <nav class="bg-white sticky top-0 z-50 dark:bg-gray-800 border-b-4 border-gray-900 transition-colors duration-300 no-print shadow-[0_4px_0_0_#1f2937] dark:shadow-[0_4px_0_0_#000]">
         <div class="max-w-6xl mx-auto px-4">
             <div class="flex flex-col md:flex-row justify-between items-center py-3 md:py-4 min-h-[80px]">
                 
-                <a href="index.html" class="text-2xl font-bold text-orange-600 mb-3 md:mb-0">
-                    Larsi's <span class="text-gray-700 dark:text-gray-300">Simple Rezepte</span>
+                <a href="index.html" class="text-3xl font-bold text-orange-600 mb-3 md:mb-0 transform hover:scale-105 transition">
+                    Knuffis <span class="text-gray-800 dark:text-gray-100">Rezepte</span>
                 </a>
                 
-                <div class="flex items-center gap-3 flex-wrap justify-center">
-                    <a href="index.html" class="text-gray-600 hover:text-orange-600 font-medium text-sm md:text-base dark:text-gray-300 dark:hover:text-orange-400">Start</a>
-                    <a href="alle-rezepte.html" class="text-gray-600 hover:text-orange-600 font-medium text-sm md:text-base dark:text-gray-300 dark:hover:text-orange-400">Rezepte</a>
-                    <a href="neues-rezept.html" class="bg-orange-600 text-white px-3 py-2 rounded-lg hover:bg-orange-700 transition shadow-sm text-sm">Einsenden</a>
-                    <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition"><span id="dark-icon">🌙</span></button>
+                <div class="flex items-center gap-4 flex-wrap justify-center">
+                    <a href="index.html" class="text-gray-700 hover:text-orange-600 font-bold text-sm md:text-base dark:text-gray-300 dark:hover:text-orange-400 transition">Start</a>
+                    <a href="alle-rezepte.html" class="text-gray-700 hover:text-orange-600 font-bold text-sm md:text-base dark:text-gray-300 dark:hover:text-orange-400 transition">Rezepte</a>
+                    
+                    <a href="neues-rezept.html" class="bg-orange-500 text-white px-4 py-2 rounded-xl font-bold border-2 border-gray-900 shadow-[2px_2px_0px_0px_#1f2937] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition text-sm">Einsenden</a>
+                    
+                    <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition font-bold text-xl" aria-label="Dark Mode umschalten">
+                        <span id="dark-icon">🌙</span>
+                    </button>
                 </div>
             </div>
         </div>
     </nav>
 
     <main class="max-w-3xl mx-auto px-4 py-12 flex-grow">
-        <div class="bg-white p-8 md:p-12 rounded-xl shadow-lg dark:bg-gray-800 dark:shadow-gray-900/50">
+        <div class="bg-white p-8 md:p-12 rounded-[2rem] border-4 border-gray-900 shadow-[8px_8px_0px_0px_#1f2937] dark:bg-gray-800 dark:shadow-[8px_8px_0px_0px_#000] dark:border-gray-700">
             
-            <h1 class="text-3xl font-bold mb-8 text-orange-600 dark:text-orange-400">Impressum</h1>
+            <h1 class="text-4xl font-extrabold mb-8 text-gray-900 dark:text-white border-b-4 border-dashed border-gray-200 dark:border-gray-700 pb-6">Impressum</h1>
 
-            <div class="space-y-8">
+            <div class="space-y-8 text-lg">
                 
                 <div>
-                    <h2 class="text-xl font-bold mb-3 dark:text-gray-200">Angaben gemäß § 5 TMG</h2>
-                    <p class="leading-relaxed">
+                    <h2 class="text-2xl font-extrabold mb-3 text-gray-900 dark:text-gray-200">Angaben gemäß § 5 TMG</h2>
+                    <p class="leading-relaxed font-medium text-gray-800 dark:text-gray-300 bg-gray-50 dark:bg-gray-700/50 p-4 rounded-xl border-2 border-gray-200 dark:border-gray-600 inline-block">
                         LarsRezepte.de - Lars Krahnen<br>
                         c/o Online-Impressum.de #6399<br>
                         Europaring 90<br>
@@ -55,16 +68,16 @@
                 </div>
 
                 <div>
-                    <h2 class="text-xl font-bold mb-3 dark:text-gray-200">Kontakt</h2>
-                    <p class="leading-relaxed">
-                        E-Mail: <a href="mailto:lars.krahnen@gmail.com" class="text-orange-600 hover:underline">lars.krahnen@gmail.com</a><br>
-                        Kontaktformular: <a href="https://mein.online-impressum.de/lars-krahnen/" target="_blank" class="text-orange-600 hover:underline">Zum Kontaktformular</a>
+                    <h2 class="text-2xl font-extrabold mb-3 text-gray-900 dark:text-gray-200">Kontakt</h2>
+                    <p class="leading-relaxed font-medium text-gray-800 dark:text-gray-300">
+                        E-Mail: <a href="mailto:lars.krahnen@gmail.com" class="text-[#FF9F1C] hover:text-[#FF5E5B] underline decoration-2 underline-offset-2 transition">lars.krahnen@gmail.com</a><br>
+                        Kontaktformular: <a href="https://mein.online-impressum.de/lars-krahnen/" target="_blank" class="text-[#FF9F1C] hover:text-[#FF5E5B] underline decoration-2 underline-offset-2 transition">Zum Kontaktformular</a>
                     </p>
                 </div>
 
                 <div>
-                    <h2 class="text-xl font-bold mb-3 dark:text-gray-200">Redaktionell Verantwortlicher</h2>
-                    <p class="leading-relaxed">
+                    <h2 class="text-2xl font-extrabold mb-3 text-gray-900 dark:text-gray-200">Redaktionell Verantwortlicher</h2>
+                    <p class="leading-relaxed font-medium text-gray-800 dark:text-gray-300 bg-gray-50 dark:bg-gray-700/50 p-4 rounded-xl border-2 border-gray-200 dark:border-gray-600 inline-block">
                         Lars Krahnen<br>
                         c/o Online-Impressum.de #6399<br>
                         Europaring 90<br>
@@ -73,35 +86,35 @@
                 </div>
 
                 <div>
-                    <h2 class="text-xl font-bold mb-3 dark:text-gray-200">EU-Streitschlichtung</h2>
-                    <p class="leading-relaxed text-gray-600 dark:text-gray-400">
+                    <h2 class="text-2xl font-extrabold mb-3 text-gray-900 dark:text-gray-200">EU-Streitschlichtung</h2>
+                    <p class="leading-relaxed font-medium text-gray-700 dark:text-gray-400">
                         Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: 
-                        <a href="https://ec.europa.eu/consumers/odr/" target="_blank" class="text-orange-600 hover:underline">https://ec.europa.eu/consumers/odr/</a>.<br>
+                        <a href="https://ec.europa.eu/consumers/odr/" target="_blank" class="text-[#FF9F1C] hover:text-[#FF5E5B] underline decoration-2 underline-offset-2 transition break-all">https://ec.europa.eu/consumers/odr/</a>.<br>
                         Unsere E-Mail-Adresse finden Sie oben im Impressum.
                     </p>
                 </div>
 
                 <div>
-                    <h2 class="text-xl font-bold mb-3 dark:text-gray-200">Verbraucherstreitbeilegung / Universalschlichtungsstelle</h2>
-                    <p class="leading-relaxed text-gray-600 dark:text-gray-400">
+                    <h2 class="text-2xl font-extrabold mb-3 text-gray-900 dark:text-gray-200">Verbraucherstreitbeilegung / Universalschlichtungsstelle</h2>
+                    <p class="leading-relaxed font-medium text-gray-700 dark:text-gray-400">
                         Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
                     </p>
                 </div>
 
-                <div class="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700 text-sm text-gray-500 dark:text-gray-400">
-                    <p>Dieses Impressum wurde erstellt mit dem Service von <a href="https://online-impressum.de" target="_blank" class="hover:text-orange-600">Online-Impressum.de</a>.</p>
+                <div class="mt-12 pt-8 border-t-4 border-dashed border-gray-200 dark:border-gray-700 text-sm font-bold text-gray-500 dark:text-gray-400">
+                    <p>Dieses Impressum wurde erstellt mit dem Service von <a href="https://online-impressum.de" target="_blank" class="hover:text-[#FF9F1C] underline decoration-2 underline-offset-2 transition">Online-Impressum.de</a>.</p>
                 </div>
 
             </div>
         </div>
     </main>
 
-    <footer class="bg-gray-800 text-gray-300 py-8 mt-12 dark:bg-black dark:text-gray-500 no-print">
+    <footer class="bg-gray-900 text-gray-300 py-10 mt-16 border-t-8 border-gray-800 no-print">
         <div class="max-w-6xl mx-auto px-4 text-center">
-            <p class="mb-2">&copy; 2026 Larsi's Simple Rezepte. Alle Rechte vorbehalten.</p>
-            <div class="text-sm space-x-4">
-                <a href="impressum.html" class="hover:text-white underline font-bold">Impressum</a>
-                <a href="datenschutz.html" class="hover:text-white underline">Datenschutz</a>
+            <p class="font-bold text-lg mb-2">&copy; 2026 Knuffis Rezepte. Alle Rechte vorbehalten.</p>
+            <div class="mt-4 space-x-6 text-sm font-medium">
+                <a href="impressum.html" class="text-[#FF9F1C] underline decoration-2 underline-offset-4 transition">Impressum</a>
+                <a href="datenschutz.html" class="hover:text-[#FF9F1C] underline decoration-2 underline-offset-4 transition">Datenschutz</a>
             </div>
         </div>
     </footer>

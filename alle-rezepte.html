@@ -3,8 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alle Rezepte - Larsi's Simple Rezepte</title>
+    <title>Alle Rezepte - Knuffis Rezepte</title>
     
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Schriftart auf der ganzen Seite anwenden */
+        body { font-family: 'Fredoka', sans-serif; }
+    </style>
+
     <script>
         if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.classList.add('dark');
@@ -18,21 +27,25 @@
     <script> tailwind.config = { darkMode: 'class' } </script>
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300 flex flex-col min-h-screen">
+<body class="bg-[#faf9f6] text-gray-800 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300 flex flex-col min-h-screen">
 
-    <nav class="bg-white shadow-md sticky top-0 z-50 dark:bg-gray-800 dark:border-b dark:border-gray-700 transition-colors duration-300 no-print">
+    <nav class="bg-white sticky top-0 z-50 dark:bg-gray-800 border-b-4 border-gray-900 transition-colors duration-300 no-print shadow-[0_4px_0_0_#1f2937] dark:shadow-[0_4px_0_0_#000]">
         <div class="max-w-6xl mx-auto px-4">
             <div class="flex flex-col md:flex-row justify-between items-center py-3 md:py-4 min-h-[80px]">
-                
-                <a href="index.html" class="text-2xl font-bold text-orange-600 mb-3 md:mb-0">
-                    Larsi's <span class="text-gray-700 dark:text-gray-300">Simple Rezepte</span>
+
+                <a href="index.html" class="text-3xl font-bold text-orange-600 mb-3 md:mb-0 transform hover:scale-105 transition">
+                    Knuffis <span class="text-gray-800 dark:text-gray-100">Rezepte</span>
                 </a>
-                
-                <div class="flex items-center gap-3 flex-wrap justify-center">
-                    <a href="index.html" class="text-gray-600 hover:text-orange-600 font-medium text-sm md:text-base dark:text-gray-300 dark:hover:text-orange-400">Start</a>
-                    <a href="alle-rezepte.html" class="text-orange-600 font-bold text-sm md:text-base dark:text-orange-400">Rezepte</a>
-                    <a href="neues-rezept.html" class="bg-orange-600 text-white px-3 py-2 rounded-lg hover:bg-orange-700 transition shadow-sm text-sm">Einsenden</a>
-                    <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition"><span id="dark-icon">🌙</span></button>
+
+                <div class="flex items-center gap-4 flex-wrap justify-center">
+                    <a href="index.html" class="text-gray-700 hover:text-orange-600 font-bold text-sm md:text-base dark:text-gray-300 dark:hover:text-orange-400 transition">Start</a>
+                    <a href="alle-rezepte.html" class="text-[#FF9F1C] font-extrabold text-sm md:text-base dark:text-orange-400 transition">Rezepte</a>
+                    
+                    <a href="neues-rezept.html" class="bg-orange-500 text-white px-4 py-2 rounded-xl font-bold border-2 border-gray-900 shadow-[2px_2px_0px_0px_#1f2937] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition text-sm">Einsenden</a>
+
+                    <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition font-bold text-xl" aria-label="Dark Mode umschalten">
+                        <span id="dark-icon">🌙</span>
+                    </button>
                 </div>
             </div>
         </div>
@@ -40,48 +53,60 @@
 
     <main class="max-w-6xl mx-auto px-4 py-12 flex-grow">
         
-        <div class="flex flex-col md:flex-row justify-between items-end mb-6 border-b dark:border-gray-700 pb-4 gap-4">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-10 border-b-4 border-gray-900 pb-8 gap-6 dark:border-gray-700">
             <div>
-                <h1 class="text-4xl font-bold dark:text-white">Alle Rezepte</h1>
-                <p class="text-gray-500 mt-2 dark:text-gray-400">Stöbere durch die komplette Sammlung.</p>
+                <h1 class="text-5xl font-extrabold dark:text-white inline-block bg-[#FF9F1C] text-gray-900 px-5 py-2 rounded-2xl border-4 border-gray-900 shadow-[6px_6px_0px_0px_#1f2937] transform -rotate-2">Alle Rezepte 📚</h1>
+                <p class="text-xl font-bold text-gray-600 mt-6 dark:text-gray-400">Stöbere durch die komplette Sammlung.</p>
             </div>
             
-            <div class="flex flex-col items-end gap-2">
-                <select id="sort-select" onchange="handleSort()" class="bg-white border border-gray-300 text-gray-700 py-2 px-4 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 dark:bg-gray-800 dark:text-gray-200 dark:border-gray-600">
+            <div class="flex flex-col items-end gap-3">
+                <select id="sort-select" onchange="handleSort()" class="bg-white border-4 border-gray-900 text-gray-900 font-bold py-2 px-4 rounded-xl shadow-[4px_4px_0px_0px_#1f2937] focus:outline-none hover:-translate-y-1 transition cursor-pointer dark:bg-gray-800 dark:text-gray-100 dark:shadow-[4px_4px_0px_0px_#000]">
                     <option value="newest">📅 Neueste zuerst</option>
                     <option value="oldest">📅 Älteste zuerst</option>
                     <option value="az">🔤 A-Z</option>
                     <option value="za">🔤 Z-A</option>
                 </select>
                 
-                <div class="text-gray-400 text-sm">
+                <div class="text-gray-500 font-bold text-sm bg-gray-200 dark:bg-gray-800 px-3 py-1 rounded-lg border-2 border-gray-900">
                     Zeige <span id="showing-info">...</span> Rezepte
                 </div>
             </div>
         </div>
 
-        <div class="flex flex-wrap gap-2 mb-8" id="filter-container">
-            <button onclick="toggleFilter(this, 'alle')" class="filter-btn active px-4 py-2 rounded-full font-medium shadow-sm transition bg-orange-600 text-white border border-transparent">Alle</button>
-            <button onclick="toggleFilter(this, 'hauptgericht')" class="filter-btn px-4 py-2 rounded-full font-medium shadow-sm transition bg-white text-gray-700 border border-gray-200 hover:bg-orange-50 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-700 dark:hover:bg-gray-700">🥘 Hauptgericht</button>
-            <button onclick="toggleFilter(this, 'dessert')" class="filter-btn px-4 py-2 rounded-full font-medium shadow-sm transition bg-white text-gray-700 border border-gray-200 hover:bg-orange-50 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-700 dark:hover:bg-gray-700">🍰 Dessert</button>
-            <button onclick="toggleFilter(this, 'schnell')" class="filter-btn px-4 py-2 rounded-full font-medium shadow-sm transition bg-white text-gray-700 border border-gray-200 hover:bg-orange-50 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-700 dark:hover:bg-gray-700">⚡ Schnell</button>
-            <button onclick="toggleFilter(this, 'vegetarisch')" class="filter-btn px-4 py-2 rounded-full font-medium shadow-sm transition bg-white text-gray-700 border border-gray-200 hover:bg-orange-50 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-700 dark:hover:bg-gray-700">🧀 Vegetarisch</button>
-            <button onclick="toggleFilter(this, 'vegan')" class="filter-btn px-4 py-2 rounded-full font-medium shadow-sm transition bg-white text-gray-700 border border-gray-200 hover:bg-orange-50 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-700 dark:hover:bg-gray-700">🌱 Vegan</button>
+        <div class="flex flex-wrap gap-3 mb-12" id="filter-container">
+            <button onclick="toggleFilter(this, 'alle')" class="filter-btn active px-5 py-2 rounded-xl font-extrabold transition bg-[#FF9F1C] text-gray-900 border-4 border-gray-900 shadow-none translate-x-[4px] translate-y-[4px]">Alle</button>
+            <button onclick="toggleFilter(this, 'hauptgericht')" class="filter-btn px-5 py-2 rounded-xl font-bold transition bg-white text-gray-800 border-4 border-gray-900 shadow-[4px_4px_0px_0px_#1f2937] hover:bg-[#FFE5D9] hover:-translate-y-1 dark:bg-gray-800 dark:text-gray-200 dark:shadow-[4px_4px_0px_0px_#000] dark:hover:bg-gray-700">🥘 Hauptgericht</button>
+            <button onclick="toggleFilter(this, 'dessert')" class="filter-btn px-5 py-2 rounded-xl font-bold transition bg-white text-gray-800 border-4 border-gray-900 shadow-[4px_4px_0px_0px_#1f2937] hover:bg-[#FFE5D9] hover:-translate-y-1 dark:bg-gray-800 dark:text-gray-200 dark:shadow-[4px_4px_0px_0px_#000] dark:hover:bg-gray-700">🍰 Dessert</button>
+            <button onclick="toggleFilter(this, 'schnell')" class="filter-btn px-5 py-2 rounded-xl font-bold transition bg-white text-gray-800 border-4 border-gray-900 shadow-[4px_4px_0px_0px_#1f2937] hover:bg-[#FFE5D9] hover:-translate-y-1 dark:bg-gray-800 dark:text-gray-200 dark:shadow-[4px_4px_0px_0px_#000] dark:hover:bg-gray-700">⚡ Schnell</button>
+            <button onclick="toggleFilter(this, 'vegetarisch')" class="filter-btn px-5 py-2 rounded-xl font-bold transition bg-white text-gray-800 border-4 border-gray-900 shadow-[4px_4px_0px_0px_#1f2937] hover:bg-[#FFE5D9] hover:-translate-y-1 dark:bg-gray-800 dark:text-gray-200 dark:shadow-[4px_4px_0px_0px_#000] dark:hover:bg-gray-700">🧀 Vegetarisch</button>
+            <button onclick="toggleFilter(this, 'vegan')" class="filter-btn px-5 py-2 rounded-xl font-bold transition bg-white text-gray-800 border-4 border-gray-900 shadow-[4px_4px_0px_0px_#1f2937] hover:bg-[#FFE5D9] hover:-translate-y-1 dark:bg-gray-800 dark:text-gray-200 dark:shadow-[4px_4px_0px_0px_#000] dark:hover:bg-gray-700">🌱 Vegan</button>
         </div>
 
         <div id="rezept-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             </div>
 
-        <div id="pagination" class="flex justify-center items-center space-x-2 mt-12">
+        <div id="pagination" class="flex justify-center items-center gap-3 mt-16 font-fredoka">
             </div>
+
+        <div class="mt-20 bg-white dark:bg-gray-800 border-4 border-gray-900 rounded-3xl p-8 text-center shadow-[8px_8px_0px_0px_#1f2937] dark:shadow-[8px_8px_0px_0px_#000] relative z-10 max-w-2xl mx-auto">
+            <h3 class="text-3xl font-extrabold text-gray-900 dark:text-white mb-4">Gefällt dir Knuffis Rezepte?</h3>
+            <p class="text-gray-700 dark:text-gray-300 font-medium text-lg mb-8 max-w-md mx-auto">
+                Hilf mir, die Seite werbefrei zu halten und unterstütze mich gerne mit einem Euro! Jede kleine Spende wandert direkt in die Rezeptentwicklung (oder in Schokolade).
+            </p>
+            <a href="https://ko-fi.com/knuffirezepte" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 bg-[#FF5E5B] text-white font-bold text-xl py-3 px-8 rounded-2xl border-4 border-gray-900 shadow-[4px_4px_0px_0px_#1f2937] hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition">
+                <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M23.881 8.948c-.773-4.085-4.859-4.593-4.859-4.593H.723c-.604 0-.679.798-.679.798s-.082 7.324-.022 11.822c.164 2.424 2.586 2.672 2.586 2.672s8.267-.023 11.966-.049c2.438-.426 2.683-2.566 2.658-3.734 4.352.24 7.422-2.831 6.649-6.916zm-11.062 3.511c-1.246 1.453-4.011 3.976-4.011 3.976s-.121.119-.31.023c-.076-.057-.108-.09-.108-.09-.443-.441-3.368-3.049-4.061-4.3-.037-.046-.054-.09-.054-.118-.014-.047-.02-.093-.016-.145.034-.146.069-.279.108-.403.228-.544.502-1.05.996-1.391.802-.553 1.849-.452 2.607.126.312.238.587.545.836.885.166.226.471.226.637 0 .249-.34.524-.647.836-.885.758-.578 1.805-.679 2.607-.126.494.341.768.847.996 1.391.039.124.074.257.108.403.004.052-.002.098-.016.145-.001.028-.017.072-.054.118-.328.666-2.571 3.256-3.491 4.258zM20.804 13.064c-.114.733-.943 1.006-1.921 1.053V6.992c1.944.021 3.292.544 3.514 2.404.225 1.859-.479 2.935-1.593 3.668z"/></svg>
+                <span>Unterstütze Knuffi</span>
+            </a>
+        </div>
+
     </main>
 
-    <footer class="bg-gray-800 text-gray-300 py-8 mt-12 dark:bg-black dark:text-gray-500 no-print">
+    <footer class="bg-gray-900 text-gray-300 py-10 mt-16 border-t-8 border-gray-800 no-print">
         <div class="max-w-6xl mx-auto px-4 text-center">
-            <p>&copy; 2026 Larsi's Simple Rezepte. Alle Rechte vorbehalten.</p>
-            <div class="mt-2 space-x-4">
-                <a href="impressum.html" class="hover:text-white underline">Impressum</a>
-                <a href="datenschutz.html" class="hover:text-white underline">Datenschutz</a>
+            <p class="font-bold text-lg mb-2">&copy; 2026 Knuffis Rezepte. Alle Rechte vorbehalten.</p>
+            <div class="mt-4 space-x-6 text-sm font-medium">
+                <a href="impressum.html" class="hover:text-[#FF9F1C] underline decoration-2 underline-offset-4 transition">Impressum</a>
+                <a href="datenschutz.html" class="hover:text-[#FF9F1C] underline decoration-2 underline-offset-4 transition">Datenschutz</a>
             </div>
         </div>
     </footer>
@@ -117,7 +142,7 @@
 
         const allRecipesArray = Object.entries(rezeptDaten);
 
-        // --- FILTER LOGIK (Wie auf Startseite) ---
+        // --- FILTER LOGIK ---
         function toggleFilter(btn, filter) {
             const isAlle = filter === 'alle';
 
@@ -137,8 +162,8 @@
             }
 
             updateButtonStyles();
-            currentPage = 1; // Zurück auf Seite 1 wenn gefiltert wird
-            renderPage();    // Neu anzeigen
+            currentPage = 1; 
+            renderPage();    
         }
 
         function updateButtonStyles() {
@@ -147,9 +172,9 @@
                 const filterName = match ? match[1] : '';
 
                 if (activeFilters.has(filterName)) {
-                    button.className = "filter-btn px-4 py-2 rounded-full font-medium shadow-sm transition bg-orange-600 text-white border border-transparent transform scale-105";
+                    button.className = "filter-btn px-5 py-2 rounded-xl font-extrabold transition bg-[#FF9F1C] text-gray-900 border-4 border-gray-900 shadow-none translate-x-[4px] translate-y-[4px] outline-none";
                 } else {
-                    button.className = "filter-btn px-4 py-2 rounded-full font-medium shadow-sm transition bg-white text-gray-700 border border-gray-200 hover:bg-orange-50 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-700 dark:hover:bg-gray-700";
+                    button.className = "filter-btn px-5 py-2 rounded-xl font-bold transition bg-white text-gray-800 border-4 border-gray-900 shadow-[4px_4px_0px_0px_#1f2937] hover:bg-[#FFE5D9] hover:-translate-y-1 dark:bg-gray-800 dark:text-gray-200 dark:shadow-[4px_4px_0px_0px_#000] dark:hover:bg-gray-700 outline-none";
                 }
             });
         }
@@ -167,12 +192,10 @@
             let filtered = allRecipesArray.filter(([id, data]) => {
                 if (activeFilters.has('alle')) return true;
 
-                // Tags generieren (wie auf Startseite)
                 let tags = (data.kategorie || "").toLowerCase();
                 const minuten = parseInt(data.zeit);
                 if (minuten <= 30) tags += " schnell";
 
-                // Prüfen ob ALLE aktiven Filter in den Tags vorkommen
                 return Array.from(activeFilters).every(filter => tags.includes(filter));
             });
 
@@ -197,36 +220,36 @@
             const grid = document.getElementById('rezept-grid');
             grid.innerHTML = ''; 
 
-            // Die gefilterte & sortierte Liste holen
             const processedItems = getProcessedRecipes();
             const total = processedItems.length;
 
-            // Seite berechnen
             const start = (currentPage - 1) * ITEMS_PER_PAGE;
             const end = start + ITEMS_PER_PAGE;
             const pageItems = processedItems.slice(start, end);
 
-            // Karten bauen
+            // Karten bauen (Verspielter Sticker-Style)
             pageItems.forEach(([id, data]) => {
-                const datumAnzeige = data.datum ? `<span class="text-xs bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded text-gray-500 dark:text-gray-400">📅 ${data.datum}</span>` : '';
-                const autorAnzeige = data.autor ? `<span class="text-xs text-gray-400 dark:text-gray-500 ml-auto">Von ${data.autor}</span>` : '';
+                const datumAnzeige = data.datum ? `<div class="absolute top-4 right-4 bg-white text-gray-900 text-xs font-extrabold px-2 py-1 rounded-lg border-2 border-gray-900 transform rotate-3 shadow-[2px_2px_0px_0px_#111827]">📅 ${data.datum}</div>` : '';
+                const autorAnzeige = data.autor ? `<span class="text-sm font-bold text-gray-500 dark:text-gray-400 ml-auto">Von ${data.autor}</span>` : '';
 
                 const cardHTML = `
-                <a href="rezept.html?id=${id}" class="block group animate-fade-in">
-                    <div class="bg-white rounded-xl shadow-lg overflow-hidden card-zoom dark:bg-gray-800 dark:shadow-gray-900/50 h-full flex flex-col">
-                        <div class="h-56 overflow-hidden relative">
-                            <img src="${data.bild}" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x400?text=Kein+Bild'">
+                <a href="rezept.html?id=${id}" class="block group transform transition-all duration-300 hover:-translate-y-3 hover:rotate-2 h-full">
+                    <div class="bg-white rounded-[2rem] border-4 border-gray-900 shadow-[8px_8px_0px_0px_#1f2937] overflow-hidden flex flex-col h-full dark:bg-gray-800 dark:border-gray-900 dark:shadow-[8px_8px_0px_0px_#000]">
+                        
+                        <div class="h-56 overflow-hidden relative border-b-4 border-gray-900">
+                            <img src="${data.bild}" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500" onerror="this.src='https://placehold.co/600x400?text=Kein+Bild'">
+                            ${datumAnzeige}
                         </div>
+                        
                         <div class="p-6 flex-grow flex flex-col">
-                            <div class="mb-3 flex justify-between items-start">
-                                <span class="bg-orange-100 text-orange-600 text-xs font-bold px-2 py-1 rounded-full uppercase dark:bg-orange-900 dark:text-orange-200">${data.kategorie.split(',')[0]}</span>
-                                ${datumAnzeige}
+                            <div class="mb-4 flex justify-between items-start">
+                                <span class="bg-[#FF9F1C] text-gray-900 text-sm font-extrabold px-3 py-1 rounded-xl border-2 border-gray-900 shadow-[2px_2px_0px_0px_#111827] uppercase">${data.kategorie.split(',')[0]}</span>
                             </div>
                             
-                            <h3 class="text-xl font-bold group-hover:text-orange-600 transition dark:text-gray-100 mb-2">${data.titel}</h3>
+                            <h3 class="text-2xl font-extrabold group-hover:text-[#FF5E5B] transition text-gray-900 dark:text-gray-100 mb-2 leading-tight">${data.titel}</h3>
                             
-                            <div class="mt-auto flex items-center pt-4 border-t dark:border-gray-700">
-                                <span class="text-gray-500 text-sm dark:text-gray-400">⏱️ ${data.zeit}</span>
+                            <div class="mt-auto flex items-center pt-5 border-t-2 border-dashed border-gray-200 dark:border-gray-700">
+                                <span class="text-gray-800 font-bold dark:text-gray-200 bg-gray-100 dark:bg-gray-700 px-3 py-1 rounded-xl border-2 border-gray-900 shadow-[2px_2px_0px_0px_#111827]">⏱️ ${data.zeit}</span>
                                 ${autorAnzeige}
                             </div>
                         </div>
@@ -236,13 +259,12 @@
                 grid.innerHTML += cardHTML;
             });
 
-            // Info Text
             if(total > 0) {
                 const currentShow = Math.min(end, total);
                 document.getElementById('showing-info').innerText = `${start + 1}-${currentShow} von ${total}`;
             } else {
                 document.getElementById('showing-info').innerText = "0";
-                grid.innerHTML = `<div class="col-span-full text-center py-12 text-gray-500">Keine Rezepte gefunden, die zu diesen Filtern passen.</div>`;
+                grid.innerHTML = `<div class="col-span-full text-center py-12 text-gray-600 font-bold text-xl border-4 border-dashed border-gray-300 rounded-[2rem] dark:border-gray-700 dark:text-gray-400">Keine Rezepte gefunden, die zu diesen Filtern passen. 🍳</div>`;
             }
 
             renderPagination(total);
@@ -255,30 +277,30 @@
 
             if (totalPages <= 1) return;
 
-            // Zurück
+            // Zurück Button
             const prevBtn = document.createElement('button');
             prevBtn.innerHTML = '&larr;';
-            prevBtn.className = `px-4 py-2 rounded-lg border ${currentPage === 1 ? 'text-gray-300 border-gray-200 cursor-not-allowed dark:border-gray-700 dark:text-gray-600' : 'text-gray-600 border-gray-300 hover:bg-gray-100 dark:text-gray-300 dark:border-gray-600 dark:hover:bg-gray-700'}`;
+            prevBtn.className = `px-5 py-2 rounded-xl font-bold border-4 transition ${currentPage === 1 ? 'border-gray-300 bg-gray-100 text-gray-400 cursor-not-allowed dark:border-gray-700 dark:bg-gray-800 dark:text-gray-600' : 'border-gray-900 bg-white text-gray-800 shadow-[4px_4px_0px_0px_#1f2937] hover:-translate-y-1 hover:bg-[#FFE5D9] dark:bg-gray-800 dark:text-gray-200 dark:shadow-[4px_4px_0px_0px_#000] dark:hover:bg-gray-700'}`;
             prevBtn.onclick = () => { if(currentPage > 1) { currentPage--; renderPage(); }};
             container.appendChild(prevBtn);
 
-            // Zahlen
+            // Zahlen Buttons
             for (let i = 1; i <= totalPages; i++) {
                 const btn = document.createElement('button');
                 btn.innerText = i;
                 if (i === currentPage) {
-                    btn.className = 'px-4 py-2 rounded-lg bg-orange-600 text-white font-bold shadow-md';
+                    btn.className = 'px-5 py-2 rounded-xl bg-[#FF9F1C] text-gray-900 font-extrabold border-4 border-gray-900 translate-y-[4px] translate-x-[4px]';
                 } else {
-                    btn.className = 'px-4 py-2 rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-100 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-700';
+                    btn.className = 'px-5 py-2 rounded-xl border-4 border-gray-900 bg-white text-gray-800 font-bold shadow-[4px_4px_0px_0px_#1f2937] hover:-translate-y-1 hover:bg-[#FFE5D9] transition dark:bg-gray-800 dark:text-gray-200 dark:shadow-[4px_4px_0px_0px_#000] dark:hover:bg-gray-700';
                 }
                 btn.onclick = () => { currentPage = i; renderPage(); };
                 container.appendChild(btn);
             }
 
-            // Vorwärts
+            // Vorwärts Button
             const nextBtn = document.createElement('button');
             nextBtn.innerHTML = '&rarr;';
-            nextBtn.className = `px-4 py-2 rounded-lg border ${currentPage === totalPages ? 'text-gray-300 border-gray-200 cursor-not-allowed dark:border-gray-700 dark:text-gray-600' : 'text-gray-600 border-gray-300 hover:bg-gray-100 dark:text-gray-300 dark:border-gray-600 dark:hover:bg-gray-700'}`;
+            nextBtn.className = `px-5 py-2 rounded-xl font-bold border-4 transition ${currentPage === totalPages ? 'border-gray-300 bg-gray-100 text-gray-400 cursor-not-allowed dark:border-gray-700 dark:bg-gray-800 dark:text-gray-600' : 'border-gray-900 bg-white text-gray-800 shadow-[4px_4px_0px_0px_#1f2937] hover:-translate-y-1 hover:bg-[#FFE5D9] dark:bg-gray-800 dark:text-gray-200 dark:shadow-[4px_4px_0px_0px_#000] dark:hover:bg-gray-700'}`;
             nextBtn.onclick = () => { if(currentPage < totalPages) { currentPage++; renderPage(); }};
             container.appendChild(nextBtn);
         }

@@ -3,7 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Gourmet - Rezepte Welt</title>
+    <title>Rezept einsenden - Knuffis Rezepte</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Schriftart auf der ganzen Seite anwenden */
+        body { font-family: 'Fredoka', sans-serif; }
+    </style>
 
     <script>
         if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -19,141 +28,156 @@
     <script> tailwind.config = { darkMode: 'class' } </script>
 
     <link rel="stylesheet" href="style.css">
-
+    
     <script src="main.js" defer></script>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
+<body class="bg-[#faf9f6] text-gray-800 font-sans dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
 
-    <nav class="bg-white shadow-md sticky top-0 z-50 dark:bg-gray-800 dark:border-b dark:border-gray-700 transition-colors duration-300 no-print">
+    <nav class="bg-white sticky top-0 z-50 dark:bg-gray-800 border-b-4 border-gray-900 transition-colors duration-300 no-print shadow-[0_4px_0_0_#1f2937] dark:shadow-[0_4px_0_0_#000]">
         <div class="max-w-6xl mx-auto px-4">
             <div class="flex flex-col md:flex-row justify-between items-center py-3 md:py-4 min-h-[80px]">
 
-                <a href="index.html" class="text-2xl font-bold text-orange-600 mb-3 md:mb-0">
-                    Larsi's <span class="text-gray-700 dark:text-gray-300">Simple Rezepte</span>
+                <a href="index.html" class="text-3xl font-bold text-orange-600 mb-3 md:mb-0 transform hover:scale-105 transition">
+                    Knuffis <span class="text-gray-800 dark:text-gray-100">Rezepte</span>
                 </a>
 
-                <div class="flex items-center gap-3 flex-wrap justify-center">
-                    <a href="index.html" class="text-gray-600 hover:text-orange-600 font-medium text-sm md:text-base dark:text-gray-300 dark:hover:text-orange-400">Start</a>
-                    <a href="alle-rezepte.html" class="text-gray-600 hover:text-orange-600 font-medium text-sm md:text-base dark:text-gray-300 dark:hover:text-orange-400">Rezepte</a>
-                    <a href="neues-rezept.html" class="bg-orange-600 text-white px-3 py-2 rounded-lg hover:bg-orange-700 transition shadow-sm text-sm">Einsenden</a>
-                    <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition"><span id="dark-icon">🌙</span></button>
+                <div class="flex items-center gap-4 flex-wrap justify-center">
+                    <a href="index.html" class="text-gray-700 hover:text-orange-600 font-bold text-sm md:text-base dark:text-gray-300 dark:hover:text-orange-400 transition">Start</a>
+                    <a href="alle-rezepte.html" class="text-gray-700 hover:text-orange-600 font-bold text-sm md:text-base dark:text-gray-300 dark:hover:text-orange-400 transition">Rezepte</a>
+                    
+                    <a href="neues-rezept.html" class="bg-[#FF9F1C] text-gray-900 px-4 py-2 rounded-xl font-extrabold border-2 border-gray-900 shadow-none translate-x-[2px] translate-y-[2px] text-sm cursor-default">Einsenden</a>
+
+                    <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition font-bold text-xl" aria-label="Dark Mode umschalten">
+                        <span id="dark-icon">🌙</span>
+                    </button>
                 </div>
             </div>
         </div>
     </nav>
 
-    <main class="max-w-2xl mx-auto px-4 py-12">
-        <div class="bg-white p-8 rounded-xl shadow-lg dark:bg-gray-800 dark:shadow-gray-900/50 transition-colors duration-300">
-            <h1 class="text-3xl font-bold mb-2 dark:text-white">Rezept einreichen</h1>
-            <p class="text-gray-500 mb-8 dark:text-gray-400">Teile dein Lieblingsgericht! Es wird direkt an Lars gesendet, geprüft und hochgeladen.</p>
+    <main class="max-w-3xl mx-auto px-4 py-12">
+        <div class="bg-white p-8 md:p-12 rounded-[2rem] border-4 border-gray-900 shadow-[8px_8px_0px_0px_#1f2937] dark:bg-gray-800 dark:shadow-[8px_8px_0px_0px_#000] dark:border-gray-700 transition-colors duration-300 relative overflow-hidden">
+            
+            <div class="absolute -top-6 -right-6 bg-orange-100 w-32 h-32 rounded-full z-0 opacity-50 dark:bg-gray-700"></div>
 
-            <form action="https://formsubmit.co/lars.krahnen@gmail.com" method="POST" enctype="multipart/form-data" class="space-y-6">
+            <div class="relative z-10">
+                <h1 class="text-4xl font-extrabold mb-3 dark:text-white flex items-center gap-3">
+                    Rezept einreichen 📝
+                </h1>
+                <p class="text-gray-600 mb-10 text-lg font-medium dark:text-gray-300">Teile dein Lieblingsgericht! Es wird direkt an Lars gesendet, geprüft und dann für alle veröffentlicht.</p>
 
-                <input type="hidden" name="_subject" value="Neues Rezept Einsendung!">
-                <input type="hidden" name="_next" value="https://www.larskrahnen.de/neues-rezept.html?success=true">
-                <input type="hidden" name="_captcha" value="false">
+                <form action="https://formsubmit.co/lars.krahnen@gmail.com" method="POST" enctype="multipart/form-data" class="space-y-8">
+                    
+                    <input type="hidden" name="_subject" value="Neues Rezept Einsendung!">
+                    <input type="hidden" name="_next" value="https://www.knuffi-rezepte.de/neues-rezept.html?success=true">
+                    <input type="hidden" name="_captcha" value="false">
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1 dark:text-gray-300">Dein Name</label>
-                        <input type="text" name="name" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-bold text-gray-900 mb-2 dark:text-gray-200 uppercase tracking-wide">Dein Name</label>
+                            <input type="text" name="name" required class="w-full px-4 py-3 border-2 border-gray-900 rounded-xl focus:ring-4 focus:ring-orange-200 focus:border-orange-500 outline-none transition font-medium dark:bg-gray-700 dark:border-gray-600 dark:text-white" placeholder="Wie sollen wir dich nennen?">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-gray-900 mb-2 dark:text-gray-200 uppercase tracking-wide">Deine E-Mail</label>
+                            <input type="email" name="email" required class="w-full px-4 py-3 border-2 border-gray-900 rounded-xl focus:ring-4 focus:ring-orange-200 focus:border-orange-500 outline-none transition font-medium dark:bg-gray-700 dark:border-gray-600 dark:text-white" placeholder="Für Rückfragen...">
+                        </div>
                     </div>
+
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1 dark:text-gray-300">Deine E-Mail</label>
-                        <input type="email" name="email" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                        <label class="block text-sm font-bold text-gray-900 mb-2 dark:text-gray-200 uppercase tracking-wide">Name des Gerichts</label>
+                        <input type="text" name="rezept_titel" required class="w-full px-4 py-3 border-2 border-gray-900 rounded-xl focus:ring-4 focus:ring-orange-200 focus:border-orange-500 outline-none transition font-medium text-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white" placeholder="z.B. Omas Weltbester Kartoffelsalat">
                     </div>
-                </div>
 
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1 dark:text-gray-300">Name des Gerichts</label>
-                    <input type="text" name="rezept_titel" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-                </div>
-
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1 dark:text-gray-300">Inspiration (Optional)</label>
-                    <input type="text" name="inspiration" placeholder="z.B. Chefkoch Link, Oma Erna, Pinterest..." class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-                </div>
-
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1 dark:text-gray-300">Bild hochladen (Optional)</label>
-                    <input type="file" name="bild" accept="image/*" class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-orange-50 file:text-orange-700 hover:file:bg-orange-100 dark:file:bg-gray-700 dark:file:text-gray-300">
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1 dark:text-gray-300">Kategorie</label>
-                        <select name="kategorie" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-                            <option value="Hauptgericht">Hauptgericht</option>
-                            <option value="Dessert">Dessert</option>
-                            <option value="Snack">Snack</option>
-                        </select>
+                        <label class="block text-sm font-bold text-gray-900 mb-2 dark:text-gray-200 uppercase tracking-wide">Inspiration (Optional)</label>
+                        <input type="text" name="inspiration" placeholder="z.B. Chefkoch Link, Pinterest oder Familienrezept..." class="w-full px-4 py-3 border-2 border-gray-900 rounded-xl focus:ring-4 focus:ring-orange-200 focus:border-orange-500 outline-none transition font-medium dark:bg-gray-700 dark:border-gray-600 dark:text-white">
                     </div>
+
+                    <div class="bg-orange-50 p-6 rounded-xl border-2 border-dashed border-orange-300 dark:bg-gray-700/50 dark:border-gray-600">
+                        <label class="block text-sm font-bold text-gray-900 mb-2 dark:text-gray-200 uppercase tracking-wide">Bild hochladen (Optional)</label>
+                        <input type="file" name="bild" accept="image/*" class="w-full text-sm text-gray-600 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-2 file:border-gray-900 file:text-sm file:font-bold file:bg-white file:text-gray-900 hover:file:bg-orange-100 transition cursor-pointer dark:text-gray-300 dark:file:bg-gray-600 dark:file:text-white dark:file:border-gray-500">
+                        
+                        <div class="mt-4 flex items-start gap-3 bg-[#FF5E5B]/10 p-3 rounded-lg border border-[#FF5E5B]/30 text-red-700 dark:text-red-300 dark:bg-red-900/20 text-sm font-bold leading-tight">
+                            <span class="text-xl">⚠️</span>
+                            <p>Wichtig: Bitte lade nur Bilder hoch, die du <u>selbst gemacht</u> hast! Keine Fotos von Chefkoch, HelloFresh oder aus Google kopieren (Copyright-Gefahr!).</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-bold text-gray-900 mb-2 dark:text-gray-200 uppercase tracking-wide">Kategorie</label>
+                            <div class="relative">
+                                <select name="kategorie" class="w-full px-4 py-3 border-2 border-gray-900 rounded-xl focus:ring-4 focus:ring-orange-200 focus:border-orange-500 outline-none transition font-medium appearance-none bg-white dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                                    <option value="Hauptgericht">🥘 Hauptgericht</option>
+                                    <option value="Dessert">🍰 Dessert</option>
+                                    <option value="Snack">🥪 Snack</option>
+                                </select>
+                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-700 dark:text-gray-300">
+                                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-gray-900 mb-2 dark:text-gray-200 uppercase tracking-wide">Zeitaufwand</label>
+                            <input type="text" name="rezept_zeit" placeholder="z.B. 30 Min" required class="w-full px-4 py-3 border-2 border-gray-900 rounded-xl focus:ring-4 focus:ring-orange-200 focus:border-orange-500 outline-none transition font-medium dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                        </div>
+                    </div>
+
+                    <div class="flex items-center bg-green-50 p-4 rounded-xl border-2 border-green-200 dark:bg-green-900/20 dark:border-green-800 cursor-pointer hover:bg-green-100 transition" onclick="document.getElementById('vegan-check').click()">
+                        <input id="vegan-check" name="ist_vegan" type="checkbox" class="w-6 h-6 text-green-600 bg-white border-2 border-gray-900 rounded focus:ring-green-500 dark:bg-gray-600 dark:border-gray-500 cursor-pointer">
+                        <label for="vegan-check" class="ml-3 text-sm font-bold text-green-800 dark:text-green-300 cursor-pointer select-none">Ist das Gericht Vegan oder Vegetarisch? 🌱</label>
+                    </div>
+
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1 dark:text-gray-300">Zeitaufwand</label>
-                        <input type="text" name="rezept_zeit" placeholder="z.B. 30 Min" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                        <label class="block text-sm font-bold text-gray-900 mb-2 dark:text-gray-200 uppercase tracking-wide">Zutaten</label>
+                        <textarea name="zutaten" rows="4" placeholder="- 500g Mehl&#10;- 2 Eier&#10;- 1 Prise Salz" required class="w-full px-4 py-3 border-2 border-gray-900 rounded-xl focus:ring-4 focus:ring-orange-200 focus:border-orange-500 outline-none transition font-medium dark:bg-gray-700 dark:border-gray-600 dark:text-white"></textarea>
                     </div>
-                </div>
 
-                <div class="flex items-center bg-gray-50 p-3 rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600">
-                    <input id="vegan-check" name="ist_vegan" type="checkbox" class="w-5 h-5 text-orange-600 bg-white border-gray-300 rounded focus:ring-orange-500 dark:bg-gray-600 dark:border-gray-500">
-                    <label for="vegan-check" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-200 cursor-pointer select-none">Ist das Gericht Vegan oder Vegetarisch? 🌱</label>
-                </div>
+                    <div>
+                        <label class="block text-sm font-bold text-gray-900 mb-2 dark:text-gray-200 uppercase tracking-wide">Zubereitung</label>
+                        <textarea name="zubereitung" rows="6" placeholder="1. Den Ofen vorheizen...&#10;2. Alles mischen..." required class="w-full px-4 py-3 border-2 border-gray-900 rounded-xl focus:ring-4 focus:ring-orange-200 focus:border-orange-500 outline-none transition font-medium dark:bg-gray-700 dark:border-gray-600 dark:text-white"></textarea>
+                    </div>
 
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1 dark:text-gray-300">Zutaten</label>
-                    <textarea name="zutaten" rows="4" placeholder="z.B. 2 Eier, 500g Mehl..." required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-white"></textarea>
-                </div>
-
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1 dark:text-gray-300">Zubereitung</label>
-                    <textarea name="zubereitung" rows="6" placeholder="Schritt für Schritt Erklärung..." required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-white"></textarea>
-                </div>
-
-                <button type="submit" class="w-full bg-orange-600 text-white font-bold py-3 rounded-lg hover:bg-orange-700 transition transform hover:-translate-y-1 dark:bg-orange-500 dark:hover:bg-orange-600">Rezept absenden</button>
-            </form>
+                    <button type="submit" class="w-full bg-[#FF9F1C] text-gray-900 text-xl font-extrabold py-4 rounded-xl border-4 border-gray-900 shadow-[6px_6px_0px_0px_#1f2937] hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition transform active:scale-95">Rezept absenden 📤</button>
+                </form>
+            </div>
         </div>
     </main>
 
-    <div id="success-modal" class="fixed inset-0 bg-black bg-opacity-60 z-[60] flex items-center justify-center hidden p-4 animate-fade-in">
-        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-2xl p-8 max-w-sm w-full text-center relative">
-
-            <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4 dark:bg-green-900 dark:text-green-300">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+    <div id="success-modal" class="fixed inset-0 bg-gray-900/80 backdrop-blur-sm z-[60] flex items-center justify-center hidden p-4 animate-fade-in">
+        <div class="bg-white dark:bg-gray-800 rounded-[2rem] border-4 border-gray-900 shadow-[10px_10px_0px_0px_#000] p-8 max-w-sm w-full text-center relative transform scale-100">
+            
+            <div class="w-20 h-20 bg-green-100 text-green-600 rounded-full border-4 border-gray-900 flex items-center justify-center mx-auto mb-6 shadow-[4px_4px_0px_0px_#000] dark:bg-green-900 dark:text-green-300">
+                <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
             </div>
-
-            <h2 class="text-2xl font-bold mb-2 dark:text-white">Gesendet! 🚀</h2>
-            <p class="text-gray-600 dark:text-gray-300 mb-6">Dein Rezept ist sicher bei Lars angekommen. Danke fürs Mitmachen!</p>
-
-            <button onclick="closeModal()" class="w-full bg-orange-600 text-white font-bold py-3 rounded-lg hover:bg-orange-700 transition transform hover:-translate-y-1">Alles klar!</button>
+            
+            <h2 class="text-3xl font-extrabold mb-3 text-gray-900 dark:text-white">Gesendet! 🚀</h2>
+            <p class="text-gray-600 dark:text-gray-300 mb-8 font-medium">Dein Rezept ist sicher bei Lars angekommen. Danke fürs Mitmachen!</p>
+            
+            <button onclick="closeModal()" class="w-full bg-orange-500 text-white font-bold text-lg py-3 rounded-xl border-4 border-gray-900 shadow-[4px_4px_0px_0px_#000] hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition">Alles klar!</button>
         </div>
     </div>
 
-    <footer class="bg-gray-800 text-gray-300 py-8 mt-12 dark:bg-black dark:text-gray-500 no-print">
+    <footer class="bg-gray-900 text-gray-300 py-10 mt-12 border-t-8 border-gray-800 no-print">
         <div class="max-w-6xl mx-auto px-4 text-center">
-            <p>&copy; 2026 Larsi's Simple Rezepte. Alle Rechte vorbehalten.</p>
-            <div class="text-sm space-x-4">
-                <a href="impressum.html" class="hover:text-white underline">Impressum</a>
-                <a href="datenschutz.html" class="hover:text-white underline">Datenschutz</a>
+            <p class="font-bold text-lg mb-2">&copy; 2026 Knuffis Rezepte. Alle Rechte vorbehalten.</p>
+            <div class="mt-4 space-x-6 text-sm font-medium">
+                <a href="impressum.html" class="hover:text-[#FF9F1C] underline decoration-2 underline-offset-4 transition">Impressum</a>
+                <a href="datenschutz.html" class="hover:text-[#FF9F1C] underline decoration-2 underline-offset-4 transition">Datenschutz</a>
             </div>
         </div>
     </footer>
 
     <script>
-        // Prüfen, ob ?success=true in der URL steht
         const urlParams = new URLSearchParams(window.location.search);
-
+        
         if (urlParams.get('success') === 'true') {
-            // Popup anzeigen
             document.getElementById('success-modal').classList.remove('hidden');
-
-            // Konfetti-Effekt (optional, falls du Spaß verstehst, sonst einfach ignorieren)
-            // URL bereinigen (damit es beim Neuladen nicht wieder kommt)
             window.history.replaceState({}, document.title, window.location.pathname);
         }
 
         function closeModal() {
             document.getElementById('success-modal').classList.add('hidden');
-            // Optional: Weiterleitung zur Startseite nach Klick
             window.location.href = "index.html";
         }
     </script>

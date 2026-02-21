@@ -3,8 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Datenschutzerklärung - Larsi's Simple Rezepte</title>
+    <title>Datenschutzerklärung - Knuffis Rezepte</title>
     
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Schriftart auf der ganzen Seite anwenden */
+        body { font-family: 'Fredoka', sans-serif; }
+    </style>
+
     <script>
         if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.classList.add('dark');
@@ -17,100 +26,115 @@
     <script> tailwind.config = { darkMode: 'class' } </script>
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
+<body class="bg-[#faf9f6] text-gray-800 font-sans dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300 flex flex-col min-h-screen">
 
-    <nav class="bg-white shadow-md sticky top-0 z-50 dark:bg-gray-800 dark:border-b dark:border-gray-700 no-print">
+    <nav class="bg-white sticky top-0 z-50 dark:bg-gray-800 border-b-4 border-gray-900 transition-colors duration-300 no-print shadow-[0_4px_0_0_#1f2937] dark:shadow-[0_4px_0_0_#000]">
         <div class="max-w-6xl mx-auto px-4">
-            <div class="flex justify-between items-center py-4">
-                <a href="index.html" class="text-2xl font-bold text-orange-600">Larsi's <span class="text-gray-700 dark:text-gray-300">Rezepte</span></a>
-                <a href="index.html" class="text-gray-600 hover:text-orange-600 font-medium dark:text-gray-300">Zurück zur Startseite</a>
+            <div class="flex flex-col md:flex-row justify-between items-center py-3 md:py-4 min-h-[80px]">
+                
+                <a href="index.html" class="text-3xl font-bold text-orange-600 mb-3 md:mb-0 transform hover:scale-105 transition">
+                    Knuffis <span class="text-gray-800 dark:text-gray-100">Rezepte</span>
+                </a>
+                
+                <div class="flex items-center gap-4 flex-wrap justify-center">
+                    <a href="index.html" class="text-gray-700 hover:text-orange-600 font-bold text-sm md:text-base dark:text-gray-300 dark:hover:text-orange-400 transition">Start</a>
+                    <a href="alle-rezepte.html" class="text-gray-700 hover:text-orange-600 font-bold text-sm md:text-base dark:text-gray-300 dark:hover:text-orange-400 transition">Rezepte</a>
+                    
+                    <a href="neues-rezept.html" class="bg-orange-500 text-white px-4 py-2 rounded-xl font-bold border-2 border-gray-900 shadow-[2px_2px_0px_0px_#1f2937] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition text-sm">Einsenden</a>
+                    
+                    <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition font-bold text-xl" aria-label="Dark Mode umschalten">
+                        <span id="dark-icon">🌙</span>
+                    </button>
+                </div>
             </div>
         </div>
     </nav>
 
-    <main class="max-w-4xl mx-auto px-4 py-12">
-        <div class="bg-white p-8 md:p-12 rounded-xl shadow-lg dark:bg-gray-800 dark:shadow-gray-900/50 space-y-8">
+    <main class="max-w-4xl mx-auto px-4 py-12 flex-grow">
+        <div class="bg-white p-8 md:p-12 rounded-[2rem] border-4 border-gray-900 shadow-[8px_8px_0px_0px_#1f2937] dark:bg-gray-800 dark:shadow-[8px_8px_0px_0px_#000] dark:border-gray-700">
             
-            <h1 class="text-3xl font-bold text-orange-600 dark:text-orange-400 mb-6">Datenschutzerklärung</h1>
+            <h1 class="text-4xl font-extrabold mb-8 text-gray-900 dark:text-white border-b-4 border-dashed border-gray-200 dark:border-gray-700 pb-6">Datenschutzerklärung</h1>
 
-            <section>
-                <h2 class="text-xl font-bold mb-3 dark:text-gray-200">1. Datenschutz auf einen Blick</h2>
-                <h3 class="font-bold text-lg mt-4 mb-2">Allgemeine Hinweise</h3>
-                <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
-                    Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können.
-                </p>
-                <h3 class="font-bold text-lg mt-4 mb-2">Verantwortliche Stelle</h3>
-                <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
-                    Verantwortlich für die Datenverarbeitung auf dieser Website ist:<br>
-                    <strong>LarsRezepte.de - Lars Krahnen</strong><br>
-                    c/o Online-Impressum.de #6399<br>
-                    Europaring 90<br>
-                    53757 Sankt Augustin<br>
-                    E-Mail: lars.krahnen@gmail.com
-                </p>
-            </section>
+            <div class="space-y-8 text-lg">
+                <section>
+                    <h2 class="text-2xl font-extrabold mb-4 text-gray-900 dark:text-gray-200">1. Datenschutz auf einen Blick</h2>
+                    <h3 class="font-bold text-xl mt-6 mb-2 text-gray-800 dark:text-gray-300">Allgemeine Hinweise</h3>
+                    <p class="leading-relaxed font-medium text-gray-700 dark:text-gray-400 mb-6">
+                        Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können.
+                    </p>
+                    <h3 class="font-bold text-xl mt-6 mb-2 text-gray-800 dark:text-gray-300">Verantwortliche Stelle</h3>
+                    <p class="leading-relaxed font-medium text-gray-800 dark:text-gray-300 bg-gray-50 dark:bg-gray-700/50 p-4 rounded-xl border-2 border-gray-200 dark:border-gray-600 inline-block">
+                        Verantwortlich für die Datenverarbeitung auf dieser Website ist:<br><br>
+                        <strong>LarsRezepte.de - Lars Krahnen</strong><br>
+                        c/o Online-Impressum.de #6399<br>
+                        Europaring 90<br>
+                        53757 Sankt Augustin<br>
+                        E-Mail: <a href="mailto:lars.krahnen@gmail.com" class="text-[#FF9F1C] hover:text-[#FF5E5B] underline decoration-2 underline-offset-2 transition">lars.krahnen@gmail.com</a>
+                    </p>
+                </section>
 
-            <hr class="border-gray-200 dark:border-gray-700">
+                <hr class="border-t-4 border-dashed border-gray-200 dark:border-gray-700 my-10">
 
-            <section>
-                <h2 class="text-xl font-bold mb-3 dark:text-gray-200">2. Hosting</h2>
-                <h3 class="font-bold text-lg mt-4 mb-2">GitHub Pages</h3>
-                <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
-                    Wir hosten unsere Website bei <strong>GitHub Inc.</strong> (88 Colin P Kelly Jr St, San Francisco, CA 94107, USA).<br>
-                    Wenn Sie unsere Website besuchen, erfasst GitHub Server-Log-Dateien, die Ihr Browser automatisch übermittelt. Dazu gehören u.a. Ihre IP-Adresse, Browser-Typ, Datum und Uhrzeit der Anfrage. Dies ist technisch notwendig, um die Website sicher und stabil auszuliefern.
-                </p>
-            </section>
+                <section>
+                    <h2 class="text-2xl font-extrabold mb-4 text-gray-900 dark:text-gray-200">2. Hosting</h2>
+                    <h3 class="font-bold text-xl mt-6 mb-2 text-gray-800 dark:text-gray-300">GitHub Pages</h3>
+                    <p class="leading-relaxed font-medium text-gray-700 dark:text-gray-400">
+                        Wir hosten unsere Website bei <strong>GitHub Inc.</strong> (88 Colin P Kelly Jr St, San Francisco, CA 94107, USA).<br>
+                        Wenn Sie unsere Website besuchen, erfasst GitHub Server-Log-Dateien, die Ihr Browser automatisch übermittelt. Dazu gehören u.a. Ihre IP-Adresse, Browser-Typ, Datum und Uhrzeit der Anfrage. Dies ist technisch notwendig, um die Website sicher und stabil auszuliefern.
+                    </p>
+                </section>
 
-            <hr class="border-gray-200 dark:border-gray-700">
+                <hr class="border-t-4 border-dashed border-gray-200 dark:border-gray-700 my-10">
 
-            <section>
-                <h2 class="text-xl font-bold mb-3 dark:text-gray-200">3. Datenerfassung auf dieser Website</h2>
-                <h3 class="font-bold text-lg mt-4 mb-2">Kontaktformular (Rezept-Einsendung)</h3>
-                <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
-                    Wenn Sie uns per Kontaktformular (z.B. "Neues Rezept einsenden") Anfragen zukommen lassen, werden Ihre Angaben aus dem Formular inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.
-                </p>
-                <h3 class="font-bold text-lg mt-4 mb-2">Nutzung von FormSubmit</h3>
-                <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
-                    Wir nutzen für den Versand der Formulardaten den Dienst <strong>FormSubmit</strong>. Die Daten werden dabei an die Server von FormSubmit übermittelt, um die E-Mail an uns zuzustellen. FormSubmit speichert die Daten nicht dauerhaft, sondern leitet sie lediglich weiter.
-                    Weitere Informationen finden Sie in der Datenschutzerklärung von FormSubmit: <a href="https://formsubmit.co/privacy" target="_blank" class="text-orange-600 hover:underline">https://formsubmit.co/privacy</a>.
-                </p>
-            </section>
+                <section>
+                    <h2 class="text-2xl font-extrabold mb-4 text-gray-900 dark:text-gray-200">3. Datenerfassung auf dieser Website</h2>
+                    <h3 class="font-bold text-xl mt-6 mb-2 text-gray-800 dark:text-gray-300">Kontaktformular (Rezept-Einsendung)</h3>
+                    <p class="leading-relaxed font-medium text-gray-700 dark:text-gray-400 mb-6">
+                        Wenn Sie uns per Kontaktformular (z.B. "Neues Rezept einsenden") Anfragen zukommen lassen, werden Ihre Angaben aus dem Formular inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.
+                    </p>
+                    <h3 class="font-bold text-xl mt-6 mb-2 text-gray-800 dark:text-gray-300">Nutzung von FormSubmit</h3>
+                    <p class="leading-relaxed font-medium text-gray-700 dark:text-gray-400">
+                        Wir nutzen für den Versand der Formulardaten den Dienst <strong>FormSubmit</strong>. Die Daten werden dabei an die Server von FormSubmit übermittelt, um die E-Mail an uns zuzustellen. FormSubmit speichert die Daten nicht dauerhaft, sondern leitet sie lediglich weiter.
+                        Weitere Informationen finden Sie in der Datenschutzerklärung von FormSubmit: <a href="https://formsubmit.co/privacy" target="_blank" class="text-[#FF9F1C] hover:text-[#FF5E5B] underline decoration-2 underline-offset-2 transition break-all">https://formsubmit.co/privacy</a>.
+                    </p>
+                </section>
 
-            <hr class="border-gray-200 dark:border-gray-700">
+                <hr class="border-t-4 border-dashed border-gray-200 dark:border-gray-700 my-10">
 
-            <section>
-                <h2 class="text-xl font-bold mb-3 dark:text-gray-200">4. Analyse und Werbung</h2>
-                <h3 class="font-bold text-lg mt-4 mb-2">Google AdSense</h3>
-                <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
-                    Diese Website benutzt <strong>Google AdSense</strong>, einen Dienst zum Einbinden von Werbeanzeigen der Google Ireland Limited („Google“), Gordon House, Barrow Street, Dublin 4, Irland.
-                </p>
-                <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
-                    Google AdSense verwendet sogenannte „Cookies“, Textdateien, die auf Ihrem Computer gespeichert werden und die eine Analyse der Benutzung der Website ermöglichen. Google AdSense verwendet auch sogenannte Web Beacons (unsichtbare Grafiken). Durch diese Web Beacons können Informationen wie der Besucherverkehr auf diesen Seiten ausgewertet werden.
-                </p>
-                <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
-                    Die durch Cookies und Web Beacons erzeugten Informationen über die Benutzung dieser Website (einschließlich Ihrer IP-Adresse) und Auslieferung von Werbeformaten werden an einen Server von Google in den USA übertragen und dort gespeichert. Diese Informationen können von Google an Vertragspartner von Google weitergegeben werden. Google wird Ihre IP-Adresse jedoch nicht mit anderen von Ihnen gespeicherten Daten zusammenführen.
-                </p>
-            </section>
+                <section>
+                    <h2 class="text-2xl font-extrabold mb-4 text-gray-900 dark:text-gray-200">4. Analyse und Werbung</h2>
+                    <h3 class="font-bold text-xl mt-6 mb-2 text-gray-800 dark:text-gray-300">Google AdSense</h3>
+                    <p class="leading-relaxed font-medium text-gray-700 dark:text-gray-400 mb-4">
+                        Diese Website benutzt <strong>Google AdSense</strong>, einen Dienst zum Einbinden von Werbeanzeigen der Google Ireland Limited („Google“), Gordon House, Barrow Street, Dublin 4, Irland.
+                    </p>
+                    <p class="leading-relaxed font-medium text-gray-700 dark:text-gray-400 mb-4">
+                        Google AdSense verwendet sogenannte „Cookies“, Textdateien, die auf Ihrem Computer gespeichert werden und die eine Analyse der Benutzung der Website ermöglichen. Google AdSense verwendet auch sogenannte Web Beacons (unsichtbare Grafiken). Durch diese Web Beacons können Informationen wie der Besucherverkehr auf diesen Seiten ausgewertet werden.
+                    </p>
+                    <p class="leading-relaxed font-medium text-gray-700 dark:text-gray-400">
+                        Die durch Cookies und Web Beacons erzeugten Informationen über die Benutzung dieser Website (einschließlich Ihrer IP-Adresse) und Auslieferung von Werbeformaten werden an einen Server von Google in den USA übertragen und dort gespeichert. Diese Informationen können von Google an Vertragspartner von Google weitergegeben werden. Google wird Ihre IP-Adresse jedoch nicht mit anderen von Ihnen gespeicherten Daten zusammenführen.
+                    </p>
+                </section>
 
-            <hr class="border-gray-200 dark:border-gray-700">
+                <hr class="border-t-4 border-dashed border-gray-200 dark:border-gray-700 my-10">
 
-            <section>
-                <h2 class="text-xl font-bold mb-3 dark:text-gray-200">5. Sicherheit</h2>
-                <h3 class="font-bold text-lg mt-4 mb-2">SSL- bzw. TLS-Verschlüsselung</h3>
-                <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
-                    Diese Seite nutzt aus Sicherheitsgründen und zum Schutz der Übertragung vertraulicher Inhalte, wie zum Beispiel Bestellungen oder Anfragen, die Sie an uns als Seitenbetreiber senden, eine SSL- bzw. TLS-Verschlüsselung. Eine verschlüsselte Verbindung erkennen Sie daran, dass die Adresszeile des Browsers von „http://“ auf „https://“ wechselt und an dem Schloss-Symbol in Ihrer Browserzeile.
-                </p>
-            </section>
+                <section>
+                    <h2 class="text-2xl font-extrabold mb-4 text-gray-900 dark:text-gray-200">5. Sicherheit</h2>
+                    <h3 class="font-bold text-xl mt-6 mb-2 text-gray-800 dark:text-gray-300">SSL- bzw. TLS-Verschlüsselung</h3>
+                    <p class="leading-relaxed font-medium text-gray-700 dark:text-gray-400">
+                        Diese Seite nutzt aus Sicherheitsgründen und zum Schutz der Übertragung vertraulicher Inhalte, wie zum Beispiel Bestellungen oder Anfragen, die Sie an uns als Seitenbetreiber senden, eine SSL- bzw. TLS-Verschlüsselung. Eine verschlüsselte Verbindung erkennen Sie daran, dass die Adresszeile des Browsers von „http://“ auf „https://“ wechselt und an dem Schloss-Symbol in Ihrer Browserzeile.
+                    </p>
+                </section>
 
+            </div>
         </div>
     </main>
 
-    <footer class="bg-gray-800 text-gray-300 py-8 mt-12 dark:bg-black dark:text-gray-500 no-print">
+    <footer class="bg-gray-900 text-gray-300 py-10 mt-16 border-t-8 border-gray-800 no-print">
         <div class="max-w-6xl mx-auto px-4 text-center">
-            <p class="mb-2">&copy; 2026 Larsi's Simple Rezepte. Alle Rechte vorbehalten.</p>
-            <div class="text-sm space-x-4">
-                <a href="impressum.html" class="hover:text-white underline">Impressum</a>
-                <a href="datenschutz.html" class="hover:text-white underline font-bold">Datenschutz</a>
+            <p class="font-bold text-lg mb-2">&copy; 2026 Knuffis Rezepte. Alle Rechte vorbehalten.</p>
+            <div class="mt-4 space-x-6 text-sm font-medium">
+                <a href="impressum.html" class="hover:text-[#FF9F1C] underline decoration-2 underline-offset-4 transition">Impressum</a>
+                <a href="datenschutz.html" class="text-[#FF9F1C] underline decoration-2 underline-offset-4 transition">Datenschutz</a>
             </div>
         </div>
     </footer>
