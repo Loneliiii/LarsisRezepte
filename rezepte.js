@@ -52,7 +52,7 @@ const rezeptDaten = {
     },
     "nachoauflauf": {
         titel: "Nachoauflauf",
-        bild: "Bilder/platzhalter.jpg",
+        bild: "knuffi_question.jpg",
         zeit: "Ca. 20 Min.",
         portionen: "2-3 Portionen",
         kategorie: "Hauptgericht",
