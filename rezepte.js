@@ -105,7 +105,7 @@ const rezeptDaten = {
 
     "huhn_suess_sauer": {
         titel: "Nudeln mit Hähnchen Süß-Sauer-Sahne Sauce",
-        bild: "Bilder/nudels_süß_sauer.jpg",
+        bild: "Bilder/nudelnsusa.jpg",
         zeit: "25 Min.",
         portionen: "2 Portionen",
         kategorie: "Hauptgericht, Schnell",
