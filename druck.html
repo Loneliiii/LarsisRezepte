@@ -18,21 +18,22 @@
             .no-print { display: none; }
             body { 
                 margin: 0; 
-                padding: 1.5cm; /* Gibt unserem Text den nötigen Abstand zum Papierrand zurück */
+                /* Oben, Rechts, Unten, Links (2.5cm für den Locher!) */
+                padding: 1.5cm 1.5cm 1.5cm 2.5cm; 
             }
         }
         
         #knuffi-print {
             position: fixed;
-            bottom: 1.5cm; /* Knuffi bekommt auch etwas Abstand zum Rand */
-            left: 1.5cm;
+            bottom: 1.5cm; 
+            left: 2.5cm; /* Knuffi rutscht auch nach rechts, weg vom Locher */
             width: 80px;
             z-index: -10;
             opacity: 0.8;
         }
     </style>
 </head>
-<body class="p-8 max-w-4xl mx-auto relative min-h-screen">
+<body class="p-8 max-w-4xl mx-auto relative">
 
     <div class="flex justify-between items-end border-b-2 border-gray-800 pb-4 mb-8">
         <div>
@@ -98,7 +99,7 @@
                 </div>`;
             });
 
-            // --- NEU: Dynamische Quelle / Inspiration ---
+            // --- Dynamische Quelle / Inspiration ---
             const sourceInfo = document.getElementById('print-source-info');
             if (rezept.inspiration) {
                 sourceInfo.innerHTML = "Rezept von <strong>knuffi-rezepte.de</strong><br>Inspiriert von: <em>" + rezept.inspiration + "</em>";
