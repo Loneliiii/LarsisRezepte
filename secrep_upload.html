@@ -10,10 +10,9 @@
     <style>
         body { 
             font-family: 'Fredoka', sans-serif; 
-            background-color: #0f172a; /* Schickes Dunkelblau/Grau wie auf deiner Seite */
+            background-color: #0f172a; 
             color: #e2e8f0; 
         }
-        /* Eingabefelder im Dark Mode */
         textarea, input[type="text"], input[type="email"], select { 
             background: #1e293b; 
             color: #f8fafc;
@@ -23,7 +22,6 @@
             background: #334155; 
             outline: 2px dashed #FF9F1C; 
         }
-        /* Placeholder-Farbe anpassen */
         ::placeholder { color: #64748b; }
     </style>
 </head>
@@ -45,11 +43,21 @@
             <input type="hidden" name="_subject" value="Neues Rezept für Knuffi!">
             <input type="hidden" name="FUEGE_DAS_IN_DIE_REZEPTE_JS_EIN" id="fertiger_code">
 
-            <div class="h-48 bg-gray-900 border-b-4 border-black flex flex-col items-center justify-center relative p-4 cursor-pointer hover:bg-gray-950 transition" onclick="document.getElementById('i_bild_upload').click()">
-                <span class="text-4xl mb-2">📸</span>
-                <p class="font-bold text-gray-400 text-center">Klicke hier, um ein Rezeptbild hochzuladen<br><span class="text-sm font-normal text-gray-500">(Optional)</span></p>
+            <div class="py-10 bg-gray-900 border-b-4 border-black flex flex-col items-center justify-center relative px-4 cursor-pointer hover:bg-gray-950 transition" onclick="document.getElementById('i_bild_upload').click()">
+                <span class="text-5xl mb-3">📸</span>
+                <p class="font-bold text-gray-300 text-center text-lg mb-1">Klicke hier, um ein Rezeptbild hochzuladen</p>
+                <p class="text-sm font-normal text-gray-400 text-center max-w-lg mb-4">
+                    (Optional, aber erwünscht! Rezepte mit eigenem Bild bekommen Priorität beim Hinzufügen auf die Seite)
+                </p>
+                
+                <div class="bg-red-900/30 border border-red-500/50 rounded-xl px-4 py-2 max-w-lg text-center">
+                    <p class="text-xs text-red-400 font-bold">
+                        ⚠️ Achtung Copyright: Bitte nutze nur DEINE EIGENEN Fotos! Lade keine fremden Bilder von Chefkoch, HelloFresh oder Google hoch.
+                    </p>
+                </div>
+
                 <input type="file" id="i_bild_upload" name="attachment" accept="image/jpeg, image/png, image/webp" class="hidden" onchange="zeigeDateinamen(this)">
-                <p id="dateiname_anzeige" class="text-sm text-orange-500 font-bold mt-2 hidden"></p>
+                <p id="dateiname_anzeige" class="text-sm text-orange-500 font-bold mt-4 hidden"></p>
             </div>
 
             <div class="p-6 md:p-10">
@@ -126,7 +134,6 @@
     </div>
 
     <script>
-        // Zeigt dem Nutzer an, welches Bild er ausgewählt hat
         function zeigeDateinamen(input) {
             const anzeige = document.getElementById('dateiname_anzeige');
             if (input.files && input.files[0]) {
@@ -139,7 +146,7 @@
             const titel = document.getElementById('i_titel').value.trim();
             const zeit = document.getElementById('i_zeit').value.trim();
             const portionen = document.getElementById('i_portionen').value.trim();
-            const kategorie = document.getElementById('i_kategorie').value; // Dropdown liest man so aus
+            const kategorie = document.getElementById('i_kategorie').value;
             const autor = document.getElementById('i_autor').value.trim();
             const inspiration = document.getElementById('i_inspiration').value.trim();
             
@@ -147,7 +154,6 @@
             if(!id) id = "neues_rezept";
 
             const bild = "bilder/" + id + ".jpg";
-
             const datum = new Date().toLocaleDateString('de-DE', {day: '2-digit', month: '2-digit', year: 'numeric'});
 
             const zutatenRaw = document.getElementById('i_zutaten').value.split('\n').filter(z => z.trim() !== '');
