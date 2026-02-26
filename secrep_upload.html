@@ -25,7 +25,13 @@
         ::placeholder { color: #64748b; }
     </style>
 </head>
-<body class="p-4 md:p-8">
+<body class="p-4 md:p-8 relative min-h-screen">
+
+    <div class="max-w-4xl mx-auto mb-6">
+        <a href="alle-rezepte.html" class="inline-flex items-center gap-2 bg-gray-800 text-gray-300 font-bold px-4 py-2 rounded-xl border-2 border-gray-700 hover:bg-gray-700 hover:text-white transition w-fit">
+            <span>🔙</span> Zurück zur Übersicht
+        </a>
+    </div>
 
     <div class="max-w-4xl mx-auto">
         
@@ -37,7 +43,7 @@
             </p>
         </div>
 
-        <form action="https://formsubmit.co/lars.krahnen@gmail.com" method="POST" enctype="multipart/form-data" onsubmit="baueCodeZusammen()" class="bg-gray-800 rounded-[2rem] border-4 border-black shadow-[8px_8px_0px_0px_#000000] overflow-hidden">
+        <form id="rezeptForm" onsubmit="sendeFormular(event)" enctype="multipart/form-data" class="bg-gray-800 rounded-[2rem] border-4 border-black shadow-[8px_8px_0px_0px_#000000] overflow-hidden">
             
             <input type="hidden" name="_captcha" value="false">
             <input type="hidden" name="_subject" value="Neues Rezept für Knuffi!">
@@ -67,14 +73,14 @@
                         <input type="text" id="i_autor" name="autor" required class="w-full border-2 border-gray-600 p-2 rounded-xl focus:border-orange-500" placeholder="Wie sollen wir dich nennen?">
                     </div>
                     <div>
-                        <label class="block font-bold text-sm text-gray-400 mb-1">Deine E-Mail <span class="text-gray-500 font-normal">(Optional, für Rückfragen)</span></label>
+                        <label class="block font-bold text-sm text-gray-400 mb-1">Deine E-Mail <span class="text-gray-500 font-normal">(Optional)</span></label>
                         <input type="email" name="email" class="w-full border-2 border-gray-600 p-2 rounded-xl focus:border-orange-500" placeholder="max@muster.de">
                     </div>
                 </div>
 
                 <div class="mb-6">
                     <label class="block font-bold text-xs text-orange-500 uppercase tracking-wide mb-1">Rezept-Titel *</label>
-                    <input type="text" id="i_titel" required class="w-full text-3xl md:text-5xl font-extrabold text-white p-2 border-b-4 border-dashed border-gray-600 bg-transparent focus:border-orange-500" placeholder="z.B. Omas Apfelkuchen">
+                    <input type="text" id="i_titel" name="Rezept_Titel" required class="w-full text-3xl md:text-5xl font-extrabold text-white p-2 border-b-4 border-dashed border-gray-600 bg-transparent focus:border-orange-500" placeholder="z.B. Omas Apfelkuchen">
                 </div>
 
                 <div class="flex flex-wrap gap-4 mb-10 border-t-2 border-b-2 border-gray-700 py-4">
@@ -86,7 +92,6 @@
                         <label class="block font-bold text-xs text-gray-400 uppercase tracking-wide">Portionen <span class="text-orange-500">*</span></label>
                         <input type="text" id="i_portionen" required class="w-full font-bold text-lg p-2 rounded-xl border border-gray-600" placeholder="z.B. 4 Portionen">
                     </div>
-                    
                     <div class="flex-1 min-w-[120px]">
                         <label class="block font-bold text-xs text-gray-400 uppercase tracking-wide">Kategorie <span class="text-orange-500">*</span></label>
                         <select id="i_kategorie" required class="w-full font-bold text-lg p-2 rounded-xl border border-gray-600 cursor-pointer appearance-none">
@@ -99,7 +104,6 @@
                             <option value="Frühstück">Frühstück</option>
                         </select>
                     </div>
-
                     <div class="flex-1 min-w-[120px]">
                         <label class="block font-bold text-xs text-gray-400 uppercase tracking-wide">Inspiration <span class="text-gray-500 font-normal">(Optional)</span></label>
                         <input type="text" id="i_inspiration" class="w-full font-bold text-lg p-2 rounded-xl border border-gray-600" placeholder="z.B. Von Mama">
@@ -124,13 +128,24 @@
                 </div>
 
                 <div class="mt-12 text-center">
-                    <button type="submit" class="bg-[#FF9F1C] text-gray-900 px-10 py-4 rounded-xl font-extrabold text-2xl border-4 border-black shadow-[6px_6px_0px_0px_#000000] hover:shadow-none hover:translate-x-[6px] hover:translate-y-[6px] transition">
+                    <button id="submit_btn" type="submit" class="bg-[#FF9F1C] text-gray-900 px-10 py-4 rounded-xl font-extrabold text-2xl border-4 border-black shadow-[6px_6px_0px_0px_#000000] hover:shadow-none hover:translate-x-[6px] hover:translate-y-[6px] transition">
                         🚀 Rezept an Knuffi senden
                     </button>
                 </div>
 
             </div>
         </form>
+    </div>
+
+    <div id="erfolgs_popup" class="fixed inset-0 bg-black/80 z-50 flex items-center justify-center hidden px-4">
+        <div class="bg-gray-800 p-8 md:p-12 rounded-[2rem] border-4 border-black shadow-[8px_8px_0px_0px_#FF9F1C] max-w-lg text-center relative">
+            <span class="text-6xl mb-4 block">🎉</span>
+            <h2 class="text-3xl font-extrabold text-white mb-4">Rezept übermittelt!</h2>
+            <p class="text-gray-300 font-medium mb-8">Vielen Dank für dein Rezept! Es ist sicher bei Knuffi gelandet und wird bald geprüft.</p>
+            <button onclick="schliessePopup()" class="bg-gray-200 text-gray-900 px-8 py-3 rounded-xl font-bold border-4 border-black shadow-[4px_4px_0px_0px_#000000] hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition">
+                Super, weiter so!
+            </button>
+        </div>
     </div>
 
     <script>
@@ -197,6 +212,54 @@ ${zubereitungString}        ]
     },`;
 
             document.getElementById('fertiger_code').value = finalCode;
+        }
+
+        // --- NEU: Die magische Hintergrund-Absendung (AJAX) ---
+        function sendeFormular(event) {
+            event.preventDefault(); // Stoppt das normale Neuladen der Seite
+            baueCodeZusammen();     // Baut den JS-Code zusammen
+
+            const form = event.target;
+            const submitBtn = document.getElementById('submit_btn');
+            
+            // Lade-Animation zeigen
+            submitBtn.innerHTML = "Wird gesendet... ⏳";
+            submitBtn.classList.add('opacity-50', 'cursor-not-allowed');
+            submitBtn.disabled = true;
+
+            // Formular-Daten einpacken (inklusive Bild!)
+            const formData = new FormData(form);
+
+            // An FormSubmit senden
+            fetch("https://formsubmit.co/ajax/lars.krahnen@gmail.com", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Erfolg! Popup anzeigen und Formular leeren
+                document.getElementById('erfolgs_popup').classList.remove('hidden');
+                form.reset();
+                document.getElementById('dateiname_anzeige').classList.add('hidden');
+                
+                // Button wieder normal machen
+                submitBtn.innerHTML = "🚀 Rezept an Knuffi senden";
+                submitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                submitBtn.disabled = false;
+            })
+            .catch(error => {
+                alert("Huch! Da ist etwas schiefgelaufen. Bitte versuche es später noch einmal.");
+                submitBtn.innerHTML = "🚀 Rezept an Knuffi senden";
+                submitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                submitBtn.disabled = false;
+            });
+        }
+
+        // Funktion zum Schließen des Popups
+        function schliessePopup() {
+            document.getElementById('erfolgs_popup').classList.add('hidden');
+            // Optional: Nutzer danach zur Startseite schicken
+            // window.location.href = "alle-rezepte.html"; 
         }
     </script>
 </body>
