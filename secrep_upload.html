@@ -8,97 +8,115 @@
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { font-family: 'Fredoka', sans-serif; background-color: #faf9f6; }
-        textarea, input[type="text"], input[type="email"] { 
-            background: rgba(255,255,255,0.5); 
+        body { 
+            font-family: 'Fredoka', sans-serif; 
+            background-color: #0f172a; /* Schickes Dunkelblau/Grau wie auf deiner Seite */
+            color: #e2e8f0; 
+        }
+        /* Eingabefelder im Dark Mode */
+        textarea, input[type="text"], input[type="email"], select { 
+            background: #1e293b; 
+            color: #f8fafc;
             transition: all 0.3s;
         }
-        textarea:focus, input:focus { 
-            background: white; 
+        textarea:focus, input:focus, select:focus { 
+            background: #334155; 
             outline: 2px dashed #FF9F1C; 
         }
+        /* Placeholder-Farbe anpassen */
+        ::placeholder { color: #64748b; }
     </style>
 </head>
-<body class="text-gray-800 p-4 md:p-8">
+<body class="p-4 md:p-8">
 
     <div class="max-w-4xl mx-auto">
         
         <div class="text-center mb-8">
-            <h1 class="text-4xl font-extrabold text-orange-600 mb-2">Rezept Einsenden 🧑‍🍳</h1>
-            <p class="font-bold text-gray-600">Tippe dein Rezept einfach direkt in die Karte! Es sieht später (fast) genau so aus.</p>
-            <p class="text-sm text-gray-500 mt-4 bg-gray-200 inline-block px-4 py-1 rounded-full">
-                Alle Felder mit einem <span class="text-orange-500 font-bold text-lg">*</span> sind Pflichtfelder. Der Rest ist freiwillig!
+            <h1 class="text-4xl font-extrabold text-orange-500 mb-2">Rezept Einsenden 🧑‍🍳</h1>
+            <p class="font-bold text-gray-400">Tippe dein Rezept direkt in die Karte! Es sieht später (fast) genau so aus.</p>
+            <p class="text-sm text-gray-300 mt-4 bg-gray-800 inline-block px-4 py-1 rounded-full border border-gray-700">
+                Alle Felder mit einem <span class="text-orange-500 font-bold text-lg">*</span> sind Pflichtfelder.
             </p>
         </div>
 
-        <form action="https://formsubmit.co/lars.krahnen@gmail.com" method="POST" enctype="multipart/form-data" onsubmit="baueCodeZusammen()" class="bg-white rounded-[2rem] border-4 border-gray-900 shadow-[8px_8px_0px_0px_#1f2937] overflow-hidden">
+        <form action="https://formsubmit.co/lars.krahnen@gmail.com" method="POST" enctype="multipart/form-data" onsubmit="baueCodeZusammen()" class="bg-gray-800 rounded-[2rem] border-4 border-black shadow-[8px_8px_0px_0px_#000000] overflow-hidden">
             
             <input type="hidden" name="_captcha" value="false">
             <input type="hidden" name="_subject" value="Neues Rezept für Knuffi!">
             <input type="hidden" name="FUEGE_DAS_IN_DIE_REZEPTE_JS_EIN" id="fertiger_code">
 
-            <div class="h-48 bg-gray-100 border-b-4 border-gray-900 flex flex-col items-center justify-center relative p-4 cursor-pointer hover:bg-gray-200 transition" onclick="document.getElementById('i_bild_upload').click()">
+            <div class="h-48 bg-gray-900 border-b-4 border-black flex flex-col items-center justify-center relative p-4 cursor-pointer hover:bg-gray-950 transition" onclick="document.getElementById('i_bild_upload').click()">
                 <span class="text-4xl mb-2">📸</span>
-                <p class="font-bold text-gray-600 text-center">Klicke hier, um ein Rezeptbild hochzuladen<br><span class="text-sm font-normal text-gray-500">(Optional)</span></p>
+                <p class="font-bold text-gray-400 text-center">Klicke hier, um ein Rezeptbild hochzuladen<br><span class="text-sm font-normal text-gray-500">(Optional)</span></p>
                 <input type="file" id="i_bild_upload" name="attachment" accept="image/jpeg, image/png, image/webp" class="hidden" onchange="zeigeDateinamen(this)">
-                <p id="dateiname_anzeige" class="text-sm text-orange-600 font-bold mt-2 hidden"></p>
+                <p id="dateiname_anzeige" class="text-sm text-orange-500 font-bold mt-2 hidden"></p>
             </div>
 
             <div class="p-6 md:p-10">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8 bg-orange-50 p-4 rounded-2xl border-2 border-orange-200">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8 bg-gray-900 p-4 rounded-2xl border-2 border-gray-700">
                     <div>
-                        <label class="block font-bold text-sm text-orange-800 mb-1">Dein Name (Autor) <span class="text-orange-500">*</span></label>
-                        <input type="text" id="i_autor" name="autor" required class="w-full border-2 border-gray-300 p-2 rounded-xl" placeholder="Wie sollen wir dich nennen?">
+                        <label class="block font-bold text-sm text-gray-400 mb-1">Dein Name (Autor) <span class="text-orange-500">*</span></label>
+                        <input type="text" id="i_autor" name="autor" required class="w-full border-2 border-gray-600 p-2 rounded-xl focus:border-orange-500" placeholder="Wie sollen wir dich nennen?">
                     </div>
                     <div>
-                        <label class="block font-bold text-sm text-orange-800 mb-1">Deine E-Mail <span class="text-gray-500 font-normal">(Optional, für Rückfragen)</span></label>
-                        <input type="email" name="email" class="w-full border-2 border-gray-300 p-2 rounded-xl" placeholder="max@muster.de">
+                        <label class="block font-bold text-sm text-gray-400 mb-1">Deine E-Mail <span class="text-gray-500 font-normal">(Optional, für Rückfragen)</span></label>
+                        <input type="email" name="email" class="w-full border-2 border-gray-600 p-2 rounded-xl focus:border-orange-500" placeholder="max@muster.de">
                     </div>
                 </div>
 
                 <div class="mb-6">
                     <label class="block font-bold text-xs text-orange-500 uppercase tracking-wide mb-1">Rezept-Titel *</label>
-                    <input type="text" id="i_titel" required class="w-full text-3xl md:text-5xl font-extrabold text-gray-900 p-2 border-b-4 border-dashed border-gray-300" placeholder="z.B. Omas Apfelkuchen">
+                    <input type="text" id="i_titel" required class="w-full text-3xl md:text-5xl font-extrabold text-white p-2 border-b-4 border-dashed border-gray-600 bg-transparent focus:border-orange-500" placeholder="z.B. Omas Apfelkuchen">
                 </div>
 
-                <div class="flex flex-wrap gap-4 mb-10 border-t-2 border-b-2 border-gray-100 py-4">
+                <div class="flex flex-wrap gap-4 mb-10 border-t-2 border-b-2 border-gray-700 py-4">
                     <div class="flex-1 min-w-[120px]">
                         <label class="block font-bold text-xs text-gray-400 uppercase tracking-wide">Zeitaufwand <span class="text-orange-500">*</span></label>
-                        <input type="text" id="i_zeit" required class="w-full font-bold text-lg p-1" placeholder="z.B. 20 Min.">
+                        <input type="text" id="i_zeit" required class="w-full font-bold text-lg p-2 rounded-xl border border-gray-600" placeholder="z.B. 20 Min.">
                     </div>
                     <div class="flex-1 min-w-[120px]">
                         <label class="block font-bold text-xs text-gray-400 uppercase tracking-wide">Portionen <span class="text-orange-500">*</span></label>
-                        <input type="text" id="i_portionen" required class="w-full font-bold text-lg p-1" placeholder="z.B. 4 Portionen">
+                        <input type="text" id="i_portionen" required class="w-full font-bold text-lg p-2 rounded-xl border border-gray-600" placeholder="z.B. 4 Portionen">
                     </div>
+                    
                     <div class="flex-1 min-w-[120px]">
                         <label class="block font-bold text-xs text-gray-400 uppercase tracking-wide">Kategorie <span class="text-orange-500">*</span></label>
-                        <input type="text" id="i_kategorie" required class="w-full font-bold text-lg p-1" placeholder="z.B. Hauptgericht">
+                        <select id="i_kategorie" required class="w-full font-bold text-lg p-2 rounded-xl border border-gray-600 cursor-pointer appearance-none">
+                            <option value="" disabled selected>Bitte wählen...</option>
+                            <option value="Hauptgericht">Hauptgericht</option>
+                            <option value="Hauptgericht, Schnell">Hauptgericht, Schnell</option>
+                            <option value="Dessert">Dessert</option>
+                            <option value="Vegetarisch">Vegetarisch</option>
+                            <option value="Backen">Backen</option>
+                            <option value="Frühstück">Frühstück</option>
+                        </select>
                     </div>
+
                     <div class="flex-1 min-w-[120px]">
-                        <label class="block font-bold text-xs text-gray-400 uppercase tracking-wide">Inspiration <span class="text-gray-400 font-normal">(Optional)</span></label>
-                        <input type="text" id="i_inspiration" class="w-full font-bold text-lg p-1" placeholder="z.B. Von Mama">
+                        <label class="block font-bold text-xs text-gray-400 uppercase tracking-wide">Inspiration <span class="text-gray-500 font-normal">(Optional)</span></label>
+                        <input type="text" id="i_inspiration" class="w-full font-bold text-lg p-2 rounded-xl border border-gray-600" placeholder="z.B. Von Mama">
                     </div>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-10">
-                    <div class="md:col-span-4 bg-gray-50 p-6 rounded-2xl border-4 border-gray-900 h-fit shadow-[4px_4px_0px_0px_#1f2937]">
-                        <h2 class="text-2xl font-extrabold mb-2 flex items-center gap-2">🛒 Zutaten <span class="text-orange-500">*</span></h2>
-                        <p class="text-xs text-gray-500 font-bold mb-4">Einfach untereinander schreiben:</p>
-                        <textarea id="i_zutaten" required rows="10" class="w-full resize-none font-medium leading-relaxed p-2" placeholder="500g Hackfleisch&#10;1 Zwiebel&#10;Salz & Pfeffer"></textarea>
+                    <div class="md:col-span-4 bg-gray-900 p-6 rounded-2xl border-4 border-black h-fit shadow-[4px_4px_0px_0px_#000000]">
+                        <h2 class="text-2xl font-extrabold mb-2 text-white flex items-center gap-2">🛒 Zutaten <span class="text-orange-500">*</span></h2>
+                        <p class="text-xs text-gray-400 font-bold mb-4">Einfach untereinander schreiben:</p>
+                        <textarea id="i_zutaten" required rows="10" class="w-full resize-none font-medium leading-relaxed p-3 border-2 border-gray-700 rounded-xl" placeholder="500g Hackfleisch&#10;1 Zwiebel&#10;Salz & Pfeffer"></textarea>
                     </div>
 
                     <div class="md:col-span-8">
-                        <h2 class="text-3xl font-extrabold mb-4 flex items-center gap-2">👨‍🍳 Zubereitung <span class="text-orange-500">*</span></h2>
-                        <div class="bg-blue-50 border-2 border-blue-200 rounded-xl p-3 mb-4 text-sm text-blue-800 font-medium">
+                        <h2 class="text-3xl font-extrabold mb-4 text-white flex items-center gap-2">👨‍🍳 Zubereitung <span class="text-orange-500">*</span></h2>
+                        <div class="bg-blue-900 border-2 border-blue-700 text-blue-200 rounded-xl p-3 mb-4 text-sm font-medium">
                             <strong>Tipp:</strong> Wenn du deinem Schritt einen Titel geben willst, nutze einen Doppelpunkt! <br>
                             <em>Beispiel:</em> <strong>Anbraten:</strong> Das Fleisch in die Pfanne werfen...
                         </div>
-                        <textarea id="i_zubereitung" required rows="12" class="w-full resize-none font-medium leading-relaxed p-4 border-2 border-gray-200 rounded-2xl" placeholder="Vorbereitung: Den Ofen auf 200 Grad vorheizen.&#10;&#10;Anbraten: Die Zwiebeln würfeln und in der Pfanne glasig dünsten..."></textarea>
+                        <textarea id="i_zubereitung" required rows="12" class="w-full resize-none font-medium leading-relaxed p-4 border-2 border-gray-700 rounded-2xl" placeholder="Vorbereitung: Den Ofen auf 200 Grad vorheizen.&#10;&#10;Anbraten: Die Zwiebeln würfeln und in der Pfanne glasig dünsten..."></textarea>
                     </div>
                 </div>
 
                 <div class="mt-12 text-center">
-                    <button type="submit" class="bg-[#FF9F1C] text-gray-900 px-10 py-4 rounded-xl font-extrabold text-2xl border-4 border-gray-900 shadow-[6px_6px_0px_0px_#1f2937] hover:shadow-none hover:translate-x-[6px] hover:translate-y-[6px] transition">
+                    <button type="submit" class="bg-[#FF9F1C] text-gray-900 px-10 py-4 rounded-xl font-extrabold text-2xl border-4 border-black shadow-[6px_6px_0px_0px_#000000] hover:shadow-none hover:translate-x-[6px] hover:translate-y-[6px] transition">
                         🚀 Rezept an Knuffi senden
                     </button>
                 </div>
@@ -121,15 +139,13 @@
             const titel = document.getElementById('i_titel').value.trim();
             const zeit = document.getElementById('i_zeit').value.trim();
             const portionen = document.getElementById('i_portionen').value.trim();
-            const kategorie = document.getElementById('i_kategorie').value.trim();
+            const kategorie = document.getElementById('i_kategorie').value; // Dropdown liest man so aus
             const autor = document.getElementById('i_autor').value.trim();
             const inspiration = document.getElementById('i_inspiration').value.trim();
             
             let id = titel.toLowerCase().replace(/[^a-z0-9äöüß]+/g, '_').replace(/(^_|_$)/g, '');
             if(!id) id = "neues_rezept";
 
-            // Der Pfad wird hier automatisch generiert, auch wenn kein Bild hochgeladen wird.
-            // (Dann greift später auf der Webseite einfach dein schöner Platzhalter!)
             const bild = "bilder/" + id + ".jpg";
 
             const datum = new Date().toLocaleDateString('de-DE', {day: '2-digit', month: '2-digit', year: 'numeric'});
