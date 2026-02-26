@@ -24,7 +24,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
-        /* Schriftart auf der ganzen Seite anwenden */
         body { font-family: 'Fredoka', sans-serif; }
     </style>
 
@@ -45,7 +44,7 @@
 </head>
 <body class="bg-[#faf9f6] text-gray-800 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300 flex flex-col min-h-screen">
 
-    <nav class="bg-white sticky top-0 z-50 dark:bg-gray-800 border-b-4 border-gray-900 transition-colors duration-300 no-print shadow-[0_4px_0_0_#1f2937] dark:shadow-[0_4px_0_0_#000]">
+    <nav class="bg-white sticky top-0 z-50 dark:bg-gray-800 border-b-2 border-gray-900 dark:border-black transition-colors duration-300 no-print shadow-md dark:shadow-black/40">
         <div class="max-w-6xl mx-auto px-4">
             <div class="flex flex-col md:flex-row justify-between items-center py-3 md:py-4 min-h-[80px]">
 
@@ -57,7 +56,7 @@
                     <a href="index.html" class="text-gray-700 hover:text-orange-600 font-bold text-sm md:text-base dark:text-gray-300 dark:hover:text-orange-400 transition">Start</a>
                     <a href="alle-rezepte.html" class="text-gray-700 hover:text-orange-600 font-bold text-sm md:text-base dark:text-gray-300 dark:hover:text-orange-400 transition">Rezepte</a>
                     
-                    <a href="neues-rezept.html" class="bg-orange-500 text-white px-4 py-2 rounded-xl font-bold border-2 border-gray-900 shadow-[2px_2px_0px_0px_#1f2937] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition text-sm">Einsenden</a>
+                    <a href="neues-rezept.html" class="bg-orange-500 text-white px-4 py-2 rounded-lg font-bold border-2 border-gray-900 dark:border-black shadow-sm hover:shadow-md hover:-translate-y-0.5 transition text-sm">Einsenden</a>
 
                     <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition font-bold text-xl" aria-label="Dark Mode umschalten">
                         <span id="dark-icon">🌙</span>
@@ -67,10 +66,10 @@
         </div>
     </nav>
 
-    <header class="relative bg-[#FF9F1C] text-gray-900 py-12 flex items-center justify-center overflow-hidden border-b-4 border-gray-900">
+    <header class="relative bg-[#FF9F1C] text-gray-900 py-12 flex items-center justify-center overflow-hidden border-b-2 border-gray-900 dark:border-black">
         <div class="relative z-10 text-center px-4">
-            <h1 class="text-5xl md:text-6xl font-extrabold mb-3 text-white [text-shadow:3px_3px_0px_#111827]">Knuffis Rezepte</h1>
-            <p class="text-xl md:text-2xl font-bold text-gray-900 bg-white/90 inline-block px-4 py-1 rounded-xl border-2 border-gray-900 shadow-[4px_4px_0px_0px_#111827] transform -rotate-1">Hier muss nicht alles perfekt aussehen, Hauptsache es schmeckt!</p>
+            <h1 class="text-5xl md:text-6xl font-extrabold mb-3 text-white drop-shadow-md">Knuffis Rezepte</h1>
+            <p class="text-xl md:text-2xl font-bold text-gray-900 bg-white/95 inline-block px-4 py-1.5 rounded-lg border-2 border-gray-900 dark:border-black shadow-md transform -rotate-1">Hier muss nicht alles perfekt aussehen, Hauptsache es schmeckt!</p>
         </div>
     </header>
 
@@ -80,30 +79,30 @@
             <h2 class="text-3xl font-extrabold mb-6 flex items-center gap-3 dark:text-white">
                 <span class="text-4xl transform -rotate-12">📢</span> Was gibt's Neues?
             </h2>
-            <div class="bg-white dark:bg-gray-800 rounded-3xl border-4 border-gray-900 shadow-[8px_8px_0px_0px_#1f2937] dark:shadow-[8px_8px_0px_0px_#000] p-6 md:p-8">
+            <div class="bg-white dark:bg-gray-800 rounded-2xl border-2 border-gray-900 dark:border-black shadow-lg dark:shadow-black/50 p-6 md:p-8">
                 <ul class="space-y-4">
 
-                    <li class="flex flex-col md:flex-row md:items-center gap-1 md:gap-4 border-b-2 border-gray-200 dark:border-gray-700 pb-4 last:border-0 last:pb-0">
-                        <span class="bg-gray-900 text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-lg shadow-[2px_2px_0px_0px_#cbd5e1] dark:shadow-[2px_2px_0px_0px_#475569] whitespace-nowrap">18.02.2026</span>
+                    <li class="flex flex-col md:flex-row md:items-center gap-1 md:gap-4 border-b border-gray-200 dark:border-gray-700 pb-4 last:border-0 last:pb-0">
+                        <span class="bg-gray-900 text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded border border-gray-900 dark:border-black shadow-sm whitespace-nowrap">18.02.2026</span>
                         <p class="text-gray-800 dark:text-gray-200 font-medium text-lg">
                             <strong>Neu Dabei: Ein Traum von einem </strong> <a href="rezept.html?id=mamas_schokokuchen" class="text-orange-600 hover:text-orange-700 underline decoration-2 underline-offset-2">Schokokuchen</a> ist online!
                         </p>
                     </li>
 
-                    <li class="flex flex-col md:flex-row md:items-start gap-1 md:gap-4 border-b-2 border-gray-200 dark:border-gray-700 pb-4 last:border-0 last:pb-0">
-                        <span class="bg-gray-900 text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-lg shadow-[2px_2px_0px_0px_#cbd5e1] dark:shadow-[2px_2px_0px_0px_#475569] whitespace-nowrap mt-1">16.02.2026</span>
+                    <li class="flex flex-col md:flex-row md:items-start gap-1 md:gap-4 border-b border-gray-200 dark:border-gray-700 pb-4 last:border-0 last:pb-0">
+                        <span class="bg-gray-900 text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded border border-gray-900 dark:border-black shadow-sm whitespace-nowrap mt-1">16.02.2026</span>
                         <div>
                             <strong class="text-gray-900 dark:text-gray-100 block text-lg mb-1">Webseitenüberarbeitung & Rebranding 🛠️</strong>
                             <p class="text-gray-700 dark:text-gray-300 font-medium leading-relaxed">
                                 Wir haben ordentlich umgebaut! Hallo Knuffi!
-                                <br>• <strong>Startseite:</strong> Jetzt im neuen Sticker-Design mit verspielten Animationen.
+                                <br>• <strong>Startseite:</strong> Jetzt im neuen, edleren Design mit feinen Outlines.
                                 <br>• <strong>Alle Rezepte:</strong> Neue Filter, Sortierung nach Datum und Anzeige des Einsenders.
                             </p>
                         </div>
                     </li>
 
                     <li class="flex flex-col md:flex-row md:items-center gap-1 md:gap-4">
-                        <span class="bg-gray-900 text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-lg shadow-[2px_2px_0px_0px_#cbd5e1] dark:shadow-[2px_2px_0px_0px_#475569] whitespace-nowrap">16.02.2026</span>
+                        <span class="bg-gray-900 text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded border border-gray-900 dark:border-black shadow-sm whitespace-nowrap">16.02.2026</span>
                         <p class="text-gray-800 dark:text-gray-200 font-medium text-lg">
                             <strong>Neu dabei:</strong> Der <a href="rezept.html?id=sloppy_joe" class="text-orange-600 hover:text-orange-700 underline decoration-2 underline-offset-2">Sloppy Joe</a>! 🍔
                         </p>
@@ -114,7 +113,7 @@
         </section>
 
         <section class="mb-16 relative z-10">
-            <h2 class="text-4xl font-extrabold mb-8 dark:text-white inline-block bg-orange-100 dark:bg-gray-800 px-4 py-2 rounded-xl border-4 border-gray-900 shadow-[4px_4px_0px_0px_#1f2937] dark:shadow-[4px_4px_0px_0px_#000] transform -rotate-2">Unsere Highlights</h2>
+            <h2 class="text-4xl font-extrabold mb-8 dark:text-white inline-block bg-orange-100 dark:bg-gray-800 px-4 py-2 rounded-lg border-2 border-gray-900 dark:border-black shadow-md dark:shadow-black/50 transform -rotate-2">Unsere Highlights</h2>
 
             <div id="highlights-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 </div>
@@ -127,15 +126,14 @@
                 </div>
         </section>
 
-
         <img src="knuffi_koch.png"
              alt="Knuffi der Koch"
              class="block relative mx-auto my-12 w-40
                     2xl:absolute 2xl:-left-56 2xl:top-16 2xl:w-56 2xl:my-0 2xl:mx-0
-                    pointer-events-none transform -rotate-6 drop-shadow-2xl opacity-95 z-0">
+                    pointer-events-none transform -rotate-6 drop-shadow-[0_15px_15px_rgba(0,0,0,0.3)] opacity-95 z-0">
 
         <div class="mt-12 max-w-2xl mx-auto text-center px-4 no-print relative z-10">
-            <div class="bg-[#FFE5D9] dark:bg-gray-800 border-4 border-gray-900 rounded-3xl p-8 shadow-[8px_8px_0px_0px_#1f2937] dark:shadow-[8px_8px_0px_0px_#000] transform rotate-2 hover:rotate-0 transition duration-300">
+            <div class="bg-[#FFE5D9] dark:bg-gray-800 border-2 border-gray-900 dark:border-black rounded-2xl p-8 shadow-lg dark:shadow-black/50 transform rotate-1 hover:rotate-0 transition duration-300">
                 <p class="text-gray-800 dark:text-gray-200 font-medium text-lg leading-relaxed">
                     <span class="text-4xl block mb-2">📸</span>
                     <strong class="text-xl">Kleiner Realitäts-Check:</strong><br>
@@ -146,12 +144,12 @@
             </div>
         </div>
 
-        <div class="mt-16 bg-white dark:bg-gray-800 border-4 border-gray-900 rounded-3xl p-8 text-center shadow-[8px_8px_0px_0px_#1f2937] dark:shadow-[8px_8px_0px_0px_#000] relative z-10 max-w-2xl mx-auto">
+        <div class="mt-16 bg-white dark:bg-gray-800 border-2 border-gray-900 dark:border-black rounded-2xl p-8 text-center shadow-lg dark:shadow-black/50 relative z-10 max-w-2xl mx-auto">
             <h3 class="text-3xl font-extrabold text-gray-900 dark:text-white mb-4">Gefällt dir Knuffis Rezepte?</h3>
             <p class="text-gray-700 dark:text-gray-300 font-medium text-lg mb-8 max-w-md mx-auto">
                 Hilf mir, die Seite werbefrei zu halten und unterstütze mich gerne mit einem Euro! Jede kleine Spende wandert direkt in die Rezeptentwicklung (oder in Schokolade).
             </p>
-            <a href="https://ko-fi.com/knuffirezepte" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 bg-[#FF5E5B] text-white font-bold text-xl py-3 px-8 rounded-2xl border-4 border-gray-900 shadow-[4px_4px_0px_0px_#1f2937] hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition">
+            <a href="https://ko-fi.com/knuffirezepte" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 bg-[#FF5E5B] text-white font-bold text-xl py-3 px-8 rounded-xl border-2 border-gray-900 dark:border-black shadow-md hover:shadow-lg hover:-translate-y-1 transition">
                 <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M23.881 8.948c-.773-4.085-4.859-4.593-4.859-4.593H.723c-.604 0-.679.798-.679.798s-.082 7.324-.022 11.822c.164 2.424 2.586 2.672 2.586 2.672s8.267-.023 11.966-.049c2.438-.426 2.683-2.566 2.658-3.734 4.352.24 7.422-2.831 6.649-6.916zm-11.062 3.511c-1.246 1.453-4.011 3.976-4.011 3.976s-.121.119-.31.023c-.076-.057-.108-.09-.108-.09-.443-.441-3.368-3.049-4.061-4.3-.037-.046-.054-.09-.054-.118-.014-.047-.02-.093-.016-.145.034-.146.069-.279.108-.403.228-.544.502-1.05.996-1.391.802-.553 1.849-.452 2.607.126.312.238.587.545.836.885.166.226.471.226.637 0 .249-.34.524-.647.836-.885.758-.578 1.805-.679 2.607-.126.494.341.768.847.996 1.391.039.124.074.257.108.403.004.052-.002.098-.016.145-.001.028-.017.072-.054.118-.328.666-2.571 3.256-3.491 4.258zM20.804 13.064c-.114.733-.943 1.006-1.921 1.053V6.992c1.944.021 3.292.544 3.514 2.404.225 1.859-.479 2.935-1.593 3.668z"/></svg>
                 <span>Unterstütze Knuffi</span>
             </a>
@@ -159,7 +157,7 @@
 
     </main>
 
-    <footer class="bg-gray-900 text-gray-300 py-10 mt-16 border-t-8 border-gray-800 no-print">
+    <footer class="bg-gray-900 text-gray-300 py-10 mt-16 border-t-4 border-gray-800 no-print">
         <div class="max-w-6xl mx-auto px-4 text-center">
             <p class="font-bold text-lg mb-2">&copy; 2026 Knuffis Rezepte. Alle Rechte vorbehalten.</p>
             <div class="mt-4 space-x-6 text-sm font-medium">
@@ -171,7 +169,6 @@
 
     <script src="rezepte.js"></script>
     <script>
-        // --- 1. DARK MODE TOGGLE ---
         function toggleDarkMode() {
             if (document.documentElement.classList.contains('dark')) {
                 document.documentElement.classList.remove('dark');
@@ -182,7 +179,7 @@
             }
         }
 
-        // --- 2. HIGHLIGHTS RENDERN ---
+        // --- HIGHLIGHTS KARTEN ---
         const highlightsContainer = document.getElementById('highlights-grid');
         const highlightIDs = ['pizzateig', 'chili', 'sloppy_joe'];
 
@@ -190,15 +187,15 @@
             const rezept = rezeptDaten[id];
             if(!rezept) return; 
 
-            // Die neue, verspielte Highlight-Karte
+            // Highlight-Karte: Klare Outline (border-2 border-gray-900 dark:border-black), dezenter Schatten
             const cardHTML = `
-            <a href="rezept.html?id=${id}" class="block group transform transition-all duration-300 hover:-translate-y-3 hover:rotate-2 h-full">
-                <div class="bg-white rounded-[2rem] border-4 border-gray-900 shadow-[8px_8px_0px_0px_#1f2937] overflow-hidden flex flex-col h-full dark:bg-gray-800 dark:border-gray-900 dark:shadow-[8px_8px_0px_0px_#000]">
+            <a href="rezept.html?id=${id}" class="block group transform transition-all duration-300 hover:-translate-y-2 h-full">
+                <div class="bg-white rounded-2xl border-2 border-gray-900 dark:border-black shadow-lg group-hover:shadow-xl overflow-hidden flex flex-col h-full dark:bg-gray-800 dark:shadow-black/60">
                     
-                    <div class="h-56 overflow-hidden relative border-b-4 border-gray-900">
+                    <div class="h-56 overflow-hidden relative border-b-2 border-gray-900 dark:border-black">
                         <img src="${rezept.bild}" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500" onerror="this.src='https://placehold.co/600x400?text=Kein+Bild'">
                         
-                        <div class="absolute top-4 right-4 bg-[#FF9F1C] text-gray-900 text-sm font-extrabold px-3 py-1.5 rounded-xl border-2 border-gray-900 transform rotate-[8deg] shadow-[3px_3px_0px_0px_#111827]">
+                        <div class="absolute top-4 right-4 bg-[#FF9F1C] text-gray-900 text-sm font-extrabold px-3 py-1.5 rounded-lg border-2 border-gray-900 dark:border-black transform rotate-[6deg] shadow-sm">
                             TIPP!
                         </div>
                     </div>
@@ -207,8 +204,8 @@
                         <h3 class="text-3xl font-extrabold group-hover:text-[#FF9F1C] transition text-gray-900 dark:text-gray-100 mb-4 leading-tight">${rezept.titel}</h3>
                         
                         <div class="mt-auto flex flex-wrap gap-2">
-                            <span class="bg-orange-100 text-orange-800 text-sm font-bold px-3 py-1.5 rounded-xl border-2 border-gray-900 dark:bg-orange-900/50 dark:text-orange-300 dark:border-gray-700 shadow-[2px_2px_0px_0px_#111827]">⏱️ ${rezept.zeit}</span>
-                            <span class="bg-green-100 text-green-800 text-sm font-bold px-3 py-1.5 rounded-xl border-2 border-gray-900 dark:bg-green-900/50 dark:text-green-300 dark:border-gray-700 shadow-[2px_2px_0px_0px_#111827]">${rezept.kategorie.split(',')[0]}</span>
+                            <span class="bg-orange-100 text-orange-800 text-sm font-bold px-3 py-1.5 rounded-lg border border-gray-900 dark:border-black dark:bg-orange-900/50 dark:text-orange-300 shadow-sm">⏱️ ${rezept.zeit}</span>
+                            <span class="bg-green-100 text-green-800 text-sm font-bold px-3 py-1.5 rounded-lg border border-gray-900 dark:border-black dark:bg-green-900/50 dark:text-green-300 shadow-sm">${rezept.kategorie.split(',')[0]}</span>
                         </div>
                     </div>
                 </div>
@@ -216,7 +213,7 @@
             highlightsContainer.innerHTML += cardHTML;
         });
 
-        // --- 3. ZUFÄLLIGE VORSCHAU LEISTE ---
+        // --- ZUFÄLLIGE KARTEN ---
         const randomContainer = document.getElementById('random-grid');
         const allIDs = Object.keys(rezeptDaten);
         const pool = allIDs.filter(id => !highlightIDs.includes(id));
@@ -227,13 +224,13 @@
         }
         const randomSelection = pool.slice(0, 3);
 
-        // Die neuen, verspielten kleinen Karten
         randomSelection.forEach(id => {
             const rezept = rezeptDaten[id];
+            // Kleine Karten: Mit Outline
             const cardHTML = `
-            <a href="rezept.html?id=${id}" class="block group transform transition-all duration-300 hover:-translate-y-2 hover:-rotate-2 h-full">
-                <div class="bg-white rounded-2xl border-4 border-gray-900 shadow-[6px_6px_0px_0px_#1f2937] overflow-hidden flex flex-col h-full dark:bg-gray-800 dark:shadow-[6px_6px_0px_0px_#000]">
-                    <div class="h-32 overflow-hidden border-b-4 border-gray-900">
+            <a href="rezept.html?id=${id}" class="block group transform transition-all duration-300 hover:-translate-y-1 h-full">
+                <div class="bg-white rounded-xl border-2 border-gray-900 dark:border-black shadow-md group-hover:shadow-lg overflow-hidden flex flex-col h-full dark:bg-gray-800 dark:shadow-black/50">
+                    <div class="h-32 overflow-hidden border-b-2 border-gray-900 dark:border-black">
                         <img src="${rezept.bild}" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" onerror="this.src='https://placehold.co/600x400?text=...'">
                     </div>
                     <div class="p-4">
@@ -245,11 +242,11 @@
             randomContainer.innerHTML += cardHTML;
         });
 
-        // Die verspielte "Alle anzeigen" Karte
+        // --- "ALLE ANZEIGEN" KARTE ---
         const moreCardHTML = `
-        <a href="alle-rezepte.html" class="block group transform transition-all duration-300 hover:-translate-y-2 hover:rotate-3 h-full">
-            <div class="bg-[#FFE5D9] rounded-2xl border-4 border-dashed border-gray-900 shadow-[6px_6px_0px_0px_#1f2937] flex flex-col items-center justify-center h-full min-h-[180px] dark:bg-gray-800 dark:border-gray-700 dark:shadow-[6px_6px_0px_0px_#000]">
-                <div class="bg-white p-3 rounded-full border-4 border-gray-900 shadow-[4px_4px_0px_0px_#1f2937] mb-3 group-hover:rotate-12 transition duration-300 dark:bg-gray-700 dark:shadow-[4px_4px_0px_0px_#111827]">
+        <a href="alle-rezepte.html" class="block group transform transition-all duration-300 hover:-translate-y-1 h-full">
+            <div class="bg-[#FFE5D9] rounded-xl border-2 border-dashed border-gray-900 dark:border-black shadow-md group-hover:shadow-lg flex flex-col items-center justify-center h-full min-h-[180px] dark:bg-gray-800 dark:shadow-black/50">
+                <div class="bg-white p-3 rounded-full border-2 border-gray-900 dark:border-black shadow-sm mb-3 group-hover:rotate-12 transition duration-300 dark:bg-gray-700">
                     <span class="text-3xl">📚</span>
                 </div>
                 <span class="font-extrabold text-gray-900 text-xl dark:text-gray-100">Alle Rezepte</span>
