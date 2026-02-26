@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neues Rezept - Knuffis Rezepte</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Fredoka', sans-serif; background-color: #faf9f6; }
+        /* Textareas sollen aussehen wie normaler Text, bis man reinklickt */
+        textarea, input { 
+            background: rgba(255,255,255,0.5); 
+            transition: all 0.3s;
+        }
+        textarea:focus, input:focus { 
+            background: white; 
+            outline: 2px dashed #FF9F1C; 
+        }
+    </style>
+</head>
+<body class="text-gray-800 p-4 md:p-8">
+
+    <div class="max-w-4xl mx-auto">
+        
+        <div class="text-center mb-10">
+            <h1 class="text-4xl font-extrabold text-orange-600 mb-2">Rezept Einsenden 🧑‍🍳</h1>
+            <p class="font-bold text-gray-600">Tippe dein Rezept einfach direkt in die Karte! Es sieht später (fast) genau so aus.</p>
+        </div>
+
+        <form action="https://formsubmit.co/DEINE_EMAIL_ADRESSE_HIER" method="POST" onsubmit="baueCodeZusammen()" class="bg-white rounded-[2rem] border-4 border-gray-900 shadow-[8px_8px_0px_0px_#1f2937] overflow-hidden">
+            
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_subject" value="Neues Rezept für Knuffi!">
+            <input type="hidden" name="FUEGE_DAS_IN_DIE_REZEPTE_JS_EIN" id="fertiger_code">
+
+            <div class="h-48 bg-gray-200 border-b-4 border-gray-900 flex items-center justify-center flex-col relative">
+                <span class="text-4xl mb-2">📸</span>
+                <p class="font-bold text-gray-500 text-center px-4">Schick uns dein Foto einfach per Mail hinterher!<br>Lars fügt es dann hier ein.</p>
+            </div>
+
+            <div class="p-6 md:p-10">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8 bg-orange-50 p-4 rounded-2xl border-2 border-orange-200">
+                    <div>
+                        <label class="block font-bold text-sm text-orange-800 mb-1">Dein Name (Autor)</label>
+                        <input type="text" id="i_autor" name="autor" required class="w-full border-2 border-gray-300 p-2 rounded-xl" placeholder="Wie sollen wir dich nennen?">
+                    </div>
+                    <div>
+                        <label class="block font-bold text-sm text-orange-800 mb-1">Deine E-Mail (nur für Rückfragen)</label>
+                        <input type="email" name="email" required class="w-full border-2 border-gray-300 p-2 rounded-xl" placeholder="max@muster.de">
+                    </div>
+                </div>
+
+                <input type="text" id="i_titel" required class="w-full text-3xl md:text-5xl font-extrabold text-gray-900 mb-6 p-2 border-b-4 border-dashed border-gray-300" placeholder="Wie heißt dein Gericht? (z.B. Omas Apfelkuchen)">
+
+                <div class="flex flex-wrap gap-4 mb-10 border-t-2 border-b-2 border-gray-100 py-4">
+                    <div class="flex-1 min-w-[120px]">
+                        <label class="block font-bold text-xs text-gray-400 uppercase tracking-wide">Zeitaufwand</label>
+                        <input type="text" id="i_zeit" required class="w-full font-bold text-lg p-1" placeholder="z.B. 20 Min.">
+                    </div>
+                    <div class="flex-1 min-w-[120px]">
+                        <label class="block font-bold text-xs text-gray-400 uppercase tracking-wide">Portionen</label>
+                        <input type="text" id="i_portionen" required class="w-full font-bold text-lg p-1" placeholder="z.B. 4 Portionen">
+                    </div>
+                    <div class="flex-1 min-w-[120px]">
+                        <label class="block font-bold text-xs text-gray-400 uppercase tracking-wide">Kategorie</label>
+                        <input type="text" id="i_kategorie" required class="w-full font-bold text-lg p-1" placeholder="z.B. Hauptgericht">
+                    </div>
+                    <div class="flex-1 min-w-[120px]">
+                        <label class="block font-bold text-xs text-gray-400 uppercase tracking-wide">Inspiration</label>
+                        <input type="text" id="i_inspiration" class="w-full font-bold text-lg p-1" placeholder="z.B. Von Mama">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-10">
+                    
+                    <div class="md:col-span-4 bg-gray-50 p-6 rounded-2xl border-4 border-gray-900 h-fit shadow-[4px_4px_0px_0px_#1f2937]">
+                        <h2 class="text-2xl font-extrabold mb-4 flex items-center gap-2">🛒 Zutaten</h2>
+                        <p class="text-xs text-gray-500 font-bold mb-2">Einfach untereinander schreiben:</p>
+                        <textarea id="i_zutaten" required rows="10" class="w-full resize-none font-medium leading-relaxed p-2" placeholder="500g Hackfleisch&#10;1 Zwiebel&#10;Salz & Pfeffer"></textarea>
+                    </div>
+
+                    <div class="md:col-span-8">
+                        <h2 class="text-3xl font-extrabold mb-4 flex items-center gap-2">👨‍🍳 Zubereitung</h2>
+                        <div class="bg-blue-50 border-2 border-blue-200 rounded-xl p-3 mb-4 text-sm text-blue-800 font-medium">
+                            <strong>Tipp:</strong> Wenn du deinem Schritt einen Titel geben willst, nutze einen Doppelpunkt! <br>
+                            <em>Beispiel:</em> <strong>Anbraten:</strong> Das Fleisch in die Pfanne werfen...
+                        </div>
+                        <textarea id="i_zubereitung" required rows="12" class="w-full resize-none font-medium leading-relaxed p-4 border-2 border-gray-200 rounded-2xl" placeholder="Vorbereitung: Den Ofen auf 200 Grad vorheizen.&#10;&#10;Anbraten: Die Zwiebeln würfeln und in der Pfanne glasig dünsten..."></textarea>
+                    </div>
+
+                </div>
+
+                <div class="mt-12 text-center">
+                    <button type="submit" class="bg-[#FF9F1C] text-gray-900 px-10 py-4 rounded-xl font-extrabold text-2xl border-4 border-gray-900 shadow-[6px_6px_0px_0px_#1f2937] hover:shadow-none hover:translate-x-[6px] hover:translate-y-[6px] transition">
+                        🚀 Rezept an Knuffi senden
+                    </button>
+                </div>
+
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function baueCodeZusammen() {
+            // Werte aus den Feldern holen
+            const titel = document.getElementById('i_titel').value.trim();
+            const zeit = document.getElementById('i_zeit').value.trim();
+            const portionen = document.getElementById('i_portionen').value.trim();
+            const kategorie = document.getElementById('i_kategorie').value.trim();
+            const autor = document.getElementById('i_autor').value.trim();
+            const inspiration = document.getElementById('i_inspiration').value.trim();
+            
+            // Eine automatische ID aus dem Titel generieren (z.B. "Omas Kuchen" -> "omas_kuchen")
+            let id = titel.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/(^_|_$)/g, '');
+            if(!id) id = "neues_rezept";
+
+            // Automatischer Bildpfad
+            const bild = "Bilder/" + id + ".jpg";
+
+            // Heutiges Datum
+            const datum = new Date().toLocaleDateString('de-DE', {day: '2-digit', month: '2-digit', year: 'numeric'});
+
+            // Zutaten formatieren
+            const zutatenRaw = document.getElementById('i_zutaten').value.split('\n').filter(z => z.trim() !== '');
+            let zutatenString = '';
+            zutatenRaw.forEach((z, i) => {
+                zutatenString += `            "${z.trim()}"${i < zutatenRaw.length - 1 ? ',' : ''}\n`;
+            });
+
+            // Zubereitung formatieren (inklusive Doppelpunkt-Erkennung)
+            const zubereitungRaw = document.getElementById('i_zubereitung').value.split('\n').filter(s => s.trim() !== '');
+            let zubereitungString = '';
+            let stepCount = 1;
+            
+            zubereitungRaw.forEach((step, i) => {
+                let stepTitle = `Schritt ${stepCount}`;
+                let stepText = step.trim();
+                
+                if(stepText.includes(':')) {
+                    const firstColonIndex = stepText.indexOf(':');
+                    stepTitle = stepText.substring(0, firstColonIndex).trim();
+                    stepText = stepText.substring(firstColonIndex + 1).trim();
+                }
+                
+                zubereitungString += `            { \n                titel: "${stepTitle}", \n                text: "${stepText}" \n            }${i < zubereitungRaw.length - 1 ? ',' : ''}\n`;
+                stepCount++;
+            });
+
+            // -----------------------------------------------------------------
+            // DEN FERTIGEN CODE ZUSAMMENBAUEN
+            // -----------------------------------------------------------------
+            const finalCode = `
+    "${id}": {
+        titel: "${titel}",
+        bild: "${bild}",
+        zeit: "${zeit}",
+        portionen: "${portionen}",
+        kategorie: "${kategorie}",
+        autor: "${autor}",
+        datum: "${datum}",
+        inspiration: "${inspiration}",
+        zutaten: [
+${zutatenString}        ],
+        zubereitung: [
+${zubereitungString}        ]
+    },`;
+
+            // Den fertigen Code in das unsichtbare Feld schieben!
+            document.getElementById('fertiger_code').value = finalCode;
+            
+            // Das Formular wird jetzt ganz normal verschickt, 
+            // aber nimmt den generierten Code im Rucksack mit!
+        }
+    </script>
+</body>
+</html>
