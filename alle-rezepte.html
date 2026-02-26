@@ -29,7 +29,7 @@
 </head>
 <body class="bg-[#faf9f6] text-gray-800 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300 flex flex-col min-h-screen">
 
-    <nav class="bg-white sticky top-0 z-50 dark:bg-gray-800 border-b-4 border-gray-900 transition-colors duration-300 no-print shadow-[0_4px_0_0_#1f2937] dark:shadow-[0_4px_0_0_#000]">
+    <nav class="bg-white sticky top-0 z-50 dark:bg-gray-800 border-b-2 border-gray-900 dark:border-black transition-colors duration-300 no-print shadow-md dark:shadow-black/40">
         <div class="max-w-6xl mx-auto px-4">
             <div class="flex flex-col md:flex-row justify-between items-center py-3 md:py-4 min-h-[80px]">
 
@@ -41,7 +41,7 @@
                     <a href="index.html" class="text-gray-700 hover:text-orange-600 font-bold text-sm md:text-base dark:text-gray-300 dark:hover:text-orange-400 transition">Start</a>
                     <a href="alle-rezepte.html" class="text-[#FF9F1C] font-extrabold text-sm md:text-base dark:text-orange-400 transition">Rezepte</a>
                     
-                    <a href="neues-rezept.html" class="bg-orange-500 text-white px-4 py-2 rounded-xl font-bold border-2 border-gray-900 shadow-[2px_2px_0px_0px_#1f2937] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition text-sm">Einsenden</a>
+                    <a href="neues-rezept.html" class="bg-orange-500 text-white px-4 py-2 rounded-lg font-bold border-2 border-gray-900 dark:border-black shadow-sm hover:shadow-md hover:-translate-y-0.5 transition text-sm">Einsenden</a>
 
                     <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition font-bold text-xl" aria-label="Dark Mode umschalten">
                         <span id="dark-icon">🌙</span>
@@ -53,33 +53,33 @@
 
     <main class="max-w-6xl mx-auto px-4 py-12 flex-grow">
         
-        <div class="flex flex-col md:flex-row justify-between items-end mb-10 border-b-4 border-gray-900 pb-8 gap-6 dark:border-gray-700">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-10 border-b-2 border-gray-900 dark:border-gray-700 pb-8 gap-6">
             <div>
-                <h1 class="text-5xl font-extrabold dark:text-white inline-block bg-[#FF9F1C] text-gray-900 px-5 py-2 rounded-2xl border-4 border-gray-900 shadow-[6px_6px_0px_0px_#1f2937] transform -rotate-2">Alle Rezepte 📚</h1>
+                <h1 class="text-5xl font-extrabold dark:text-white inline-block bg-[#FF9F1C] text-gray-900 px-5 py-2 rounded-2xl border-2 border-gray-900 dark:border-black shadow-md dark:shadow-black/50 transform -rotate-2">Alle Rezepte 📚</h1>
                 <p class="text-xl font-bold text-gray-600 mt-6 dark:text-gray-400">Stöbere durch die komplette Sammlung.</p>
             </div>
             
             <div class="flex flex-col items-end gap-3">
-                <select id="sort-select" onchange="handleSort()" class="bg-white border-4 border-gray-900 text-gray-900 font-bold py-2 px-4 rounded-xl shadow-[4px_4px_0px_0px_#1f2937] focus:outline-none hover:-translate-y-1 transition cursor-pointer dark:bg-gray-800 dark:text-gray-100 dark:shadow-[4px_4px_0px_0px_#000]">
+                <select id="sort-select" onchange="handleSort()" class="bg-white border-2 border-gray-900 dark:border-black text-gray-900 font-bold py-2 px-4 rounded-xl shadow-sm focus:outline-none hover:shadow-md hover:-translate-y-0.5 transition cursor-pointer dark:bg-gray-800 dark:text-gray-100">
                     <option value="newest">📅 Neueste zuerst</option>
                     <option value="oldest">📅 Älteste zuerst</option>
                     <option value="az">🔤 A-Z</option>
                     <option value="za">🔤 Z-A</option>
                 </select>
                 
-                <div class="text-gray-500 font-bold text-sm bg-gray-200 dark:bg-gray-800 px-3 py-1 rounded-lg border-2 border-gray-900">
+                <div class="text-gray-500 font-bold text-sm bg-gray-200 dark:bg-gray-800 px-3 py-1 rounded-lg border border-gray-900 dark:border-black shadow-sm">
                     Zeige <span id="showing-info">...</span> Rezepte
                 </div>
             </div>
         </div>
 
         <div class="flex flex-wrap gap-3 mb-12" id="filter-container">
-            <button onclick="toggleFilter(this, 'alle')" class="filter-btn active px-5 py-2 rounded-xl font-extrabold transition bg-[#FF9F1C] text-gray-900 border-4 border-gray-900 shadow-none translate-x-[4px] translate-y-[4px]">Alle</button>
-            <button onclick="toggleFilter(this, 'hauptgericht')" class="filter-btn px-5 py-2 rounded-xl font-bold transition bg-white text-gray-800 border-4 border-gray-900 shadow-[4px_4px_0px_0px_#1f2937] hover:bg-[#FFE5D9] hover:-translate-y-1 dark:bg-gray-800 dark:text-gray-200 dark:shadow-[4px_4px_0px_0px_#000] dark:hover:bg-gray-700">🥘 Hauptgericht</button>
-            <button onclick="toggleFilter(this, 'dessert')" class="filter-btn px-5 py-2 rounded-xl font-bold transition bg-white text-gray-800 border-4 border-gray-900 shadow-[4px_4px_0px_0px_#1f2937] hover:bg-[#FFE5D9] hover:-translate-y-1 dark:bg-gray-800 dark:text-gray-200 dark:shadow-[4px_4px_0px_0px_#000] dark:hover:bg-gray-700">🍰 Dessert</button>
-            <button onclick="toggleFilter(this, 'schnell')" class="filter-btn px-5 py-2 rounded-xl font-bold transition bg-white text-gray-800 border-4 border-gray-900 shadow-[4px_4px_0px_0px_#1f2937] hover:bg-[#FFE5D9] hover:-translate-y-1 dark:bg-gray-800 dark:text-gray-200 dark:shadow-[4px_4px_0px_0px_#000] dark:hover:bg-gray-700">⚡ Schnell</button>
-            <button onclick="toggleFilter(this, 'vegetarisch')" class="filter-btn px-5 py-2 rounded-xl font-bold transition bg-white text-gray-800 border-4 border-gray-900 shadow-[4px_4px_0px_0px_#1f2937] hover:bg-[#FFE5D9] hover:-translate-y-1 dark:bg-gray-800 dark:text-gray-200 dark:shadow-[4px_4px_0px_0px_#000] dark:hover:bg-gray-700">🧀 Vegetarisch</button>
-            <button onclick="toggleFilter(this, 'vegan')" class="filter-btn px-5 py-2 rounded-xl font-bold transition bg-white text-gray-800 border-4 border-gray-900 shadow-[4px_4px_0px_0px_#1f2937] hover:bg-[#FFE5D9] hover:-translate-y-1 dark:bg-gray-800 dark:text-gray-200 dark:shadow-[4px_4px_0px_0px_#000] dark:hover:bg-gray-700">🌱 Vegan</button>
+            <button onclick="toggleFilter(this, 'alle')" class="filter-btn px-5 py-2 rounded-lg font-bold transition outline-none">Alle</button>
+            <button onclick="toggleFilter(this, 'hauptgericht')" class="filter-btn px-5 py-2 rounded-lg font-bold transition outline-none">🥘 Hauptgericht</button>
+            <button onclick="toggleFilter(this, 'dessert')" class="filter-btn px-5 py-2 rounded-lg font-bold transition outline-none">🍰 Dessert</button>
+            <button onclick="toggleFilter(this, 'schnell')" class="filter-btn px-5 py-2 rounded-lg font-bold transition outline-none">⚡ Schnell</button>
+            <button onclick="toggleFilter(this, 'vegetarisch')" class="filter-btn px-5 py-2 rounded-lg font-bold transition outline-none">🧀 Vegetarisch</button>
+            <button onclick="toggleFilter(this, 'vegan')" class="filter-btn px-5 py-2 rounded-lg font-bold transition outline-none">🌱 Vegan</button>
         </div>
 
         <div id="rezept-grid" class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
@@ -88,12 +88,12 @@
         <div id="pagination" class="flex justify-center items-center gap-3 mt-16 font-fredoka">
             </div>
 
-        <div class="mt-20 bg-white dark:bg-gray-800 border-4 border-gray-900 rounded-3xl p-8 text-center shadow-[8px_8px_0px_0px_#1f2937] dark:shadow-[8px_8px_0px_0px_#000] relative z-10 max-w-2xl mx-auto">
+        <div class="mt-20 bg-white dark:bg-gray-800 border-2 border-gray-900 dark:border-black rounded-2xl p-8 text-center shadow-lg dark:shadow-black/50 relative z-10 max-w-2xl mx-auto">
             <h3 class="text-3xl font-extrabold text-gray-900 dark:text-white mb-4">Gefällt dir Knuffis Rezepte?</h3>
             <p class="text-gray-700 dark:text-gray-300 font-medium text-lg mb-8 max-w-md mx-auto">
                 Hilf mir, die Seite werbefrei zu halten und unterstütze mich gerne mit einem Euro! Jede kleine Spende wandert direkt in die Rezeptentwicklung (oder in Schokolade).
             </p>
-            <a href="https://ko-fi.com/knuffirezepte" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 bg-[#FF5E5B] text-white font-bold text-xl py-3 px-8 rounded-2xl border-4 border-gray-900 shadow-[4px_4px_0px_0px_#1f2937] hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition">
+            <a href="https://ko-fi.com/knuffirezepte" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 bg-[#FF5E5B] text-white font-bold text-xl py-3 px-8 rounded-xl border-2 border-gray-900 dark:border-black shadow-md hover:shadow-lg hover:-translate-y-1 transition">
                 <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M23.881 8.948c-.773-4.085-4.859-4.593-4.859-4.593H.723c-.604 0-.679.798-.679.798s-.082 7.324-.022 11.822c.164 2.424 2.586 2.672 2.586 2.672s8.267-.023 11.966-.049c2.438-.426 2.683-2.566 2.658-3.734 4.352.24 7.422-2.831 6.649-6.916zm-11.062 3.511c-1.246 1.453-4.011 3.976-4.011 3.976s-.121.119-.31.023c-.076-.057-.108-.09-.108-.09-.443-.441-3.368-3.049-4.061-4.3-.037-.046-.054-.09-.054-.118-.014-.047-.02-.093-.016-.145.034-.146.069-.279.108-.403.228-.544.502-1.05.996-1.391.802-.553 1.849-.452 2.607.126.312.238.587.545.836.885.166.226.471.226.637 0 .249-.34.524-.647.836-.885.758-.578 1.805-.679 2.607-.126.494.341.768.847.996 1.391.039.124.074.257.108.403.004.052-.002.098-.016.145-.001.028-.017.072-.054.118-.328.666-2.571 3.256-3.491 4.258zM20.804 13.064c-.114.733-.943 1.006-1.921 1.053V6.992c1.944.021 3.292.544 3.514 2.404.225 1.859-.479 2.935-1.593 3.668z"/></svg>
                 <span>Unterstütze Knuffi</span>
             </a>
@@ -101,7 +101,7 @@
 
     </main>
 
-    <footer class="bg-gray-900 text-gray-300 py-10 mt-16 border-t-8 border-gray-800 no-print">
+    <footer class="bg-gray-900 text-gray-300 py-10 mt-16 border-t-4 border-gray-800 no-print">
         <div class="max-w-6xl mx-auto px-4 text-center">
             <p class="font-bold text-lg mb-2">&copy; 2026 Knuffis Rezepte. Alle Rechte vorbehalten.</p>
             <div class="mt-4 space-x-6 text-sm font-medium">
@@ -125,7 +125,6 @@
             }
         }
 
-        // Datum parser (13.02.2026 -> Timestamp)
         function parseGermanDate(dateStr) {
             if (!dateStr) return 0;
             const parts = dateStr.split('.'); 
@@ -136,7 +135,6 @@
         const ITEMS_PER_PAGE = 25; 
         let currentPage = 1;
         
-        // Filter & Sortier Status
         let activeFilters = new Set(['alle']);
         let currentSort = 'newest';
 
@@ -166,15 +164,18 @@
             renderPage();    
         }
 
+        // NEU: Clean Outline Styles für die Filter-Buttons
         function updateButtonStyles() {
             document.querySelectorAll('.filter-btn').forEach(button => {
                 const match = button.getAttribute('onclick').match(/'([^']+)'/);
                 const filterName = match ? match[1] : '';
 
                 if (activeFilters.has(filterName)) {
-                    button.className = "filter-btn px-5 py-2 rounded-xl font-extrabold transition bg-[#FF9F1C] text-gray-900 border-4 border-gray-900 shadow-none translate-x-[4px] translate-y-[4px] outline-none";
+                    // Aktiv: Orange, nach innen gedrückt (shadow-inner), schwarze Outline
+                    button.className = "filter-btn px-5 py-2 rounded-lg font-extrabold transition bg-[#FF9F1C] text-gray-900 border-2 border-gray-900 dark:border-black shadow-inner outline-none transform translate-y-0.5";
                 } else {
-                    button.className = "filter-btn px-5 py-2 rounded-xl font-bold transition bg-white text-gray-800 border-4 border-gray-900 shadow-[4px_4px_0px_0px_#1f2937] hover:bg-[#FFE5D9] hover:-translate-y-1 dark:bg-gray-800 dark:text-gray-200 dark:shadow-[4px_4px_0px_0px_#000] dark:hover:bg-gray-700 outline-none";
+                    // Inaktiv: Weiß/Dunkel, normaler weicher Schatten, schwarze Outline
+                    button.className = "filter-btn px-5 py-2 rounded-lg font-bold transition bg-white text-gray-800 border-2 border-gray-900 dark:border-black shadow-sm hover:shadow-md hover:bg-[#FFE5D9] hover:-translate-y-0.5 dark:bg-gray-800 dark:text-gray-200 dark:shadow-black/50 dark:hover:bg-gray-700 outline-none";
                 }
             });
         }
@@ -186,9 +187,7 @@
             renderPage();
         }
 
-        // --- HAUPT LOGIK: Filtern -> Sortieren -> Anzeigen ---
         function getProcessedRecipes() {
-            // 1. Filtern
             let filtered = allRecipesArray.filter(([id, data]) => {
                 if (activeFilters.has('alle')) return true;
 
@@ -199,7 +198,6 @@
                 return Array.from(activeFilters).every(filter => tags.includes(filter));
             });
 
-            // 2. Sortieren
             filtered.sort((a, b) => {
                 const rezeptA = a[1];
                 const rezeptB = b[1];
@@ -227,29 +225,29 @@
             const end = start + ITEMS_PER_PAGE;
             const pageItems = processedItems.slice(start, end);
 
-            // Karten bauen (Verspielter Sticker-Style)
+            // NEU: Clean Outline Styles für die Rezept-Karten
             pageItems.forEach(([id, data]) => {
-                const datumAnzeige = data.datum ? `<div class="absolute top-4 right-4 bg-white text-gray-900 text-xs font-extrabold px-2 py-1 rounded-lg border-2 border-gray-900 transform rotate-3 shadow-[2px_2px_0px_0px_#111827]">📅 ${data.datum}</div>` : '';
+                const datumAnzeige = data.datum ? `<div class="absolute top-4 right-4 bg-white text-gray-900 text-xs font-extrabold px-2 py-1 rounded-lg border-2 border-gray-900 dark:border-black transform rotate-3 shadow-sm">📅 ${data.datum}</div>` : '';
                 const autorAnzeige = data.autor ? `<span class="text-sm font-bold text-gray-500 dark:text-gray-400 ml-auto">Von ${data.autor}</span>` : '';
 
                 const cardHTML = `
-                <a href="rezept.html?id=${id}" class="block group transform transition-all duration-300 hover:-translate-y-3 hover:rotate-2 h-full">
-                    <div class="bg-white rounded-[2rem] border-4 border-gray-900 shadow-[8px_8px_0px_0px_#1f2937] overflow-hidden flex flex-col h-full dark:bg-gray-800 dark:border-gray-900 dark:shadow-[8px_8px_0px_0px_#000]">
+                <a href="rezept.html?id=${id}" class="block group transform transition-all duration-300 hover:-translate-y-2 h-full">
+                    <div class="bg-white rounded-2xl border-2 border-gray-900 dark:border-black shadow-lg group-hover:shadow-xl overflow-hidden flex flex-col h-full dark:bg-gray-800 dark:shadow-black/60">
                         
-                        <div class="h-56 overflow-hidden relative border-b-4 border-gray-900">
+                        <div class="h-56 overflow-hidden relative border-b-2 border-gray-900 dark:border-black">
                             <img src="${data.bild}" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500" onerror="this.src='https://placehold.co/600x400?text=Kein+Bild'">
                             ${datumAnzeige}
                         </div>
                         
                         <div class="p-6 flex-grow flex flex-col">
                             <div class="mb-4 flex justify-between items-start">
-                                <span class="bg-[#FF9F1C] text-gray-900 text-sm font-extrabold px-3 py-1 rounded-xl border-2 border-gray-900 shadow-[2px_2px_0px_0px_#111827] uppercase">${data.kategorie.split(',')[0]}</span>
+                                <span class="bg-[#FF9F1C] text-gray-900 text-sm font-extrabold px-3 py-1 rounded-lg border border-gray-900 dark:border-black shadow-sm uppercase">${data.kategorie.split(',')[0]}</span>
                             </div>
                             
                             <h3 class="text-2xl font-extrabold group-hover:text-[#FF5E5B] transition text-gray-900 dark:text-gray-100 mb-2 leading-tight">${data.titel}</h3>
                             
-                            <div class="mt-auto flex items-center pt-5 border-t-2 border-dashed border-gray-200 dark:border-gray-700">
-                                <span class="text-gray-800 font-bold dark:text-gray-200 bg-gray-100 dark:bg-gray-700 px-3 py-1 rounded-xl border-2 border-gray-900 shadow-[2px_2px_0px_0px_#111827]">⏱️ ${data.zeit}</span>
+                            <div class="mt-auto flex items-center pt-5 border-t border-dashed border-gray-300 dark:border-gray-700">
+                                <span class="text-gray-800 font-bold dark:text-gray-200 bg-gray-100 dark:bg-gray-700 px-3 py-1 rounded-lg border border-gray-900 dark:border-black shadow-sm">⏱️ ${data.zeit}</span>
                                 ${autorAnzeige}
                             </div>
                         </div>
@@ -264,12 +262,13 @@
                 document.getElementById('showing-info').innerText = `${start + 1}-${currentShow} von ${total}`;
             } else {
                 document.getElementById('showing-info').innerText = "0";
-                grid.innerHTML = `<div class="col-span-full text-center py-12 text-gray-600 font-bold text-xl border-4 border-dashed border-gray-300 rounded-[2rem] dark:border-gray-700 dark:text-gray-400">Keine Rezepte gefunden, die zu diesen Filtern passen. 🍳</div>`;
+                grid.innerHTML = `<div class="col-span-full text-center py-12 text-gray-600 font-bold text-xl border-2 border-dashed border-gray-400 rounded-2xl dark:border-gray-600 dark:text-gray-400">Keine Rezepte gefunden, die zu diesen Filtern passen. 🍳</div>`;
             }
 
             renderPagination(total);
         }
 
+        // NEU: Clean Outline Styles für die Seiten-Zahlen (Paginierung)
         function renderPagination(totalItems) {
             const container = document.getElementById('pagination');
             container.innerHTML = '';
@@ -280,7 +279,7 @@
             // Zurück Button
             const prevBtn = document.createElement('button');
             prevBtn.innerHTML = '&larr;';
-            prevBtn.className = `px-5 py-2 rounded-xl font-bold border-4 transition ${currentPage === 1 ? 'border-gray-300 bg-gray-100 text-gray-400 cursor-not-allowed dark:border-gray-700 dark:bg-gray-800 dark:text-gray-600' : 'border-gray-900 bg-white text-gray-800 shadow-[4px_4px_0px_0px_#1f2937] hover:-translate-y-1 hover:bg-[#FFE5D9] dark:bg-gray-800 dark:text-gray-200 dark:shadow-[4px_4px_0px_0px_#000] dark:hover:bg-gray-700'}`;
+            prevBtn.className = `px-4 py-2 rounded-lg font-bold border-2 transition ${currentPage === 1 ? 'border-gray-300 bg-gray-100 text-gray-400 cursor-not-allowed dark:border-gray-700 dark:bg-gray-800 dark:text-gray-600' : 'border-gray-900 dark:border-black bg-white text-gray-800 shadow-sm hover:-translate-y-0.5 hover:shadow-md hover:bg-[#FFE5D9] dark:bg-gray-800 dark:text-gray-200 dark:shadow-black/50 dark:hover:bg-gray-700'}`;
             prevBtn.onclick = () => { if(currentPage > 1) { currentPage--; renderPage(); }};
             container.appendChild(prevBtn);
 
@@ -289,9 +288,9 @@
                 const btn = document.createElement('button');
                 btn.innerText = i;
                 if (i === currentPage) {
-                    btn.className = 'px-5 py-2 rounded-xl bg-[#FF9F1C] text-gray-900 font-extrabold border-4 border-gray-900 translate-y-[4px] translate-x-[4px]';
+                    btn.className = 'px-4 py-2 rounded-lg bg-[#FF9F1C] text-gray-900 font-extrabold border-2 border-gray-900 dark:border-black shadow-inner transform translate-y-0.5';
                 } else {
-                    btn.className = 'px-5 py-2 rounded-xl border-4 border-gray-900 bg-white text-gray-800 font-bold shadow-[4px_4px_0px_0px_#1f2937] hover:-translate-y-1 hover:bg-[#FFE5D9] transition dark:bg-gray-800 dark:text-gray-200 dark:shadow-[4px_4px_0px_0px_#000] dark:hover:bg-gray-700';
+                    btn.className = 'px-4 py-2 rounded-lg border-2 border-gray-900 dark:border-black bg-white text-gray-800 font-bold shadow-sm hover:-translate-y-0.5 hover:shadow-md hover:bg-[#FFE5D9] transition dark:bg-gray-800 dark:text-gray-200 dark:shadow-black/50 dark:hover:bg-gray-700';
                 }
                 btn.onclick = () => { currentPage = i; renderPage(); };
                 container.appendChild(btn);
@@ -300,7 +299,7 @@
             // Vorwärts Button
             const nextBtn = document.createElement('button');
             nextBtn.innerHTML = '&rarr;';
-            nextBtn.className = `px-5 py-2 rounded-xl font-bold border-4 transition ${currentPage === totalPages ? 'border-gray-300 bg-gray-100 text-gray-400 cursor-not-allowed dark:border-gray-700 dark:bg-gray-800 dark:text-gray-600' : 'border-gray-900 bg-white text-gray-800 shadow-[4px_4px_0px_0px_#1f2937] hover:-translate-y-1 hover:bg-[#FFE5D9] dark:bg-gray-800 dark:text-gray-200 dark:shadow-[4px_4px_0px_0px_#000] dark:hover:bg-gray-700'}`;
+            nextBtn.className = `px-4 py-2 rounded-lg font-bold border-2 transition ${currentPage === totalPages ? 'border-gray-300 bg-gray-100 text-gray-400 cursor-not-allowed dark:border-gray-700 dark:bg-gray-800 dark:text-gray-600' : 'border-gray-900 dark:border-black bg-white text-gray-800 shadow-sm hover:-translate-y-0.5 hover:shadow-md hover:bg-[#FFE5D9] dark:bg-gray-800 dark:text-gray-200 dark:shadow-black/50 dark:hover:bg-gray-700'}`;
             nextBtn.onclick = () => { if(currentPage < totalPages) { currentPage++; renderPage(); }};
             container.appendChild(nextBtn);
         }
