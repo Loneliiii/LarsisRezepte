@@ -53,7 +53,7 @@
                 </a>
 
                 <div class="flex items-center gap-4 flex-wrap justify-center">
-                    <a href="index.html" class="text-gray-700 hover:text-orange-600 font-bold text-sm md:text-base dark:text-gray-300 dark:hover:text-orange-400 transition">Start</a>
+                    <a href="index.html" class="text-[#FF9F1C] font-extrabold text-sm md:text-base dark:text-orange-400 transition">Start</a>
                     <a href="alle-rezepte.html" class="text-gray-700 hover:text-orange-600 font-bold text-sm md:text-base dark:text-gray-300 dark:hover:text-orange-400 transition">Rezepte</a>
                     
                     <a href="neues-rezept.html" class="bg-orange-500 text-white px-4 py-2 rounded-lg font-bold border-2 border-gray-900 dark:border-black shadow-sm hover:shadow-md hover:-translate-y-0.5 transition text-sm">Einsenden</a>
@@ -75,48 +75,26 @@
 
     <main class="max-w-6xl mx-auto px-4 py-12 flex-grow relative">
 
-        <section class="mb-16">
-            <h2 class="text-3xl font-extrabold mb-6 flex items-center gap-3 dark:text-white">
-                <span class="text-4xl transform -rotate-12">📢</span> Was gibt's Neues?
-            </h2>
-            <div class="bg-white dark:bg-gray-800 rounded-2xl border-2 border-gray-900 dark:border-black shadow-lg dark:shadow-black/50 p-6 md:p-8">
-                <ul class="space-y-4">
+        <section class="mb-12 relative z-10">
+            <h2 class="text-4xl font-extrabold mb-8 dark:text-white inline-block bg-[#2EC4B6] text-white px-4 py-2 rounded-lg border-2 border-gray-900 dark:border-black shadow-md dark:shadow-black/50 transform -rotate-2">✨ Frisch eingetroffen</h2>
 
-                    <li class="flex flex-col md:flex-row md:items-start gap-1 md:gap-4 border-b border-gray-200 dark:border-gray-700 pb-4 last:border-0 last:pb-0">
-                        <span class="bg-gray-900 text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded border border-gray-900 dark:border-black shadow-sm whitespace-nowrap mt-1">28.02.2026</span>
-                        <div>
-                            <strong class="text-gray-900 dark:text-gray-100 block text-lg mb-1">Airfryer-Doppelpack! 🌪️🍟</strong>
-                            <p class="text-gray-700 dark:text-gray-300 font-medium leading-relaxed">
-                                Der Airfryer glüht! Frisch eingetroffen: <a href="rezept.html?id=airfryer_hackbaellchen" class="text-orange-600 hover:text-orange-700 underline decoration-2 underline-offset-2">Saftige Hackbällchen</a> und ein unfassbar leckerer <a href="rezept.html?id=airfryer_nudelauflauf" class="text-orange-600 hover:text-orange-700 underline decoration-2 underline-offset-2">Nudel-Hack-Auflauf</a> von Petra!
-                            </p>
-                        </div>
-                    </li>
-
-                    <li class="flex flex-col md:flex-row md:items-center gap-1 md:gap-4 border-b border-gray-200 dark:border-gray-700 pb-4 last:border-0 last:pb-0">
-                        <span class="bg-gray-900 text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded border border-gray-900 dark:border-black shadow-sm whitespace-nowrap">18.02.2026</span>
-                        <p class="text-gray-800 dark:text-gray-200 font-medium text-lg">
-                            <strong>Neu Dabei: Ein Traum von einem </strong> <a href="rezept.html?id=mamas_schokokuchen" class="text-orange-600 hover:text-orange-700 underline decoration-2 underline-offset-2">Schokokuchen</a> ist online!
-                        </p>
-                    </li>
-
-                    <li class="flex flex-col md:flex-row md:items-start gap-1 md:gap-4 border-b border-gray-200 dark:border-gray-700 pb-4 last:border-0 last:pb-0">
-                        <span class="bg-gray-900 text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded border border-gray-900 dark:border-black shadow-sm whitespace-nowrap mt-1">16.02.2026</span>
-                        <div>
-                            <strong class="text-gray-900 dark:text-gray-100 block text-lg mb-1">Webseitenüberarbeitung & Rebranding 🛠️</strong>
-                            <p class="text-gray-700 dark:text-gray-300 font-medium leading-relaxed">
-                                Wir haben ordentlich umgebaut! Hallo Knuffi!
-                                <br>• <strong>Startseite:</strong> Jetzt im neuen, edleren Design mit feinen Outlines.
-                                <br>• <strong>Alle Rezepte:</strong> Neue Filter, Sortierung nach Datum und Anzeige des Einsenders.
-                            </p>
-                        </div>
-                    </li>
-
-                </ul>
-            </div>
+            <div id="newest-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                </div>
         </section>
 
+        <div class="mb-16 bg-white dark:bg-gray-800 border-2 border-gray-900 dark:border-black rounded-2xl p-8 text-center shadow-lg dark:shadow-black/50 relative z-10 max-w-3xl mx-auto">
+            <h3 class="text-3xl font-extrabold text-gray-900 dark:text-white mb-4">Gefällt dir Knuffis Rezepte?</h3>
+            <p class="text-gray-700 dark:text-gray-300 font-medium text-lg mb-8 max-w-md mx-auto">
+                Hilf mir, die Seite werbefrei zu halten und unterstütze mich gerne mit einem Euro! Jede kleine Spende wandert direkt in die Rezeptentwicklung (oder in Schokolade).
+            </p>
+            <a href="https://ko-fi.com/knuffirezepte" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 bg-[#FF5E5B] text-white font-bold text-xl py-3 px-8 rounded-xl border-2 border-gray-900 dark:border-black shadow-md hover:shadow-lg hover:-translate-y-1 transition">
+                <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M23.881 8.948c-.773-4.085-4.859-4.593-4.859-4.593H.723c-.604 0-.679.798-.679.798s-.082 7.324-.022 11.822c.164 2.424 2.586 2.672 2.586 2.672s8.267-.023 11.966-.049c2.438-.426 2.683-2.566 2.658-3.734 4.352.24 7.422-2.831 6.649-6.916zm-11.062 3.511c-1.246 1.453-4.011 3.976-4.011 3.976s-.121.119-.31.023c-.076-.057-.108-.09-.108-.09-.443-.441-3.368-3.049-4.061-4.3-.037-.046-.054-.09-.054-.118-.014-.047-.02-.093-.016-.145.034-.146.069-.279.108-.403.228-.544.502-1.05.996-1.391.802-.553 1.849-.452 2.607.126.312.238.587.545.836.885.166.226.471.226.637 0 .249-.34.524-.647.836-.885.758-.578 1.805-.679 2.607-.126.494.341.768.847.996 1.391.039.124.074.257.108.403.004.052-.002.098-.016.145-.001.028-.017.072-.054.118-.328.666-2.571 3.256-3.491 4.258zM20.804 13.064c-.114.733-.943 1.006-1.921 1.053V6.992c1.944.021 3.292.544 3.514 2.404.225 1.859-.479 2.935-1.593 3.668z"/></svg>
+                <span>Unterstütze Knuffi</span>
+            </a>
+        </div>
+
         <section class="mb-16 relative z-10">
-            <h2 class="text-4xl font-extrabold mb-8 dark:text-white inline-block bg-orange-100 dark:bg-gray-800 px-4 py-2 rounded-lg border-2 border-gray-900 dark:border-black shadow-md dark:shadow-black/50 transform -rotate-2">Unsere Highlights</h2>
+            <h2 class="text-4xl font-extrabold mb-8 dark:text-white inline-block bg-orange-100 dark:bg-gray-800 px-4 py-2 rounded-lg border-2 border-gray-900 dark:border-black shadow-md dark:shadow-black/50 transform -rotate-1">Unsere Highlights</h2>
 
             <div id="highlights-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 </div>
@@ -147,17 +125,6 @@
             </div>
         </div>
 
-        <div class="mt-16 bg-white dark:bg-gray-800 border-2 border-gray-900 dark:border-black rounded-2xl p-8 text-center shadow-lg dark:shadow-black/50 relative z-10 max-w-2xl mx-auto">
-            <h3 class="text-3xl font-extrabold text-gray-900 dark:text-white mb-4">Gefällt dir Knuffis Rezepte?</h3>
-            <p class="text-gray-700 dark:text-gray-300 font-medium text-lg mb-8 max-w-md mx-auto">
-                Hilf mir, die Seite werbefrei zu halten und unterstütze mich gerne mit einem Euro! Jede kleine Spende wandert direkt in die Rezeptentwicklung (oder in Schokolade).
-            </p>
-            <a href="https://ko-fi.com/knuffirezepte" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 bg-[#FF5E5B] text-white font-bold text-xl py-3 px-8 rounded-xl border-2 border-gray-900 dark:border-black shadow-md hover:shadow-lg hover:-translate-y-1 transition">
-                <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M23.881 8.948c-.773-4.085-4.859-4.593-4.859-4.593H.723c-.604 0-.679.798-.679.798s-.082 7.324-.022 11.822c.164 2.424 2.586 2.672 2.586 2.672s8.267-.023 11.966-.049c2.438-.426 2.683-2.566 2.658-3.734 4.352.24 7.422-2.831 6.649-6.916zm-11.062 3.511c-1.246 1.453-4.011 3.976-4.011 3.976s-.121.119-.31.023c-.076-.057-.108-.09-.108-.09-.443-.441-3.368-3.049-4.061-4.3-.037-.046-.054-.09-.054-.118-.014-.047-.02-.093-.016-.145.034-.146.069-.279.108-.403.228-.544.502-1.05.996-1.391.802-.553 1.849-.452 2.607.126.312.238.587.545.836.885.166.226.471.226.637 0 .249-.34.524-.647.836-.885.758-.578 1.805-.679 2.607-.126.494.341.768.847.996 1.391.039.124.074.257.108.403.004.052-.002.098-.016.145-.001.028-.017.072-.054.118-.328.666-2.571 3.256-3.491 4.258zM20.804 13.064c-.114.733-.943 1.006-1.921 1.053V6.992c1.944.021 3.292.544 3.514 2.404.225 1.859-.479 2.935-1.593 3.668z"/></svg>
-                <span>Unterstütze Knuffi</span>
-            </a>
-        </div>
-
     </main>
 
     <footer class="bg-gray-900 text-gray-300 py-10 mt-16 border-t-4 border-gray-800 no-print">
@@ -182,7 +149,59 @@
             }
         }
 
-        // --- HIGHLIGHTS KARTEN ---
+        // Hilfsfunktion zum Datum vergleichen
+        function parseGermanDate(dateStr) {
+            if (!dateStr) return 0;
+            const parts = dateStr.split('.'); 
+            return new Date(parts[2], parts[1] - 1, parts[0]).getTime();
+        }
+
+        const allRecipesArray = Object.entries(rezeptDaten);
+
+        // --- 1. DIE 3 NEUESTEN REZEPTE LADEN ---
+        const newestContainer = document.getElementById('newest-grid');
+        
+        // Rezepte nach Datum sortieren (neueste zuerst)
+        allRecipesArray.sort((a, b) => {
+            const dateA = parseGermanDate(a[1].datum || "01.01.2020");
+            const dateB = parseGermanDate(b[1].datum || "01.01.2020");
+            return dateB - dateA;
+        });
+
+        // Die ersten 3 IDs extrahieren
+        const newestIDs = allRecipesArray.slice(0, 3).map(entry => entry[0]);
+
+        newestIDs.forEach(id => {
+            const rezept = rezeptDaten[id];
+            
+            // Karte mit NEU-Badge
+            const cardHTML = `
+            <a href="rezept.html?id=${id}" class="block group transform transition-all duration-300 hover:-translate-y-2 h-full">
+                <div class="bg-white rounded-2xl border-2 border-gray-900 dark:border-black shadow-lg group-hover:shadow-xl overflow-hidden flex flex-col h-full dark:bg-gray-800 dark:shadow-black/60">
+                    
+                    <div class="h-56 overflow-hidden relative border-b-2 border-gray-900 dark:border-black">
+                        <img src="${rezept.bild}" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500" onerror="this.src='https://placehold.co/600x400?text=Kein+Bild'">
+                        
+                        <div class="absolute top-4 right-4 bg-[#2EC4B6] text-white text-sm font-extrabold px-3 py-1.5 rounded-lg border-2 border-gray-900 dark:border-black transform rotate-[6deg] shadow-sm tracking-wide">
+                            NEU!
+                        </div>
+                    </div>
+                    
+                    <div class="p-6 flex-grow flex flex-col">
+                        <h3 class="text-3xl font-extrabold group-hover:text-[#FF9F1C] transition text-gray-900 dark:text-gray-100 mb-4 leading-tight">${rezept.titel}</h3>
+                        
+                        <div class="mt-auto flex flex-wrap gap-2">
+                            <span class="bg-orange-100 text-orange-800 text-sm font-bold px-3 py-1.5 rounded-lg border border-gray-900 dark:border-black dark:bg-orange-900/50 dark:text-orange-300 shadow-sm">⏱️ ${rezept.zeit}</span>
+                            <span class="bg-green-100 text-green-800 text-sm font-bold px-3 py-1.5 rounded-lg border border-gray-900 dark:border-black dark:bg-green-900/50 dark:text-green-300 shadow-sm">${rezept.kategorie.split(',')[0]}</span>
+                        </div>
+                    </div>
+                </div>
+            </a>`;
+            newestContainer.innerHTML += cardHTML;
+        });
+
+
+        // --- 2. HIGHLIGHTS KARTEN ---
         const highlightsContainer = document.getElementById('highlights-grid');
         const highlightIDs = ['pizzateig', 'chili', 'sloppy_joe'];
 
@@ -190,7 +209,6 @@
             const rezept = rezeptDaten[id];
             if(!rezept) return; 
 
-            // Highlight-Karte: Klare Outline (border-2 border-gray-900 dark:border-black), dezenter Schatten
             const cardHTML = `
             <a href="rezept.html?id=${id}" class="block group transform transition-all duration-300 hover:-translate-y-2 h-full">
                 <div class="bg-white rounded-2xl border-2 border-gray-900 dark:border-black shadow-lg group-hover:shadow-xl overflow-hidden flex flex-col h-full dark:bg-gray-800 dark:shadow-black/60">
@@ -216,10 +234,14 @@
             highlightsContainer.innerHTML += cardHTML;
         });
 
-        // --- ZUFÄLLIGE KARTEN ---
+
+        // --- 3. ZUFÄLLIGE KARTEN & ALLE ANZEIGEN ---
         const randomContainer = document.getElementById('random-grid');
         const allIDs = Object.keys(rezeptDaten);
-        const pool = allIDs.filter(id => !highlightIDs.includes(id));
+        
+        // Neu: Filtere die IDs heraus, die bereits als "Neu" oder als "Highlight" angezeigt werden
+        const excludeIDs = [...newestIDs, ...highlightIDs];
+        const pool = allIDs.filter(id => !excludeIDs.includes(id));
 
         for (let i = pool.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
@@ -229,7 +251,6 @@
 
         randomSelection.forEach(id => {
             const rezept = rezeptDaten[id];
-            // Kleine Karten: Mit Outline
             const cardHTML = `
             <a href="rezept.html?id=${id}" class="block group transform transition-all duration-300 hover:-translate-y-1 h-full">
                 <div class="bg-white rounded-xl border-2 border-gray-900 dark:border-black shadow-md group-hover:shadow-lg overflow-hidden flex flex-col h-full dark:bg-gray-800 dark:shadow-black/50">
@@ -245,7 +266,6 @@
             randomContainer.innerHTML += cardHTML;
         });
 
-        // --- "ALLE ANZEIGEN" KARTE ---
         const moreCardHTML = `
         <a href="alle-rezepte.html" class="block group transform transition-all duration-300 hover:-translate-y-1 h-full">
             <div class="bg-[#FFE5D9] rounded-xl border-2 border-dashed border-gray-900 dark:border-black shadow-md group-hover:shadow-lg flex flex-col items-center justify-center h-full min-h-[180px] dark:bg-gray-800 dark:shadow-black/50">
