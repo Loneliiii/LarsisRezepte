@@ -27,6 +27,41 @@ const rezeptDaten = {
         ]
 
     },
+    "airfryer_nudelauflauf": {
+        titel: "Airfryer Nudel-Hack-Auflauf",
+        bild: "https://images.unsplash.com/photo-1770908811367-e1232962e81b?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        zeit: "Ca. 25 Min.",
+        portionen: "2-3 Portionen",
+        kategorie: "Hauptgericht, Airfryer",
+        autor: "Petra P.",
+        datum: "28.02.2026",
+        inspiration: "Desired.de",
+        zutaten: [
+            "400g Hackfleisch (Rind, Schwein oder gemischt)",
+            "200g Nudeln (vorgekocht, auch Reste vom Vortag)",
+            "1 Dose stückige Tomaten (400g)",
+            "1 Zwiebel",
+            "100g geriebener Käse",
+            "1 TL Salz",
+            "1 TL Paprikapulver",
+            "1/2 TL Pfeffer"
+        ],
+        zubereitung: [
+            { 
+                titel: "Mischen", 
+                text: "Zwiebel fein würfeln. Das rohe Hackfleisch, Nudeln, Tomaten, Zwiebelwürfel und alle Gewürze in einer Schüssel gut vermengen." 
+            },
+            { 
+                titel: "Ab in die Form", 
+                text: "Die Masse in eine kleine, hitzebeständige Form füllen, die in den Airfryer passt. Den geriebenen Käse gleichmäßig darüberstreuen." 
+            },
+            { 
+                titel: "Backen", 
+                text: "Im Airfryer bei 180°C für 20 bis 25 Minuten garen, bis das Hackfleisch durch und der Käse goldbraun ist." 
+            }
+        ]
+    },
+    
     "airfryer_hackbaellchen": {
         titel: "Airfryer Hackbällchen",
         bild: "https://images.unsplash.com/photo-1615385361723-9f4c2daf42f4?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
