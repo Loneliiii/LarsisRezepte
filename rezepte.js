@@ -25,6 +25,45 @@ const rezeptDaten = {
             { titel: "Zusammenbau", text: "Brötchenboden, Soße, Salat, Fleisch (ggf. mit Käse), Tomate, Gurke, Zwiebel, Soße, Deckel. Fertig!" },
             { titel: "Tipp", text: "Die Tomatenscheiben leicht salzen für mehr Geschmack!" }
         ]
+
+    },
+    "airfryer_hackbaellchen": {
+        titel: "Airfryer Hackbällchen",
+        bild: "https://images.unsplash.com/photo-1615385361723-9f4c2daf42f4?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        zeit: "Ca. 20 Min.",
+        portionen: "2-3 Portionen",
+        kategorie: "Hauptgericht, Schnell, Airfryer",
+        autor: "Petra P.",
+        datum: "28.02.2026",
+        inspiration: "Desired.de",
+        zutaten: [
+            "500g Hackfleisch (Rind, Schwein oder gemischt)",
+            "1 Ei",
+            "2 EL Semmelbrösel",
+            "1 TL Salz",
+            "1/2 TL Pfeffer",
+            "1/2 TL Knoblauchpulver",
+            "1 TL getrocknete Petersilie",
+            "etwas Öl zum Sprühen"
+        ],
+        zubereitung: [
+            { 
+                titel: "Teig kneten", 
+                text: "Pack das Hackfleisch, das Ei, die Semmelbrösel und alle Gewürze (Salz, Pfeffer, Knoblauch, Petersilie) in eine große Schüssel und vermantsche alles gründlich miteinander." 
+            },
+            { 
+                titel: "Bällchen rollen", 
+                text: "Forme aus der Fleischmasse gleichmäßig kleine Bällchen. Mach sie ungefähr so groß wie Golfbälle, damit sie später alle gleichzeitig durch sind." 
+            },
+            { 
+                titel: "Ab in den Korb", 
+                text: "Lege die Bällchen mit ein bisschen Platz dazwischen in den Airfryer und sprühe sie ganz leicht mit dem Öl ein." 
+            },
+            { 
+                titel: "Bruzeln lassen", 
+                text: "Gare die Hackbällchen bei 180°C für etwa 12 bis 15 Minuten. Wichtig: Zieh den Korb nach der halben Zeit einmal raus und schüttle ihn gut durch, damit sie von allen Seiten schön goldbraun werden!" 
+            }
+        ]
     },
 
     "carbonara": {
