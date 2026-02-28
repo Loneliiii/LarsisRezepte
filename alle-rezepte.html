@@ -10,7 +10,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
-        /* Schriftart auf der ganzen Seite anwenden */
         body { font-family: 'Fredoka', sans-serif; }
     </style>
 
@@ -73,11 +72,20 @@
             </div>
         </div>
 
+        <div class="mb-6">
+            <div class="relative w-full md:w-1/2 lg:w-1/3">
+                <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-gray-500 text-lg">🔍</span>
+                <input type="text" id="search-input" onkeyup="handleSearch()" placeholder="Rezept oder Autor suchen..." 
+                       class="w-full pl-12 pr-4 py-3 rounded-xl border-2 border-gray-900 dark:border-black shadow-sm focus:outline-none focus:ring-2 focus:ring-[#FF9F1C] focus:border-transparent dark:bg-gray-800 dark:text-gray-100 transition font-bold">
+            </div>
+        </div>
+
         <div class="flex flex-wrap gap-3 mb-12" id="filter-container">
             <button onclick="toggleFilter(this, 'alle')" class="filter-btn px-5 py-2 rounded-lg font-bold transition outline-none">Alle</button>
             <button onclick="toggleFilter(this, 'hauptgericht')" class="filter-btn px-5 py-2 rounded-lg font-bold transition outline-none">🥘 Hauptgericht</button>
             <button onclick="toggleFilter(this, 'dessert')" class="filter-btn px-5 py-2 rounded-lg font-bold transition outline-none">🍰 Dessert</button>
             <button onclick="toggleFilter(this, 'schnell')" class="filter-btn px-5 py-2 rounded-lg font-bold transition outline-none">⚡ Schnell</button>
+            <button onclick="toggleFilter(this, 'airfryer')" class="filter-btn px-5 py-2 rounded-lg font-bold transition outline-none">🌪️ Airfryer</button>
             <button onclick="toggleFilter(this, 'vegetarisch')" class="filter-btn px-5 py-2 rounded-lg font-bold transition outline-none">🧀 Vegetarisch</button>
             <button onclick="toggleFilter(this, 'vegan')" class="filter-btn px-5 py-2 rounded-lg font-bold transition outline-none">🌱 Vegan</button>
         </div>
@@ -137,8 +145,17 @@
         
         let activeFilters = new Set(['alle']);
         let currentSort = 'newest';
+        let currentSearch = ''; // NEU: Suchbegriff speichern
 
         const allRecipesArray = Object.entries(rezeptDaten);
+
+        // --- SUCH LOGIK ---
+        function handleSearch() {
+            // Liest das Suchfeld aus, macht alles klein und entfernt Leerzeichen vorne/hinten
+            currentSearch = document.getElementById('search-input').value.toLowerCase().trim();
+            currentPage = 1; // Zurück auf Seite 1 springen
+            renderPage();
+        }
 
         // --- FILTER LOGIK ---
         function toggleFilter(btn, filter) {
@@ -164,17 +181,14 @@
             renderPage();    
         }
 
-        // NEU: Clean Outline Styles für die Filter-Buttons
         function updateButtonStyles() {
             document.querySelectorAll('.filter-btn').forEach(button => {
                 const match = button.getAttribute('onclick').match(/'([^']+)'/);
                 const filterName = match ? match[1] : '';
 
                 if (activeFilters.has(filterName)) {
-                    // Aktiv: Orange, nach innen gedrückt (shadow-inner), schwarze Outline
                     button.className = "filter-btn px-5 py-2 rounded-lg font-extrabold transition bg-[#FF9F1C] text-gray-900 border-2 border-gray-900 dark:border-black shadow-inner outline-none transform translate-y-0.5";
                 } else {
-                    // Inaktiv: Weiß/Dunkel, normaler weicher Schatten, schwarze Outline
                     button.className = "filter-btn px-5 py-2 rounded-lg font-bold transition bg-white text-gray-800 border-2 border-gray-900 dark:border-black shadow-sm hover:shadow-md hover:bg-[#FFE5D9] hover:-translate-y-0.5 dark:bg-gray-800 dark:text-gray-200 dark:shadow-black/50 dark:hover:bg-gray-700 outline-none";
                 }
             });
@@ -187,8 +201,22 @@
             renderPage();
         }
 
+        // --- HAUPTLOGIK: Suchen & Filtern ---
         function getProcessedRecipes() {
             let filtered = allRecipesArray.filter(([id, data]) => {
+                
+                // 1. Suche abgleichen (Titel oder Autor)
+                if (currentSearch !== '') {
+                    const titleMatch = data.titel.toLowerCase().includes(currentSearch);
+                    const authorMatch = data.autor && data.autor.toLowerCase().includes(currentSearch);
+                    
+                    // Wenn weder der Titel noch der Autor passt, wird das Rezept ignoriert
+                    if (!titleMatch && !authorMatch) {
+                        return false;
+                    }
+                }
+
+                // 2. Kategorien abgleichen
                 if (activeFilters.has('alle')) return true;
 
                 let tags = (data.kategorie || "").toLowerCase();
@@ -225,7 +253,6 @@
             const end = start + ITEMS_PER_PAGE;
             const pageItems = processedItems.slice(start, end);
 
-            // NEU: Clean Outline Styles für die Rezept-Karten
             pageItems.forEach(([id, data]) => {
                 const datumAnzeige = data.datum ? `<div class="absolute top-4 right-4 bg-white text-gray-900 text-xs font-extrabold px-2 py-1 rounded-lg border-2 border-gray-900 dark:border-black transform rotate-3 shadow-sm">📅 ${data.datum}</div>` : '';
                 const autorAnzeige = data.autor ? `<span class="text-sm font-bold text-gray-500 dark:text-gray-400 ml-auto">Von ${data.autor}</span>` : '';
@@ -262,13 +289,12 @@
                 document.getElementById('showing-info').innerText = `${start + 1}-${currentShow} von ${total}`;
             } else {
                 document.getElementById('showing-info').innerText = "0";
-                grid.innerHTML = `<div class="col-span-full text-center py-12 text-gray-600 font-bold text-xl border-2 border-dashed border-gray-400 rounded-2xl dark:border-gray-600 dark:text-gray-400">Keine Rezepte gefunden, die zu diesen Filtern passen. 🍳</div>`;
+                grid.innerHTML = `<div class="col-span-full text-center py-12 text-gray-600 font-bold text-xl border-2 border-dashed border-gray-400 rounded-2xl dark:border-gray-600 dark:text-gray-400">Keine Rezepte gefunden, die zu dieser Suche passen. 🍳</div>`;
             }
 
             renderPagination(total);
         }
 
-        // NEU: Clean Outline Styles für die Seiten-Zahlen (Paginierung)
         function renderPagination(totalItems) {
             const container = document.getElementById('pagination');
             container.innerHTML = '';
@@ -276,14 +302,12 @@
 
             if (totalPages <= 1) return;
 
-            // Zurück Button
             const prevBtn = document.createElement('button');
             prevBtn.innerHTML = '&larr;';
             prevBtn.className = `px-4 py-2 rounded-lg font-bold border-2 transition ${currentPage === 1 ? 'border-gray-300 bg-gray-100 text-gray-400 cursor-not-allowed dark:border-gray-700 dark:bg-gray-800 dark:text-gray-600' : 'border-gray-900 dark:border-black bg-white text-gray-800 shadow-sm hover:-translate-y-0.5 hover:shadow-md hover:bg-[#FFE5D9] dark:bg-gray-800 dark:text-gray-200 dark:shadow-black/50 dark:hover:bg-gray-700'}`;
             prevBtn.onclick = () => { if(currentPage > 1) { currentPage--; renderPage(); }};
             container.appendChild(prevBtn);
 
-            // Zahlen Buttons
             for (let i = 1; i <= totalPages; i++) {
                 const btn = document.createElement('button');
                 btn.innerText = i;
@@ -296,7 +320,6 @@
                 container.appendChild(btn);
             }
 
-            // Vorwärts Button
             const nextBtn = document.createElement('button');
             nextBtn.innerHTML = '&rarr;';
             nextBtn.className = `px-4 py-2 rounded-lg font-bold border-2 transition ${currentPage === totalPages ? 'border-gray-300 bg-gray-100 text-gray-400 cursor-not-allowed dark:border-gray-700 dark:bg-gray-800 dark:text-gray-600' : 'border-gray-900 dark:border-black bg-white text-gray-800 shadow-sm hover:-translate-y-0.5 hover:shadow-md hover:bg-[#FFE5D9] dark:bg-gray-800 dark:text-gray-200 dark:shadow-black/50 dark:hover:bg-gray-700'}`;
@@ -304,7 +327,6 @@
             container.appendChild(nextBtn);
         }
 
-        // Init
         updateButtonStyles();
         renderPage(); 
 
