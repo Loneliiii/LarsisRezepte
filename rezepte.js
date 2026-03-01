@@ -240,7 +240,7 @@ const rezeptDaten = {
 
     "sloppy_joe": {
         titel: "Sloppy Joe",
-        bild: "Bilder/sloppy_joe.png",
+        bild: "Bilder/sloppy_joe.jpg",
         zeit: "10 Min.",
         portionen: "4 Portionen",
         kategorie: "Hauptgericht, Schnell",
