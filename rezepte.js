@@ -27,6 +27,45 @@ const rezeptDaten = {
         ]
 
     },
+    "toast_hawaii_stapel": {
+        titel: "Toast Hawaii Stapel",
+        bild: "knuffi_question.jpg",
+        zeit: "Ca. 30 Min.",
+        portionen: "2-3 Portionen",
+        kategorie: "Hauptgericht, Ofengericht",
+        autor: "Lars",
+        datum: "01.03.2026",
+        inspiration: "Youtube Videos",
+        zutaten: [
+            "8 Scheiben Toastbrot",
+            "1 Packung Kochschinken",
+            "1 Dose Ananas (Scheiben oder Stücke)",
+            "1 Packung Scheibenkäse",
+            "2-3 Eier",
+            "Etwas Reibekäse zum Überbacken",
+            "Salz und Pfeffer",
+            "Etwas Fett für die Pfanne"
+        ],
+        zubereitung: [
+            { 
+                titel: "Das Ei-Bad", 
+                text: "Schlage die Eier in einen tiefen Teller auf, würze sie kräftig mit Salz und Pfeffer und verquirle alles gut mit einer Gabel." 
+            },
+            { 
+                titel: "Toast anbraten", 
+                text: "Wende die Toastscheiben nacheinander von beiden Seiten in der Ei-Masse. Brate sie danach in einer Pfanne mit etwas Fett kurz von beiden Seiten goldgelb an." 
+            },
+            { 
+                titel: "Der Hochstapler", 
+                text: "Stelle die angebratenen Toasts leicht schräg hintereinander in eine Auflaufform. Klemme nun immer abwechselnd Schinken, Ananas und Scheibenkäse in die Lücken zwischen den Toastscheiben." 
+            },
+            { 
+                titel: "Käsekruste & Backen", 
+                text: "Streue zum Schluss den Reibekäse großzügig über deinen Stapel. Ab damit in den Ofen: Bei 170°C für ca. 20 Minuten überbacken, bis der Käse herrlich zerlaufen ist." 
+            }
+        ]
+    },
+    
     "airfryer_nudelauflauf": {
         titel: "Airfryer Nudel-Hack-Auflauf",
         bild: "https://images.unsplash.com/photo-1770908811367-e1232962e81b?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
