@@ -29,7 +29,7 @@ const rezeptDaten = {
     },
     "toast_hawaii_stapel": {
         titel: "Toast Hawaii Stapel",
-        bild: "toast_hawaii_stapel.jpg",
+        bild: "TH_STAPEL.jpg",
         zeit: "Ca. 30 Min.",
         portionen: "2-3 Portionen",
         kategorie: "Hauptgericht, Ofengericht",
