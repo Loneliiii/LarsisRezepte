@@ -25,7 +25,32 @@ const rezeptDaten = {
             { titel: "Zusammenbau", text: "Brötchenboden, Soße, Salat, Fleisch (ggf. mit Käse), Tomate, Gurke, Zwiebel, Soße, Deckel. Fertig!" },
             { titel: "Tipp", text: "Die Tomatenscheiben leicht salzen für mehr Geschmack!" }
         ]
-
+    "kaese_sahne_sauce": {
+        titel: "Cremige Käse-Sahne-Nudeln",
+        bild: "https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb?q=80&w=870&auto=format&fit=crop",
+        zeit: "Ca. 20 Min.",
+        portionen: "4 Portionen",
+        kategorie: "Hauptgericht, Vegetarisch, Schnell",
+        autor: "Lars",
+        datum: "25.03.2026",
+        inspiration: "Einfachkochen.de",
+        zutaten: [
+            "400g Nudeln (Tagliatelle oder Fettuccine)",
+            "200g Sahne (30% Fett)",
+            "150g Parmesan (am besten frisch gerieben)",
+            "150g Frischkäse (Doppelrahmstufe)",
+            "1 Knoblauchzehe",
+            "30g Butter",
+            "Salz und frisch gemahlener Pfeffer",
+            "Etwas geriebene Muskatnuss"
+        ],
+        zubereitung: [
+            { titel: "Nudeln kochen", text: "Die Pasta nach Packungsanweisung in reichlich Salzwasser al dente kochen. Wichtig: Bevor du sie abgießt, hebe unbedingt eine kleine Kelle vom Nudelwasser auf!" },
+            { titel: "Knoblauch andünsten", text: "Während die Nudeln kochen, die Knoblauchzehe fein würfeln und in einem Topf mit der geschmolzenen Butter für ca. 2 bis 3 Minuten sanft glasig dünsten." },
+            { titel: "Die Käse-Magie", text: "Die Sahne in den Topf gießen und einmal kurz aufkochen lassen. Dann den geriebenen Parmesan, den Frischkäse und einen Schuss von dem Nudelwasser einrühren, bis alles herrlich cremig geschmolzen ist." },
+            { titel: "Hochzeit im Topf", text: "Die Soße mit Salz, Pfeffer und einer guten Prise Muskatnuss abschmecken. Die abgetropften Nudeln dazugeben, ordentlich durchschwenken und direkt heiß servieren." }
+        ]
+    
     },
     "toast_hawaii_stapel": {
         titel: "Toast Hawaii Stapel",
