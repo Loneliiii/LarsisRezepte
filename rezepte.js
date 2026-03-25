@@ -25,6 +25,7 @@ const rezeptDaten = {
             { titel: "Zusammenbau", text: "Brötchenboden, Soße, Salat, Fleisch (ggf. mit Käse), Tomate, Gurke, Zwiebel, Soße, Deckel. Fertig!" },
             { titel: "Tipp", text: "Die Tomatenscheiben leicht salzen für mehr Geschmack!" }
         ]
+    },
     "kaese_sahne_sauce": {
         titel: "Cremige Käse-Sahne-Nudeln",
         bild: "https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb?q=80&w=870&auto=format&fit=crop",
