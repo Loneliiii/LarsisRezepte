@@ -28,10 +28,10 @@ const rezeptDaten = {
     },
     "kaese_sahne_sauce": {
         titel: "Cremige Käse-Sahne-Nudeln",
-        bild: "https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb?q=80&w=870&auto=format&fit=crop",
+        bild: "Bilder/Noodle_kaese_sahne_sauce.jpg",
         zeit: "Ca. 20 Min.",
         portionen: "4 Portionen",
-        kategorie: "Hauptgericht, Vegetarisch, Schnell",
+        kategorie: "Hauptgericht, Schnell",
         autor: "Lars",
         datum: "25.03.2026",
         inspiration: "Einfachkochen.de",
@@ -43,15 +43,16 @@ const rezeptDaten = {
             "1 Knoblauchzehe",
             "30g Butter",
             "Salz und frisch gemahlener Pfeffer",
-            "Etwas geriebene Muskatnuss"
+            "Etwas geriebene Muskatnuss",
+            "Optional: 150g Kochschinken (gewürfelt)",
+            "Optional: 1 Handvoll Erbsen (TK)"
         ],
         zubereitung: [
             { titel: "Nudeln kochen", text: "Die Pasta nach Packungsanweisung in reichlich Salzwasser al dente kochen. Wichtig: Bevor du sie abgießt, hebe unbedingt eine kleine Kelle vom Nudelwasser auf!" },
-            { titel: "Knoblauch andünsten", text: "Während die Nudeln kochen, die Knoblauchzehe fein würfeln und in einem Topf mit der geschmolzenen Butter für ca. 2 bis 3 Minuten sanft glasig dünsten." },
-            { titel: "Die Käse-Magie", text: "Die Sahne in den Topf gießen und einmal kurz aufkochen lassen. Dann den geriebenen Parmesan, den Frischkäse und einen Schuss von dem Nudelwasser einrühren, bis alles herrlich cremig geschmolzen ist." },
+            { titel: "Knoblauch & Co. andünsten", text: "Während die Nudeln kochen, die Knoblauchzehe fein würfeln und in einem Topf mit der geschmolzenen Butter für ca. 2 bis 3 Minuten sanft glasig dünsten. (Tipp: Wenn du Schinken nutzt, brate die Würfel hier direkt mit an!)" },
+            { titel: "Die Käse-Magie", text: "Die Sahne in den Topf gießen und einmal kurz aufkochen lassen. Dann den Parmesan, Frischkäse, einen Schuss Nudelwasser (und optional die TK-Erbsen) einrühren, bis alles herrlich cremig geschmolzen ist." },
             { titel: "Hochzeit im Topf", text: "Die Soße mit Salz, Pfeffer und einer guten Prise Muskatnuss abschmecken. Die abgetropften Nudeln dazugeben, ordentlich durchschwenken und direkt heiß servieren." }
         ]
-    
     },
     "toast_hawaii_stapel": {
         titel: "Toast Hawaii Stapel",
