@@ -50,7 +50,7 @@ const rezeptDaten = {
             { titel: "Reis kochen", text: "Den Reis nach Packungsanweisung in Salzwasser gar kochen und anschließend kurz beiseitestellen." },
             { titel: "Pfannen-Action", text: "Das Hackfleisch in einer Pfanne krümelig anbraten. Die gewürfelte Paprika und die abgetropften Kidneybohnen dazugeben und kurz mitbraten." },
             { titel: "Die Curry-Magie", text: "Einen ordentlichen Schuss Curry Ketchup und den Löffel Crème fraîche unter das Fleisch mischen, bis alles schön schlotzig ist." },
-            { titel: "Bauen & Rollen", text: "Die Wraps kurz in der Mikrowelle oder Pfanne erwärmen und mit Frischkäse bestreichen. Reis und Fleisch-Mix darauf, eng zusammenrollen und genießen!" }
+            { titel: "Bauen & Rollen", text: "Die Wraps kurz in der Mikrowelle oder Pfanne erwärmen und mit Frischkäse bestreichen. Reis und Fleisch-Mix darauf, eng zusammenrollen und genießen!" },
             { titel: "Tipps", text: "Es wird empfohlen vielleicht mehr Fleisch oder Bohnen zu nehmen statt Reis. Siehe das Bild, es war bei mir zu viel Reis." }
         ]
     },
