@@ -26,6 +26,34 @@ const rezeptDaten = {
             { titel: "Tipp", text: "Die Tomatenscheiben leicht salzen für mehr Geschmack!" }
         ]
     },
+    "curry_hack_wraps": {
+        titel: "Curry-Hack-Wraps mit Reis",
+        bild: "Bilder/hack_kaese_burrito.jpg",
+        zeit: "Ca. 35 Min.",
+        portionen: "10 Portionen",
+        kategorie: "Hauptgericht, Schnell",
+        autor: "Lars",
+        datum: "26.03.2026",
+        inspiration: "Eigene Kreation",
+        zutaten: [
+            "Wraps",
+            "200g Hackfleisch",
+            "1 Paprika (gewürfelt)",
+            "1 kleine Dose Kidneybohnen",
+            "Reis (Menge nach Hunger)",
+            "Curry Ketchup (z.B. Hela, ein kräftiger Schuss)",
+            "1 großer EL Crème fraîche",
+            "Frischkäse (zum Bestreichen)",
+            "Etwas Öl zum Anbraten"
+        ],
+        zubereitung: [
+            { titel: "Reis kochen", text: "Den Reis nach Packungsanweisung in Salzwasser gar kochen und anschließend kurz beiseitestellen." },
+            { titel: "Pfannen-Action", text: "Das Hackfleisch in einer Pfanne krümelig anbraten. Die gewürfelte Paprika und die abgetropften Kidneybohnen dazugeben und kurz mitbraten." },
+            { titel: "Die Curry-Magie", text: "Einen ordentlichen Schuss Curry Ketchup und den Löffel Crème fraîche unter das Fleisch mischen, bis alles schön schlotzig ist." },
+            { titel: "Bauen & Rollen", text: "Die Wraps kurz in der Mikrowelle oder Pfanne erwärmen und mit Frischkäse bestreichen. Reis und Fleisch-Mix darauf, eng zusammenrollen und genießen!" }
+            { titel: "Tipps", text: "Es wird empfohlen vielleicht mehr Fleisch oder Bohnen zu nehmen statt Reis. Siehe das Bild, es war bei mir zu viel Reis." }
+        ]
+    },
     "kaese_sahne_sauce": {
         titel: "Cremige Käse-Sahne-Nudeln",
         bild: "Bilder/Noodle_kaese_sahne_sauce.jpg",
